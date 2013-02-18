@@ -30,7 +30,7 @@ public class HttpManager {
 	public static HttpManager instance() {
 		if (sInstance == null) {
 			sInstance = new HttpManager();
-		}
+		} 
 		
 		return sInstance;
 	}

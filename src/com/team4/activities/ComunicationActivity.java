@@ -140,7 +140,7 @@ public class ComunicationActivity extends Activity {
 				view.setTag(holder);
 				return view;
 			} else {
-				T4Log.e("EnumDirection���ʹ���");
+				T4Log.e("EnumDirection类型错误！");
 				return null;
 			}		
 		}

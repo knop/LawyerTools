@@ -43,8 +43,6 @@ public class MainActivity extends Activity implements OnClickListener {
 		setContentView(R.layout.activity_main);
 		initTextView();
 		initViewPager();
-		TaskGetCompanies task = new TaskGetCompanies(this);
-		task.execute();
 	}
 
 	@Override
@@ -154,53 +152,5 @@ public class MainActivity extends Activity implements OnClickListener {
 				* mCurrentPos + mOffset, 0, 0);
 		animation.setFillAfter(true);
 		mFocusLine.setAnimation(animation);
-	}
-
-	public void onGetCompaniesComplete(TCompaniesEntity entity, T4Exception ex) {
-		if (ex == null) {
-//			mListView.setAdapter(new FileListAdapter(this, fileList));
-			;
-		} else {
-			String message = "Exception Code: " + ex.getExceptionCode()
-					+ "\r\n" + "Message: " + ex.getMessage();
-			T4Log.v(message);
-//			Toast.makeText(this, message, 1000);
-		}
-	}
-	
-	private static class TaskGetCompanies extends
-			AsyncTask<String, Void, TCompaniesEntity> {
-		
-		T4Exception mException = null;
-		MainActivity mActivity = null;
-		
-		public TaskGetCompanies(MainActivity activity) {
-			mActivity = activity;
-		}
-
-		@Override
-		public TCompaniesEntity doInBackground(String... params) {
-			TCompaniesEntity entity = null;
-
-			try {
-				entity = HttpManager.instance().getCompanies("10", "1");
-			} catch (T4Exception ex) {
-				mException = ex;
-			}
-
-			return entity;
-		}
-
-		@Override
-		protected void onPreExecute() {
-
-		}
-
-		@Override
-		public void onPostExecute(TCompaniesEntity entity) {
-			if (mActivity != null) {
-				mActivity.onGetCompaniesComplete(entity, mException);
-			}
-		}
 	}
 }

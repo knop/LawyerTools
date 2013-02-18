@@ -18,10 +18,10 @@ public abstract class AbstractParser<T extends IBaseType> implements IParser<T> 
         try {        	
             JSONObject json = new JSONObject(content);
         	if(json.has("code")){
-        		String code = (String)json.get("code");
-        		if(!String.valueOf(ErrorCode.OK).equals(code)) {
+        		int code = (Integer)json.get("code");
+        		if(code != ErrorCode.OK) {
         			String description = (String)json.get("description");
-                	throw new T4Exception(Integer.parseInt(code), description);
+                	throw new T4Exception(code, description);
         		}
         	} else {
         		throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "Json格式错误");

@@ -5,6 +5,7 @@ import java.util.List;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +15,12 @@ import android.widget.Toast;
 
 import com.team4.activities.CompanyActivity;
 import com.team4.activities.ComunicationActivity;
+import com.team4.activities.MainActivity;
+import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
+import com.team4.type.TCompaniesEntity;
+import com.team4.utils.exceptions.T4Exception;
+import com.team4.utils.util.T4Log;
 
 public class CompaniesView extends ListView {
 
@@ -44,7 +50,9 @@ public class CompaniesView extends ListView {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText(context, "¿ªÊ¼ËÑË÷", Toast.LENGTH_SHORT).show();
+				TaskGetCompanies task = new TaskGetCompanies(CompaniesView.this);
+				task.execute();
+				Toast.makeText(context, "æŸ¥æ‰¾åŠŸèƒ½æœªå®Œæˆ", Toast.LENGTH_SHORT).show();
 			}
 		});
 
@@ -54,7 +62,7 @@ public class CompaniesView extends ListView {
 			@Override
 			public void onClick(View v) {
 				// TODO Auto-generated method stub
-				Toast.makeText(context, "Ìí¼Ó", Toast.LENGTH_SHORT).show();
+				Toast.makeText(context, "æ·»åŠ åŠŸèƒ½æœªå®Œæˆ", Toast.LENGTH_SHORT).show();
 			}
 		});
 		addHeaderView(headerView);
@@ -79,5 +87,53 @@ public class CompaniesView extends ListView {
 		Intent intent = new Intent();
 		intent.setClass(context, ComunicationActivity.class);
 		context.startActivity(intent);
+	}
+
+	public void onGetCompaniesComplete(TCompaniesEntity entity, T4Exception ex) {
+		if (ex == null) {
+//			mListView.setAdapter(new FileListAdapter(this, fileList));
+			;
+		} else {
+			String message = "Exception Code: " + ex.getExceptionCode()
+					+ "\r\n" + "Message: " + ex.getMessage();
+			T4Log.v(message);
+//			Toast.makeText(this, message, 1000);
+		}
+	}
+	
+	private static class TaskGetCompanies extends
+			AsyncTask<String, Void, TCompaniesEntity> {
+
+		T4Exception mException = null;
+		CompaniesView mActivity = null;
+
+		public TaskGetCompanies(CompaniesView activity) {
+			mActivity = activity;
+		}
+
+		@Override
+		public TCompaniesEntity doInBackground(String... params) {
+			TCompaniesEntity entity = null;
+
+			try {
+				entity = HttpManager.instance().getCompanies("10", "1");
+			} catch (T4Exception ex) {
+				mException = ex;
+			}
+
+			return entity;
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+		}
+
+		@Override
+		public void onPostExecute(TCompaniesEntity entity) {
+			if (mActivity != null) {
+				mActivity.onGetCompaniesComplete(entity, mException);
+			}
+		}
 	}
 }
