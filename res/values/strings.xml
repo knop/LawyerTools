@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 通用字符串 -->
+    <string name="app_name">LawyerTools</string>
+    <string name="ok">确定</string>
+    <string name="cancel">取消</string>
+
+    <!-- 首页标签 -->
+    <string name="page_one">投资公司</string>
+    <string name="page_two">资金</string>
+    <string name="page_three">项目</string>
+    <string name="page_four">案件</string>
+
+    <!-- 第一个标签页 -->
+    <string name="search_keyword">请输入关键字</string>
+    <string name="search_done">搜索</string>
+    <string name="add">添加</string>
+
+    <!-- View标题 -->
+    <string name="company_detail">公司详情</string>
+    
+    <!-- 基本信息 -->
+    <string name="basic_info">基本信息</string>
+    <string name="name">姓名</string>
+    <string name="phone_number">电话</string>
+    <string name="mail">邮箱</string>
+    <string name="source">来源</string>
+    <string name="company_type">类型</string>
+    <string name="address">地址</string>
+    <string name="comments">备注</string>
+    <string name="attachments">附件</string>    
+
+    <!-- 佣金信息 -->
+    <string name="commission_info">佣金信息</string>
+    <string name="have_commission">是否有佣金</string>
+    <string name="commission_ratio">佣金比例</string>
+
+    <!-- 投资信息 -->
+    <string name="investment_info">投资信息</string>
+    <string name="capital_source">资金来源</string>
+    <string name="rating">评级</string>
+    <string name="investment_industry">投资行业</string>
+    <string name="investment_way">投资方式</string>
+    <string name="flow_area">流向区域</string>
+    
+    <!-- 往来信息 -->
+	<string name="msg_direction_from">From</string>
+    <string name="msg_direction_to">To</string>
+
+</resources>
