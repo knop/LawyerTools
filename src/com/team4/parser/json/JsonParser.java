@@ -6,15 +6,26 @@ import org.json.JSONObject;
 
 import com.team4.exceptions.ErrorCode;
 import com.team4.utils.exceptions.T4Exception;
+import com.team4.utils.parser.IJsonParser;
 import com.team4.utils.parser.IParser;
 import com.team4.utils.type.IBaseType;
 import com.team4.utils.util.T4Log;
 
-public abstract class AbstractParser<T extends IBaseType> implements IParser<T> {
+public class JsonParser implements IParser<IBaseType> {
 
-    public T parse(String content) throws T4Exception {
+	private IJsonParser<IBaseType> mParser;
+	
+	public JsonParser(IJsonParser<IBaseType> parser) {
+		mParser = parser;
+	}
+	
+	@Override
+	public IBaseType parse(String content) throws T4Exception {
     	T4Log.v("http response: " + content);
-
+    	
+    	if (mParser == null)
+    		throw new T4Exception(ErrorCode.JSON_PARSER_INVALID, "Json解析器不可用");
+    	
         try {        	
             JSONObject json = new JSONObject(content);
         	if(json.has("code")){
@@ -28,22 +39,15 @@ public abstract class AbstractParser<T extends IBaseType> implements IParser<T> 
         	}
         	Object obj = json.get("data");
         	if(obj instanceof JSONObject) {
-        		return this.parse((JSONObject)obj);
+        		return mParser.parse((JSONObject)obj);
         	} else if(obj instanceof JSONArray) {
-        		return this.parse((JSONArray)obj);
+        		return mParser.parse((JSONArray)obj);
         	} else {
         		throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "Json格式错误");
         	}
         } catch (JSONException ex) {
             throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "Json格式错误");
         }
-    }
-    
-    public T parse(JSONObject json) throws JSONException {
-    	throw new JSONException("解析Json数据错误");
-    }
-    
-    public T parse(JSONArray array) throws JSONException {
-    	throw new JSONException("解析Json数据错误");
-    }
+	}
+
 }

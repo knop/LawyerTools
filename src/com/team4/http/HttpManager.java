@@ -10,6 +10,8 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.team4.parser.json.CompaniesParser;
 import com.team4.parser.json.ComunicationParser;
+import com.team4.parser.json.JsonParser;
+import com.team4.parser.json.T4ListParser;
 import com.team4.type.TCompaniesEntity;
 import com.team4.type.TComunicationEntity;
 import com.team4.utils.exceptions.T4Exception;
@@ -50,16 +52,22 @@ public class HttpManager {
 				new BasicNameValuePair("page_number", pageNum));
 		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_COMPANY_LIST), userAgent, params);
 		
-		return (TCompaniesEntity)HttpUtility.executeHttpRequest(get, new CompaniesParser());
+		JsonParser parser = new JsonParser(new CompaniesParser());
+		
+		return (TCompaniesEntity)HttpUtility.executeHttpRequest(get, parser);
 	}
 	
+	@SuppressWarnings("unchecked")
 	public T4List<TComunicationEntity> getCompanyComunication(String id) throws T4Exception {
 		 
 		List<BasicNameValuePair> params = getParamList(
 				new BasicNameValuePair("id", id));
 		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_COMPANY_COMUNICATION), userAgent, params);
 		
-		return (T4List<TComunicationEntity>)HttpUtility.executeHttpRequest(get, new ComunicationParser());
+		T4ListParser lParser = new T4ListParser(new ComunicationParser());
+		JsonParser parser = new JsonParser(lParser);
+		
+		return (T4List<TComunicationEntity>)HttpUtility.executeHttpRequest(get, parser);
 	}
 	
 	//私有函数
