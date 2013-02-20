@@ -16,7 +16,9 @@ public class CompaniesParser extends AbstractParser<TCompaniesEntity> {
 		TCompaniesEntity obj = new TCompaniesEntity();
 		if (json.has("total_count")) {
 			obj.setTotalCount(json.getInt("total_count"));
-		} else if (json.has("records")) {
+		}
+		
+		if (json.has("records")) {
 			ArrayListParser<TCompanyEntity> arrayParser = new ArrayListParser<TCompanyEntity>(new CompanyParser());
 			obj.setRecords(arrayParser.parse(json.getJSONArray("records")));
 		}

@@ -9,9 +9,12 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.team4.parser.json.CompaniesParser;
+import com.team4.parser.json.ComunicationParser;
 import com.team4.type.TCompaniesEntity;
+import com.team4.type.TComunicationEntity;
 import com.team4.utils.exceptions.T4Exception;
 import com.team4.utils.http.HttpUtility;
+import com.team4.utils.type.T4List;
 
 public class HttpManager {
 
@@ -19,7 +22,11 @@ public class HttpManager {
 	private final static String userAgent = "Team4.US/Android";
 	
 	//API接口名称
+	//获取基本信息API
 	private final static String GET_COMPANY_LIST = "/lawyertools/information/company/";
+	
+	//获取联络信息API
+	private final static String GET_COMPANY_COMUNICATION = "/lawyertools/comunication/company/";
 	
 	private static HttpManager sInstance;
 	
@@ -44,6 +51,15 @@ public class HttpManager {
 		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_COMPANY_LIST), userAgent, params);
 		
 		return (TCompaniesEntity)HttpUtility.executeHttpRequest(get, new CompaniesParser());
+	}
+	
+	public T4List<TComunicationEntity> getCompanyComunication(String id) throws T4Exception {
+		 
+		List<BasicNameValuePair> params = getParamList(
+				new BasicNameValuePair("id", id));
+		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_COMPANY_COMUNICATION), userAgent, params);
+		
+		return (T4List<TComunicationEntity>)HttpUtility.executeHttpRequest(get, new ComunicationParser());
 	}
 	
 	//私有函数

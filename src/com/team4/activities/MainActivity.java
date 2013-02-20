@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import android.app.Activity;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
@@ -18,17 +17,13 @@ import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
 import android.widget.TextView;
 
-import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
-import com.team4.type.TCompaniesEntity;
-import com.team4.utils.exceptions.T4Exception;
 import com.team4.utils.util.FuncUtil;
-import com.team4.utils.util.T4Log;
 import com.team4.views.CompaniesView;
 
 public class MainActivity extends Activity implements OnClickListener {
 
-	private static final int FOCUS_LINE_WIDTH_DP = 60; // ����
+	private static final int FOCUS_LINE_WIDTH_DP = 60; // 单位为dp
 	private static final int textViewIndex[] = { R.id.text1, R.id.text2,
 			R.id.text3, R.id.text4 };
 	private int mCurrentPos = 0;

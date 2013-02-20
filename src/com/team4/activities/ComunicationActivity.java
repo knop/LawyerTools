@@ -145,7 +145,7 @@ public class ComunicationActivity extends Activity {
 			}		
 		}
 		
-		static class ViewHolder {
+		private static class ViewHolder {
 			public TextView tvContent;
 			public boolean isSended = true;
 		}

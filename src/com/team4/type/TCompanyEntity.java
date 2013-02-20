@@ -25,6 +25,8 @@ public class TCompanyEntity implements IBaseType, Serializable{
 	private String mFlowArea;
 	private String mComments;
 	private String mAttachments;
+	private String mCreateAt;
+	private String mModifyAt;
 
 	public int getId() {
 		return mId;
@@ -160,5 +162,21 @@ public class TCompanyEntity implements IBaseType, Serializable{
 
 	public void setAttachments(String attachments) {
 		this.mAttachments = attachments;
+	}
+
+	public String getCreateAt() {
+		return mCreateAt;
+	}
+
+	public void setCreateAt(String createAt) {
+		this.mCreateAt = createAt;
+	}
+
+	public String getModifyAt() {
+		return mModifyAt;
+	}
+
+	public void setModifyAt(String modifyAt) {
+		this.mModifyAt = modifyAt;
 	}
 }

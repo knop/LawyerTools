@@ -326,6 +326,7 @@
             android:textColor="@color/color_bai" />
 
         <TextView
+            android:id="@+id/tv_comments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="无" />
@@ -340,6 +341,7 @@
             android:textColor="@color/color_bai" />
 
         <TextView
+            android:id="@+id/tv_attachments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="无" />
