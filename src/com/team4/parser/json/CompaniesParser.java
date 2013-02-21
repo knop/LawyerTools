@@ -30,7 +30,7 @@ public class CompaniesParser implements IJsonParser<IBaseType> {
 		
 			return obj;
 		} catch (Exception e) {
-			throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "JSON格式错误");
+			throw new T4Exception(ErrorCode.PARSE_ERROR_FORMAT_INVALID, "JSON格式错误");
 		}
 	}
 

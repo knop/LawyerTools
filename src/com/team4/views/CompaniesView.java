@@ -136,7 +136,7 @@ public class CompaniesView extends ListView {
 			TCompaniesEntity entity = null;
 
 			try {
-				entity = HttpManager.instance().getCompanies(RECORD_PERPAGE, PAGE_NUMBER);
+				entity = HttpManager.instance().getInfomation(HttpManager.TYPE_COMPANY, RECORD_PERPAGE, PAGE_NUMBER);
 			} catch (T4Exception ex) {
 				mException = ex;
 			}

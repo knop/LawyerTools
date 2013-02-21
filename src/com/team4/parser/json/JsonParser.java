@@ -24,7 +24,7 @@ public class JsonParser implements IParser<IBaseType> {
     	T4Log.v("http response: " + content);
     	
     	if (mParser == null)
-    		throw new T4Exception(ErrorCode.JSON_PARSER_INVALID, "Json解析器不可用");
+    		throw new T4Exception(ErrorCode.PARSE_ERROR_PARSER_INVALID, "Json解析器不可用");
     	
         try {        	
             JSONObject json = new JSONObject(content);
@@ -35,7 +35,7 @@ public class JsonParser implements IParser<IBaseType> {
                 	throw new T4Exception(code, description);
         		}
         	} else {
-        		throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "Json格式错误");
+        		throw new T4Exception(ErrorCode.PARSE_ERROR_FORMAT_INVALID, "Json格式错误");
         	}
         	Object obj = json.get("data");
         	if(obj instanceof JSONObject) {
@@ -43,10 +43,10 @@ public class JsonParser implements IParser<IBaseType> {
         	} else if(obj instanceof JSONArray) {
         		return mParser.parse((JSONArray)obj);
         	} else {
-        		throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "Json格式错误");
+        		throw new T4Exception(ErrorCode.PARSE_ERROR_FORMAT_INVALID, "Json格式错误");
         	}
         } catch (JSONException ex) {
-            throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "Json格式错误");
+            throw new T4Exception(ErrorCode.PARSE_ERROR_FORMAT_INVALID, "Json格式错误");
         }
 	}
 

@@ -29,13 +29,13 @@ public class T4ListParser implements IJsonParser<IBaseType> {
 					IBaseType item = mSubParser.parse((JSONObject) element);
 					list.add(item);
 				} else {
-					throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "Could not parse data.");
+					throw new T4Exception(ErrorCode.PARSE_ERROR_FORMAT_INVALID, "Could not parse data.");
 				}
 			}
 
 			return list;
 		} catch (Exception e) {
-			throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "Could not parse data.");
+			throw new T4Exception(ErrorCode.PARSE_ERROR_FORMAT_INVALID, "Could not parse data.");
 		}
 	}
 

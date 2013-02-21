@@ -20,11 +20,11 @@ public class CompanyParser implements IJsonParser<IBaseType> {
 			}
 
 			if (json.has("contact_person")) {
-				obj.setCompanyName(json.getString("contact_person"));
+				obj.setContactName(json.getString("contact_person"));
 			}
 
-			if (json.has("contact_person")) {
-				obj.setContactName(json.getString("contact_person"));
+			if (json.has("name")) {
+				obj.setCompanyName(json.getString("name"));
 			}
 
 			if (json.has("telephone")) {
@@ -80,7 +80,7 @@ public class CompanyParser implements IJsonParser<IBaseType> {
 			}
 			return obj;
 		} catch (JSONException e) {
-			throw new T4Exception(ErrorCode.JSON_FORMAT_INVALID, "JSON格式错误");
+			throw new T4Exception(ErrorCode.PARSE_ERROR_FORMAT_INVALID, "JSON格式错误");
 		}
 	}
 

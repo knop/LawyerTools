@@ -8,6 +8,7 @@ import java.util.List;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.message.BasicNameValuePair;
 
+import com.team4.exceptions.ErrorCode;
 import com.team4.parser.json.CompaniesParser;
 import com.team4.parser.json.ComunicationParser;
 import com.team4.parser.json.JsonParser;
@@ -16,6 +17,8 @@ import com.team4.type.TCompaniesEntity;
 import com.team4.type.TComunicationEntity;
 import com.team4.utils.exceptions.T4Exception;
 import com.team4.utils.http.HttpUtility;
+import com.team4.utils.parser.IJsonParser;
+import com.team4.utils.type.IBaseType;
 import com.team4.utils.type.T4List;
 
 public class HttpManager {
@@ -25,10 +28,17 @@ public class HttpManager {
 	
 	//API接口名称
 	//获取基本信息API
-	private final static String GET_COMPANY_LIST = "/lawyertools/information/company/";
-	
+	private final static String GET_INFOMATION = "/lawyertools/information/";	
 	//获取联络信息API
-	private final static String GET_COMPANY_COMUNICATION = "/lawyertools/comunication/company/";
+	private final static String GET_COMUNICATION = "/lawyertools/communication/";
+	//获取联络信息API
+	private final static String GET_MATCH = "/lawyertools/match/";
+	
+	//接口类型名称
+	public final static String TYPE_COMPANY = "company";
+	public final static String TYPE_CASE = "case";
+	public final static String TYPE_FINANCING = "financing";
+	public final static String TYPE_INVESTMENT = "investment";
 	
 	private static HttpManager sInstance;
 	
@@ -45,34 +55,56 @@ public class HttpManager {
 	}
 	
 	//Http请求调用
-	public TCompaniesEntity getCompanies(String countPrePage, String pageNum) throws T4Exception {
+	public TCompaniesEntity getInfomation(String type, String countPrePage, String pageNum) throws T4Exception {
 		 
 		List<BasicNameValuePair> params = getParamList(
 				new BasicNameValuePair("record_perpage", countPrePage), 
 				new BasicNameValuePair("page_number", pageNum));
-		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_COMPANY_LIST), userAgent, params);
+		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_INFOMATION, type)+"/", userAgent, params);
+		IJsonParser<IBaseType> parser = null;
+		if (type.equalsIgnoreCase(HttpManager.TYPE_COMPANY)){
+			parser = new CompaniesParser();
+		} else if (type.equalsIgnoreCase(HttpManager.TYPE_CASE)){
+			;
+		} else if (type.equalsIgnoreCase(HttpManager.TYPE_FINANCING)){
+			;
+		} else if (type.equalsIgnoreCase(HttpManager.TYPE_INVESTMENT)){
+			;
+		} else {
+			throw new T4Exception(ErrorCode.APP_ERROR_PARAM_INVALID, type+"不可用于该请求");
+		}
+		JsonParser jsonParser = new JsonParser(parser);
 		
-		JsonParser parser = new JsonParser(new CompaniesParser());
-		
-		return (TCompaniesEntity)HttpUtility.executeHttpRequest(get, parser);
+		return (TCompaniesEntity)HttpUtility.executeHttpRequest(get, jsonParser);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public T4List<TComunicationEntity> getCompanyComunication(String id) throws T4Exception {
+	public T4List<TComunicationEntity> getComunication(String type, int id) throws T4Exception {
 		 
 		List<BasicNameValuePair> params = getParamList(
-				new BasicNameValuePair("id", id));
-		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_COMPANY_COMUNICATION), userAgent, params);
+				new BasicNameValuePair("id", String.valueOf(id)));
+		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_COMUNICATION, type), userAgent, params);
+		T4ListParser listParser = new T4ListParser(new ComunicationParser());
+		JsonParser jsonParser = new JsonParser(listParser);
+		
+		return (T4List<TComunicationEntity>)HttpUtility.executeHttpRequest(get, jsonParser);
+	}
+	
+	public IBaseType getMatch(String type, int id) throws T4Exception {
+		 
+		List<BasicNameValuePair> params = getParamList(
+				new BasicNameValuePair("id", String.valueOf(id)));
+		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_MATCH, type), userAgent, params);
 		
 		T4ListParser lParser = new T4ListParser(new ComunicationParser());
 		JsonParser parser = new JsonParser(lParser);
 		
-		return (T4List<TComunicationEntity>)HttpUtility.executeHttpRequest(get, parser);
+		return null;
 	}
 	
 	//私有函数
-	private String fillUrl(String api) {
-		return host + api;
+	private String fillUrl(String api, String type) {
+		return host + api + type;
 	}
 	
 	private List<BasicNameValuePair> getParamList(BasicNameValuePair... nameValuePairs) {

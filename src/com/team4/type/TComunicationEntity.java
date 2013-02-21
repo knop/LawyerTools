@@ -18,6 +18,7 @@ public class TComunicationEntity implements IBaseType, Serializable{
 	private String mTime;
 	private String mComments;
 	private String mAttachments;
+	private String mContactType;
 	    
 	public int getDirection() {
 		return mDirection;
@@ -57,5 +58,13 @@ public class TComunicationEntity implements IBaseType, Serializable{
 
 	public void setAttachments(String attachments) {
 		this.mAttachments = attachments;
+	}
+
+	public String getContactType() {
+		return mContactType;
+	}
+
+	public void setContactType(String contactType) {
+		this.mContactType = contactType;
 	}
 }

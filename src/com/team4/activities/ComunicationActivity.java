@@ -5,6 +5,8 @@ import java.util.List;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -13,14 +15,21 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
 import com.team4.type.TComunicationEntity;
 import com.team4.type.TComunicationEntity.EnumDirection;
+import com.team4.utils.exceptions.T4Exception;
+import com.team4.utils.type.T4List;
 import com.team4.utils.util.T4Log;
 
 public class ComunicationActivity extends Activity {
 
+	public final static String EXTRA_KEY_ID = "id";
+	public final static String EXTRA_KEY_TITLE = "title";
+	
 	private ListView mListView;
 	
 	@Override
@@ -28,14 +37,20 @@ public class ComunicationActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_comunication);
 		
-		mListView = (ListView)findViewById(R.id.lv_comunication);
-		mListView.setAdapter(new ComunicationAdapter(this, getData()));
+		Intent intent = getIntent();
+		String title = intent.getStringExtra(EXTRA_KEY_TITLE);
+		TextView tvTitle = (TextView)findViewById(R.id.tv_comunication_title);
+		tvTitle.setText(title);
+		int id = intent.getIntExtra(EXTRA_KEY_ID, -1);
+		if (id > -1) {
+			TaskGetCompanyComunication task = new TaskGetCompanyComunication(ComunicationActivity.this, id);
+			task.execute();
+		}
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
-//		getMenuInflater().inflate(R.menu.activity_contact, menu);
 		return true;
 	}
 	
@@ -59,6 +74,18 @@ public class ComunicationActivity extends Activity {
 		c.setContent("2222222222222");
 		list.add(c);
 		return list;
+	}
+
+	public void onGetCompaniesComplete(T4List<TComunicationEntity> list, T4Exception ex) {
+		if (ex == null && list != null) {
+			mListView = (ListView)findViewById(R.id.lv_comunication);
+			mListView.setAdapter(new ComunicationAdapter(this, list));
+		} else {
+			String message = "Exception Code: " + ex.getExceptionCode()
+					+ "\r\n" + "Message: " + ex.getMessage();
+			T4Log.v(message);
+			Toast.makeText(this, "无联络信息", Toast.LENGTH_LONG).show();
+		}
 	}
 	
 	private static class ComunicationAdapter extends BaseAdapter {
@@ -150,5 +177,40 @@ public class ComunicationActivity extends Activity {
 			public boolean isSended = true;
 		}
 	}
+	
+	private static class TaskGetCompanyComunication extends
+			AsyncTask<String, Void, T4List<TComunicationEntity>> {
 
+		T4Exception mException = null;
+		ComunicationActivity mActivity = null;
+		int mId;
+
+		public TaskGetCompanyComunication(ComunicationActivity activity, int id) {
+			mActivity = activity;
+			mId = id;
+		}
+
+		@Override
+		public T4List<TComunicationEntity> doInBackground(String... params) {
+			T4List<TComunicationEntity> list = null;
+			try {
+				list = HttpManager.instance().getComunication(HttpManager.TYPE_COMPANY, mId);
+			} catch (T4Exception ex) {
+				mException = ex;
+			}
+			return list;			
+		}
+
+		@Override
+		protected void onPreExecute() {
+
+		}
+
+		@Override
+		public void onPostExecute(T4List<TComunicationEntity> list) {
+			if (mActivity != null) {
+				mActivity.onGetCompaniesComplete(list, mException);
+			}
+		}
+	}
 }
