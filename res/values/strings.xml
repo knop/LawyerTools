@@ -7,10 +7,10 @@
     <string name="cancel">取消</string>
 
     <!-- 首页标签 -->
-    <string name="page_one">投资公司</string>
-    <string name="page_two">资金</string>
-    <string name="page_three">项目</string>
-    <string name="page_four">案件</string>
+    <string name="tab_title_company">投资公司</string>
+    <string name="tab_title_financing">资金</string>
+    <string name="tab_title_investment">项目</string>
+    <string name="tab_title_case">案件</string>
 
     <!-- 第一个标签页 -->
     <string name="search_keyword">请输入关键字</string>

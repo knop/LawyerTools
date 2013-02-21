@@ -54,27 +54,27 @@ public class ComunicationActivity extends Activity {
 		return true;
 	}
 	
-	private List<TComunicationEntity> getData() {
-		ArrayList<TComunicationEntity> list = new ArrayList<TComunicationEntity>();
-		TComunicationEntity c = new TComunicationEntity();
-		c.setDirection(EnumDirection.from);
-		c.setContent("!!!!!!!!!!!!!!!!!!!!!!!");		
-		list.add(c);
-		c = new TComunicationEntity();
-		c.setDirection(EnumDirection.to);
-		c.setContent("!!!!!!!!!!!!!!!!!!!!!!!");
-		list.add(c);
-		c = new TComunicationEntity();
-		c.setDirection(EnumDirection.to);
-		c.setContent("1111111");
-		list.add(c);
-		
-		c = new TComunicationEntity();
-		c.setDirection(EnumDirection.to);
-		c.setContent("2222222222222");
-		list.add(c);
-		return list;
-	}
+//	private List<TComunicationEntity> getData() {
+//		ArrayList<TComunicationEntity> list = new ArrayList<TComunicationEntity>();
+//		TComunicationEntity c = new TComunicationEntity();
+//		c.setDirection(EnumDirection.from);
+//		c.setContent("!!!!!!!!!!!!!!!!!!!!!!!");		
+//		list.add(c);
+//		c = new TComunicationEntity();
+//		c.setDirection(EnumDirection.to);
+//		c.setContent("!!!!!!!!!!!!!!!!!!!!!!!");
+//		list.add(c);
+//		c = new TComunicationEntity();
+//		c.setDirection(EnumDirection.to);
+//		c.setContent("1111111");
+//		list.add(c);
+//		
+//		c = new TComunicationEntity();
+//		c.setDirection(EnumDirection.to);
+//		c.setContent("2222222222222");
+//		list.add(c);
+//		return list;
+//	}
 
 	public void onGetCompaniesComplete(T4List<TComunicationEntity> list, T4Exception ex) {
 		if (ex == null && list != null) {

@@ -10,7 +10,7 @@ import android.widget.TextView;
 import com.team4.lawyertools.R;
 import com.team4.type.TCompanyEntity;
 
-public class CompanyActivity extends Activity {
+public class CaseActivity extends Activity {
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +31,7 @@ public class CompanyActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(CompanyActivity.this, ComunicationActivity.class);
+				intent.setClass(CaseActivity.this, ComunicationActivity.class);
 				intent.putExtra(ComunicationActivity.EXTRA_KEY_ID, entity.getId());
 				intent.putExtra(ComunicationActivity.EXTRA_KEY_TITLE, entity.getName());
 				startActivity(intent);

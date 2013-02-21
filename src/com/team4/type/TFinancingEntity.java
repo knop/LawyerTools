@@ -1,7 +1,7 @@
 package com.team4.type;
 
 
-public class TCompanyEntity extends TInfomationEntity {
+public class TFinancingEntity extends TInfomationEntity {
 	    
 	private static final long serialVersionUID = 1037122663159478773L;
 	

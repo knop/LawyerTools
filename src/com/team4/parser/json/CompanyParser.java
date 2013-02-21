@@ -24,7 +24,7 @@ public class CompanyParser implements IJsonParser<IBaseType> {
 			}
 
 			if (json.has("name")) {
-				obj.setCompanyName(json.getString("name"));
+				obj.setName(json.getString("name"));
 			}
 
 			if (json.has("telephone")) {

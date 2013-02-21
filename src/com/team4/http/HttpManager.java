@@ -35,10 +35,10 @@ public class HttpManager {
 	private final static String GET_MATCH = "/lawyertools/match/";
 	
 	//接口类型名称
-	public final static String TYPE_COMPANY = "company";
-	public final static String TYPE_CASE = "case";
+	public final static String TYPE_COMPANY = "company";	
 	public final static String TYPE_FINANCING = "financing";
 	public final static String TYPE_INVESTMENT = "investment";
+	public final static String TYPE_CASE = "case";
 	
 	private static HttpManager sInstance;
 	

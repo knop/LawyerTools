@@ -11,39 +11,39 @@
         android:orientation="horizontal">
 
         <TextView
-            android:id="@+id/text1"
+            android:id="@+id/tv_tab_company"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"
-            android:text="@string/page_one"
+            android:text="@string/tab_title_company"
             android:textColor="@color/color_zhonghui" />
 
         <TextView
-            android:id="@+id/text2"
+            android:id="@+id/tv_tab_financing"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"
             android:textColor="@color/color_zhonghui"
-            android:text="@string/page_two"/>
+            android:text="@string/tab_title_financing"/>
         <TextView
-            android:id="@+id/text3"
+            android:id="@+id/tv_tab_investment"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"
             android:textColor="@color/color_zhonghui"
-            android:text="@string/page_three"/>
+            android:text="@string/tab_title_investment"/>
 
         <TextView
-            android:id="@+id/text4"
+            android:id="@+id/tv_tab_case"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1.0"
             android:gravity="center"    
             android:textColor="@color/color_zhonghui"       
-            android:text="@string/page_four"/>
+            android:text="@string/tab_title_case"/>
        
     </LinearLayout>
 
@@ -53,13 +53,44 @@
 	    android:layout_height="3dp"
 	    android:background="@color/color_bai" />
 
-	<android.support.v4.view.ViewPager
-	    android:id="@+id/vPager"
-	    android:layout_width="wrap_content"
-	    android:layout_height="0dp"
-	    android:layout_weight="1.0"
-	    android:flipInterval="30"
-	    android:persistentDrawingCache="animation" >
-	</android.support.v4.view.ViewPager>
+    <LinearLayout
+        android:id="@+id/ll_data_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" >
+
+        <ListView
+            android:id="@+id/lv_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+        </ListView>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_state_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/tv_state_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取失败"
+            android:textAppearance="?android:attr/textAppearanceLarge" />
+
+        <ProgressBar
+            android:id="@+id/pb_waiting"
+            style="?android:attr/progressBarStyleLarge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <Button
+            android:id="@+id/btn_retry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重试" />
+    </LinearLayout>
 
 </LinearLayout>
