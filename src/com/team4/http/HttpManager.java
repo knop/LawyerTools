@@ -9,11 +9,13 @@ import org.apache.http.client.methods.HttpGet;
 import org.apache.http.message.BasicNameValuePair;
 
 import com.team4.exceptions.ErrorCode;
+import com.team4.parser.json.CasesParser;
 import com.team4.parser.json.CompaniesParser;
 import com.team4.parser.json.ComunicationParser;
+import com.team4.parser.json.FinancingsParser;
+import com.team4.parser.json.InvestmentsParser;
 import com.team4.parser.json.JsonParser;
 import com.team4.parser.json.T4ListParser;
-import com.team4.type.TCompaniesEntity;
 import com.team4.type.TComunicationEntity;
 import com.team4.utils.exceptions.T4Exception;
 import com.team4.utils.http.HttpUtility;
@@ -55,7 +57,7 @@ public class HttpManager {
 	}
 	
 	//Http请求调用
-	public TCompaniesEntity getInfomation(String type, String countPrePage, String pageNum) throws T4Exception {
+	public IBaseType getInfomation(String type, String countPrePage, String pageNum) throws T4Exception {
 		 
 		List<BasicNameValuePair> params = getParamList(
 				new BasicNameValuePair("record_perpage", countPrePage), 
@@ -65,17 +67,16 @@ public class HttpManager {
 		if (type.equalsIgnoreCase(HttpManager.TYPE_COMPANY)){
 			parser = new CompaniesParser();
 		} else if (type.equalsIgnoreCase(HttpManager.TYPE_CASE)){
-			;
+			parser = new CasesParser();
 		} else if (type.equalsIgnoreCase(HttpManager.TYPE_FINANCING)){
-			;
+			parser = new FinancingsParser();
 		} else if (type.equalsIgnoreCase(HttpManager.TYPE_INVESTMENT)){
-			;
+			parser = new InvestmentsParser();
 		} else {
 			throw new T4Exception(ErrorCode.APP_ERROR_PARAM_INVALID, type+"不可用于该请求");
 		}
 		JsonParser jsonParser = new JsonParser(parser);
-		
-		return (TCompaniesEntity)HttpUtility.executeHttpRequest(get, jsonParser);
+		return HttpUtility.executeHttpRequest(get, jsonParser);
 	}
 	
 	@SuppressWarnings("unchecked")

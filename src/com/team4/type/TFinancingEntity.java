@@ -2,57 +2,65 @@ package com.team4.type;
 
 
 public class TFinancingEntity extends TInfomationEntity {
-	    
-	private static final long serialVersionUID = 1037122663159478773L;
 	
-	private String mContactName;
-	private String mPhoneNumber;
-	private String mMail;
-	private String mSource;
+	private static final long serialVersionUID = -6729031959460808117L;
+	
+	private String mContactPerson;
+	private String mTelephone;
+	private String mArea;
+	private String mInfoSource;
 	private String mCompanyType;
-	private String mAddress;
-	private String mHaveCommission;
-	private String mCommissionRatio;	
-	private String mCapitalSource;
-	private String mRating;
-	private String mInvestmentIndustry;
-	private String mInvestmentWay;
-	private String mFlowArea;
-	private String mComments;
+	private String mRate;
+	private String mComment;
 	private String mAttachments;
 	private String mCreateAt;
 	private String mModifyAt;
+	private String mStyle;
+	private String mGuaranteeType;
+	private String mCompanyName;
+	private String mEmail;
+	private String mProjectName;
+	private String mQuotaFloor;
+	private String mQuotaUpper;
+	private String mHorizonUpper;
+	private String mHorizonFloor;
+	private String mPayment;
+	private String mHasCommission;
+	private String mIsOut;
+	private String mIndustry;
+	
+	private String mCommissionProportion;
 
-	public String getContactName() {
-		return mContactName;
+	public String getContactPerson() {
+		return mContactPerson;
 	}
 
-	public void setContactName(String contactName) {
-		this.mContactName = contactName;
+	public void setContactPerson(String contactPerson) {
+		this.mContactPerson = contactPerson;
 	}
 
-	public String getPhoneNumber() {
-		return mPhoneNumber;
+	public String getTelePhone() {
+		return mTelephone;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.mPhoneNumber = phoneNumber;
+	public void setTelephone(String telephone) {
+		this.mTelephone = telephone;
 	}
 
-	public String getMail() {
-		return mMail;
+	public String getArea() {
+		return mArea;
 	}
 
-	public void setMail(String mail) {
-		this.mMail = mail;
+	public void setArea(String area) {
+		this.mArea = area;
 	}
 
-	public String getSource() {
-		return mSource;
+	public String getInfoSource() {
+		return mInfoSource;
 	}
 
-	public void setSource(String source) {
-		this.mSource = source;
+	public void setInfoSource(String infoSource) {
+		this.mInfoSource = infoSource;
 	}
 
 	public String getCompanyType() {
@@ -63,76 +71,45 @@ public class TFinancingEntity extends TInfomationEntity {
 		this.mCompanyType = companyType;
 	}
 
-	public String getAddress() {
-		return mAddress;
+	public String getHasCommission() {
+		return mHasCommission;
 	}
 
-	public void setAddress(String address) {
-		this.mAddress = address;
+	public void setHasCommission(String hasCommission) {
+		this.mHasCommission = hasCommission;
 	}
 
-	public String getHaveCommission() {
-		return mHaveCommission;
+	public String getCommissionProportion() {
+		return mCommissionProportion;
 	}
 
-	public void setHaveCommission(String haveCommission) {
-		this.mHaveCommission = haveCommission;
+	public void setCommissionProportion(String commissionProportion) {
+		this.mCommissionProportion = commissionProportion;
 	}
 
-	public String getCommissionRatio() {
-		return mCommissionRatio;
+
+	public String getRate() {
+		return mRate;
 	}
 
-	public void setCommissionRatio(String mCommissionRatio) {
-		this.mCommissionRatio = mCommissionRatio;
-	}
-
-	public String getCapitalSource() {
-		return mCapitalSource;
-	}
-
-	public void setCapitalSource(String capitalSource) {
-		this.mCapitalSource = capitalSource;
-	}
-
-	public String getRating() {
-		return mRating;
-	}
-
-	public void setRating(String rating) {
-		this.mRating = rating;
+	public void setRate(String rate) {
+		this.mRate = rate;
 	}
 
 	public String getInvestmentIndustry() {
-		return mInvestmentIndustry;
+		return mIndustry;
 	}
 
-	public void setInvestmentIndustry(String investmentIndustry) {
-		this.mInvestmentIndustry = investmentIndustry;
+	public void setIndustry(String industry) {
+		this.mIndustry = industry;
 	}
 
-	public String getInvestmentWay() {
-		return mInvestmentWay;
+	public String getComment() {
+		return mComment;
 	}
 
-	public void setInvestmentWay(String investmentWay) {
-		this.mInvestmentWay = investmentWay;
-	}
-
-	public String getFlowArea() {
-		return mFlowArea;
-	}
-
-	public void setFlowArea(String flowArea) {
-		this.mFlowArea = flowArea;
-	}
-
-	public String getComments() {
-		return mComments;
-	}
-
-	public void setComments(String comments) {
-		this.mComments = comments;
+	public void setComment(String comment) {
+		this.mComment = comment;
 	}
 
 	public String getAttachments() {
@@ -157,5 +134,93 @@ public class TFinancingEntity extends TInfomationEntity {
 
 	public void setModifyAt(String modifyAt) {
 		this.mModifyAt = modifyAt;
+	}
+
+	public String getStyle() {
+		return mStyle;
+	}
+
+	public void setStyle(String style) {
+		this.mStyle = style;
+	}
+
+	public String getGuaranteeType() {
+		return mGuaranteeType;
+	}
+
+	public void setGuaranteeType(String guaranteeType) {
+		this.mGuaranteeType = guaranteeType;
+	}
+
+	public String getCompanyName() {
+		return mCompanyName;
+	}
+
+	public void setCompanyName(String companyName) {
+		this.mCompanyName = companyName;
+	}
+
+	public String getEmail() {
+		return mEmail;
+	}
+
+	public void setEmail(String email) {
+		this.mEmail = email;
+	}
+
+	public String getProjectName() {
+		return mProjectName;
+	}
+
+	public void setProjectName(String projectName) {
+		this.mProjectName = projectName;
+	}
+
+	public String getQuotaFloor() {
+		return mQuotaFloor;
+	}
+
+	public void setQuotaFloor(String quotaFloor) {
+		this.mQuotaFloor = quotaFloor;
+	}
+
+	public String getQuotaUpper() {
+		return mQuotaUpper;
+	}
+
+	public void setQuotaUpper(String quotaUpper) {
+		this.mQuotaUpper = quotaUpper;
+	}
+
+	public String getHorizonUpper() {
+		return mHorizonUpper;
+	}
+
+	public void setHorizonUpper(String horizonUpper) {
+		this.mHorizonUpper = horizonUpper;
+	}
+
+	public String getHorizonFloor() {
+		return mHorizonFloor;
+	}
+
+	public void setHorizonFloor(String horizonFloor) {
+		this.mHorizonFloor = horizonFloor;
+	}
+
+	public String getPayment() {
+		return mPayment;
+	}
+
+	public void setPayment(String payment) {
+		this.mPayment = payment;
+	}
+
+	public String getIsOut() {
+		return mIsOut;
+	}
+
+	public void setIsOut(String isOut) {
+		this.mIsOut = isOut;
 	}
 }

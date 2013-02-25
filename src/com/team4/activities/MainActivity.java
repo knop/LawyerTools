@@ -21,9 +21,15 @@ import android.widget.Toast;
 
 import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
+import com.team4.type.TCaseEntity;
+import com.team4.type.TCasesEntity;
 import com.team4.type.TCompaniesEntity;
 import com.team4.type.TCompanyEntity;
+import com.team4.type.TFinancingEntity;
+import com.team4.type.TFinancingsEntity;
 import com.team4.type.TInfomationEntity;
+import com.team4.type.TInvestmentEntity;
+import com.team4.type.TInvestmentsEntity;
 import com.team4.utils.exceptions.T4Exception;
 import com.team4.utils.type.IBaseType;
 import com.team4.utils.type.T4List;
@@ -53,6 +59,9 @@ public class MainActivity extends Activity {
 	private View mLlStateView;
 	private ListView mLvData;
 	private TCompaniesEntity mCompaniesEntity;
+	private TCasesEntity mCasesEntity;
+	private TInvestmentsEntity mInvestmentsEntity;
+	private TFinancingsEntity mFinancingsEntity;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -181,7 +190,18 @@ public class MainActivity extends Activity {
 			if (type.equalsIgnoreCase(HttpManager.TYPE_COMPANY)) {
 				mCompaniesEntity = (TCompaniesEntity)entity;
 				mLvData.setAdapter(new InfomationAdapter<TCompanyEntity>(this, mCompaniesEntity.getRecords()));
-			}			
+			} else if (type.equalsIgnoreCase(HttpManager.TYPE_CASE)) { 
+				mCasesEntity = (TCasesEntity)entity;
+				mLvData.setAdapter(new InfomationAdapter<TCaseEntity>(this, mCasesEntity.getRecords()));			
+			} else if (type.equalsIgnoreCase(HttpManager.TYPE_FINANCING)) {
+				mFinancingsEntity = (TFinancingsEntity)entity;
+				mLvData.setAdapter(new InfomationAdapter<TFinancingEntity>(this, mFinancingsEntity.getRecords()));				
+			} else if (type.equalsIgnoreCase(HttpManager.TYPE_INVESTMENT)) {
+				mInvestmentsEntity = (TInvestmentsEntity)entity;
+				mLvData.setAdapter(new InfomationAdapter<TInvestmentEntity>(this, mInvestmentsEntity.getRecords()));				
+			} else {
+				Toast.makeText(this, "请求类型无法识别", Toast.LENGTH_SHORT).show();
+			}
 		} else {
 			String message = "Exception Code: " + ex.getExceptionCode()
 					+ "\r\n" + "Message: " + ex.getMessage();

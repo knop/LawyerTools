@@ -64,7 +64,7 @@ public class CompanyParser implements IJsonParser<IBaseType> {
 			}
 
 			if (json.has("has_commission")) {
-				obj.setHaveCommission(json.getString("has_commission"));
+				obj.setHaveCommission(json.getBoolean("has_commission"));
 			}
 
 			if (json.has("commission_proportion")) {

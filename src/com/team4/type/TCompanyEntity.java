@@ -11,7 +11,7 @@ public class TCompanyEntity extends TInfomationEntity {
 	private String mSource;
 	private String mCompanyType;
 	private String mAddress;
-	private String mHaveCommission;
+	private boolean mHaveCommission;
 	private String mCommissionRatio;	
 	private String mCapitalSource;
 	private String mRating;
@@ -71,11 +71,11 @@ public class TCompanyEntity extends TInfomationEntity {
 		this.mAddress = address;
 	}
 
-	public String getHaveCommission() {
+	public boolean getHaveCommission() {
 		return mHaveCommission;
 	}
 
-	public void setHaveCommission(String haveCommission) {
+	public void setHaveCommission(boolean haveCommission) {
 		this.mHaveCommission = haveCommission;
 	}
 

@@ -2,145 +2,285 @@ package com.team4.type;
 
 
 public class TCaseEntity extends TInfomationEntity {
-	    
-	private static final long serialVersionUID = 1037122663159478773L;
+	    	
+	private static final long serialVersionUID = 2255144153182157156L;
+
+	private String mContractNo;
 	
-	private String mContactName;
-	private String mPhoneNumber;
-	private String mMail;
-	private String mSource;
-	private String mCompanyType;
-	private String mAddress;
-	private String mHaveCommission;
-	private String mCommissionRatio;	
-	private String mCapitalSource;
-	private String mRating;
-	private String mInvestmentIndustry;
-	private String mInvestmentWay;
-	private String mFlowArea;
-	private String mComments;
-	private String mAttachments;
+	private String mClientName;
+	private String mClientPhone;
+	private String mClientAddress;
+	private String mClientReceived;
+	
+	private String mOppositeLawyerName;
+	private String mOppositeLawyerAddress;
+	private String mOppositeLawyerPhone;
+	private String mOppositeClientName;
+	private String mOppositeClientAddress;
+	private String mOppositeClientPhone;
+	
+	private String mJugerName;
+	private String mJugerPhone;
+	private String mClerkName;
+	private String mClerkPhone;
+	private String mCourtName;
+	private String mCourtAddress;
+	private String mCourtCaseNo;
+	
+	private String mCause;
+	private String mReplyLimit;
+	private String mAppealLimit;
+	private String mProofLimit;
+	private String mLevel;
+	private String mType;
+	
+	private String mAcceptAt;
 	private String mCreateAt;
 	private String mModifyAt;
-
-	public String getContactName() {
-		return mContactName;
+	private String mJudgeAt;
+	private String mOpenAt;
+	private String mReceiveNoticeAt;
+	private String mReceiveAt;
+	private String mReceiveJudgeAt;
+	
+	public String getContractNo() {
+		return mContractNo;
+	}
+	
+	public void setContractNo(String contractNo) {
+		this.mContractNo = contractNo;
 	}
 
-	public void setContactName(String contactName) {
-		this.mContactName = contactName;
+	public String getClientName() {
+		return mClientName;
 	}
 
-	public String getPhoneNumber() {
-		return mPhoneNumber;
+	public void setClientName(String clientName) {
+		this.mClientName = clientName;
 	}
 
-	public void setPhoneNumber(String phoneNumber) {
-		this.mPhoneNumber = phoneNumber;
+	public String getClientPhone() {
+		return mClientPhone;
 	}
 
-	public String getMail() {
-		return mMail;
+	public void setClientPhone(String clientPhone) {
+		this.mClientPhone = clientPhone;
 	}
 
-	public void setMail(String mail) {
-		this.mMail = mail;
+	public String getClientAddress() {
+		return mClientAddress;
 	}
 
-	public String getSource() {
-		return mSource;
+	public void setClientAddress(String clientAddress) {
+		this.mClientAddress = clientAddress;
 	}
 
-	public void setSource(String source) {
-		this.mSource = source;
+	public String getClientReceived() {
+		return mClientReceived;
 	}
 
-	public String getCompanyType() {
-		return mCompanyType;
+	public void setClientReceived(String clientReceived) {
+		this.mClientReceived = clientReceived;
 	}
 
-	public void setCompanyType(String companyType) {
-		this.mCompanyType = companyType;
+	public String getOppositeLawyerAddress() {
+		return mOppositeLawyerAddress;
 	}
 
-	public String getAddress() {
-		return mAddress;
+	public void setOppositeLawyerAddress(String oppositeLawyerAddress) {
+		this.mOppositeLawyerAddress = oppositeLawyerAddress;
 	}
 
-	public void setAddress(String address) {
-		this.mAddress = address;
+	public String getOppositeLawyerPhone() {
+		return mOppositeLawyerPhone;
 	}
 
-	public String getHaveCommission() {
-		return mHaveCommission;
+	public void setOppositeLawyerPhone(String oppositeLawyerPhone) {
+		this.mOppositeLawyerPhone = oppositeLawyerPhone;
 	}
 
-	public void setHaveCommission(String haveCommission) {
-		this.mHaveCommission = haveCommission;
+	public String getOppositeClientName() {
+		return mOppositeClientName;
 	}
 
-	public String getCommissionRatio() {
-		return mCommissionRatio;
+	public void setOppositeClientName(String oppositeClientName) {
+		this.mOppositeClientName = oppositeClientName;
 	}
 
-	public void setCommissionRatio(String mCommissionRatio) {
-		this.mCommissionRatio = mCommissionRatio;
+	public String getOppositeClientAddress() {
+		return mOppositeClientAddress;
 	}
 
-	public String getCapitalSource() {
-		return mCapitalSource;
+	public void setOppositeClientAddress(String oppositeClientAddress) {
+		this.mOppositeClientAddress = oppositeClientAddress;
 	}
 
-	public void setCapitalSource(String capitalSource) {
-		this.mCapitalSource = capitalSource;
+	public String getOppositeClientPhone() {
+		return mOppositeClientPhone;
 	}
 
-	public String getRating() {
-		return mRating;
+	public void setOppositeClientPhone(String oppositeClientPhone) {
+		this.mOppositeClientPhone = oppositeClientPhone;
 	}
 
-	public void setRating(String rating) {
-		this.mRating = rating;
+	public String getJugerName() {
+		return mJugerName;
 	}
 
-	public String getInvestmentIndustry() {
-		return mInvestmentIndustry;
+	public void setJugerName(String jugerName) {
+		this.mJugerName = jugerName;
 	}
 
-	public void setInvestmentIndustry(String investmentIndustry) {
-		this.mInvestmentIndustry = investmentIndustry;
+	public String getJugerPhone() {
+		return mJugerPhone;
 	}
 
-	public String getInvestmentWay() {
-		return mInvestmentWay;
+	public void setJugerPhone(String jugerPhone) {
+		this.mJugerPhone = jugerPhone;
 	}
 
-	public void setInvestmentWay(String investmentWay) {
-		this.mInvestmentWay = investmentWay;
+	public String getClerkName() {
+		return mClerkName;
 	}
 
-	public String getFlowArea() {
-		return mFlowArea;
+	public void setClerkName(String clerkName) {
+		this.mClerkName = clerkName;
 	}
 
-	public void setFlowArea(String flowArea) {
-		this.mFlowArea = flowArea;
+	public String getClerkPhone() {
+		return mClerkPhone;
 	}
 
-	public String getComments() {
-		return mComments;
+	public void setClerkPhone(String clerkPhone) {
+		this.mClerkPhone = clerkPhone;
 	}
 
-	public void setComments(String comments) {
-		this.mComments = comments;
+	public String getCourtName() {
+		return mCourtName;
 	}
 
-	public String getAttachments() {
-		return mAttachments;
+	public void setCourtName(String courtName) {
+		this.mCourtName = courtName;
 	}
 
-	public void setAttachments(String attachments) {
-		this.mAttachments = attachments;
+	public String getCourtAddress() {
+		return mCourtAddress;
+	}
+
+	public void setCourtAddress(String courtAddress) {
+		this.mCourtAddress = courtAddress;
+	}
+
+	public String getCourtCaseNo() {
+		return mCourtCaseNo;
+	}
+
+	public void setCourtCaseNo(String courtCaseNo) {
+		this.mCourtCaseNo = courtCaseNo;
+	}
+
+	public String getCause() {
+		return mCause;
+	}
+
+	public void setCause(String cause) {
+		this.mCause = cause;
+	}
+
+	public String getReplyLimit() {
+		return mReplyLimit;
+	}
+
+	public void setReplyLimit(String replyLimit) {
+		this.mReplyLimit = replyLimit;
+	}
+
+	public String getAppealLimit() {
+		return mAppealLimit;
+	}
+
+	public void setAppealLimit(String appealLimit) {
+		this.mAppealLimit = appealLimit;
+	}
+
+	public String getLevel() {
+		return mLevel;
+	}
+
+	public void setLevel(String level) {
+		this.mLevel = level;
+	}
+
+	public String getType() {
+		return mType;
+	}
+
+	public void setType(String type) {
+		this.mType = type;
+	}
+
+	public String getAcceptAt() {
+		return mAcceptAt;
+	}
+
+	public void setAcceptAt(String acceptAt) {
+		this.mAcceptAt = acceptAt;
+	}
+
+	public String getModifyAt() {
+		return mModifyAt;
+	}
+
+	public void setModifyAt(String modifyAt) {
+		this.mModifyAt = modifyAt;
+	}
+
+	public String getJudgeAt() {
+		return mJudgeAt;
+	}
+
+	public void setJudgeAt(String judgeAt) {
+		this.mJudgeAt = judgeAt;
+	}
+
+	public String getOpenAt() {
+		return mOpenAt;
+	}
+
+	public void setOpenAt(String openAt) {
+		this.mOpenAt = openAt;
+	}
+
+	public String getReceiveNoticeAt() {
+		return mReceiveNoticeAt;
+	}
+
+	public void setReceiveNoticeAt(String receiveNoticeAt) {
+		this.mReceiveNoticeAt = receiveNoticeAt;
+	}
+
+	public String getReceiveAt() {
+		return mReceiveAt;
+	}
+
+	public void setReceiveAt(String receiveAt) {
+		this.mReceiveAt = receiveAt;
+	}
+
+	public String getReceiveJudgeAt() {
+		return mReceiveJudgeAt;
+	}
+
+	public void setReceiveJudgeAt(String receiveJudgeAt) {
+		this.mReceiveJudgeAt = receiveJudgeAt;
+	}
+
+	public String getOppositeLawyerName() {
+		return mOppositeLawyerName;
+	}
+
+	public void setOppositeLawyerName(String oppositeLawyerName) {
+		this.mOppositeLawyerName = oppositeLawyerName;
 	}
 
 	public String getCreateAt() {
@@ -151,11 +291,11 @@ public class TCaseEntity extends TInfomationEntity {
 		this.mCreateAt = createAt;
 	}
 
-	public String getModifyAt() {
-		return mModifyAt;
+	public String getProofLimit() {
+		return mProofLimit;
 	}
 
-	public void setModifyAt(String modifyAt) {
-		this.mModifyAt = modifyAt;
+	public void setProofLimit(String proofLimit) {
+		this.mProofLimit = proofLimit;
 	}
 }

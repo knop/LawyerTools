@@ -88,13 +88,11 @@ public class CaseActivity extends Activity {
 
 		// 是否有佣金
 		TextView tvHaveCommission = (TextView) findViewById(R.id.tv_have_commission);
-		String s = entity.getHaveCommission();
-		if (s.equalsIgnoreCase("false")) {
-			s = "否";
+		if (entity.getHaveCommission()) {
+			tvHaveCommission.setText("否");
 		} else {
-			s = "是";
+			tvHaveCommission.setText("是");
 		}
-		tvHaveCommission.setText(s);
 
 		// 佣金比例
 		TextView tvRadio = (TextView) findViewById(R.id.tv_radio);
