@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
-import com.team4.type.TCompanyEntity;
+import com.team4.type.TFinancingEntity;
 
 public class FinancingActivity extends Activity {
 
@@ -18,16 +18,16 @@ public class FinancingActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_financing);
 		Intent intent = getIntent();
-		TCompanyEntity entity = (TCompanyEntity) intent
-				.getSerializableExtra(TCompanyEntity.class.getName());
+		TFinancingEntity entity = (TFinancingEntity) intent
+				.getSerializableExtra(TFinancingEntity.class.getName());
 		showDetail(entity);
 	}
 
-	private void showDetail(final TCompanyEntity entity) {
+	private void showDetail(final TFinancingEntity entity) {
 		if (entity == null)
 			return;
 
-		Button btnComunication = (Button) findViewById(R.id.btn_comunication);
+		Button btnComunication = (Button) findViewById(R.id.btn_financing_comunication);
 		btnComunication.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
@@ -41,67 +41,75 @@ public class FinancingActivity extends Activity {
 		});
 
 		// 公司名称
-		TextView tvCompanyTitle = (TextView) findViewById(R.id.tv_company_title);
-		tvCompanyTitle.setText(entity.getName());
+		TextView tvTitle = (TextView) findViewById(R.id.tv_financing_title);
+		tvTitle.setText(entity.getName());
 
 		// 信息来源
-		TextView tvSource = (TextView) findViewById(R.id.tv_source);
-		tvSource.setText(entity.getSource());
+		TextView tvInfoSource = (TextView) findViewById(R.id.tv_financing_info_source);
+		tvInfoSource.setText(entity.getInfoSource());
 
 		// 公司类型
-		TextView tvCompanyType = (TextView) findViewById(R.id.tv_company_type);
+		TextView tvCompanyType = (TextView) findViewById(R.id.tv_financing_company_type);
 		tvCompanyType.setText(entity.getCompanyType());
 
 		// 邮箱
-		TextView tvMail = (TextView) findViewById(R.id.tv_mail);
-		tvMail.setText(entity.getMail());
+		TextView tvEmail = (TextView) findViewById(R.id.tv_financing_email);
+		tvEmail.setText(entity.getEmail());
 
 		// 联系人姓名
-		TextView tvName = (TextView) findViewById(R.id.tv_name);
-		tvName.setText(entity.getContactName());
+		TextView tvContactPerson = (TextView) findViewById(R.id.tv_financing_contact_person);
+		tvContactPerson.setText(entity.getContactPerson());
 
 		// 电话
-		TextView tvPhoneNumber = (TextView) findViewById(R.id.tv_phone_number);
-		tvPhoneNumber.setText(entity.getPhoneNumber());
-
-		// 地址
-		TextView tvAddress = (TextView) findViewById(R.id.tv_address);
-		tvAddress.setText(entity.getAddress());
-
-		// 资金来源
-		TextView tvCapitalSource = (TextView) findViewById(R.id.tv_capital_source);
-		tvCapitalSource.setText(entity.getCapitalSource());
+		TextView tvTelephone = (TextView) findViewById(R.id.tv_financing_telephone);
+		tvTelephone.setText(entity.getTelePhone());
 
 		// 评级
-		TextView tvRating = (TextView) findViewById(R.id.tv_rating);
-		tvRating.setText(entity.getRating());
+		TextView tvRate = (TextView) findViewById(R.id.tv_financing_rate);
+		tvRate.setText(entity.getRate());
 
-		// 投资行业
-		TextView tvIndustry = (TextView) findViewById(R.id.tv_investment_industry);
-		tvIndustry.setText(entity.getInvestmentIndustry());
+		// 融资行业
+		TextView tvIndustry = (TextView) findViewById(R.id.tv_financing_industry);
+		tvIndustry.setText(entity.getIndustry());
 
-		// 投资方式
-		TextView tvInvestmentWay = (TextView) findViewById(R.id.tv_investment_way);
-		tvInvestmentWay.setText(entity.getInvestmentWay());
+		// 融资方式
+		TextView tvStyle = (TextView) findViewById(R.id.tv_financing_style);
+		tvStyle.setText(entity.getStyle());
 
-		// 流向区域
-		TextView tvFlowArea = (TextView) findViewById(R.id.tv_flow_area);
-		tvFlowArea.setText(entity.getFlowArea());
+		// 融资额度
+		TextView tvQuota = (TextView) findViewById(R.id.tv_financing_quota);
+		tvQuota.setText(entity.getQuotaFloor() + "-" + entity.getQuotaUpper() + "千万");
+		
+		// 融资期限
+		TextView tvHorizon = (TextView) findViewById(R.id.tv_financing_horizon);
+		tvHorizon.setText(entity.getHorizonFloor() + "-" + entity.getHorizonFloor() + "个月");
+		
+		// 融资成本
+//		TextView tvPriorCost = (TextView) findViewById(R.id.tv_investment_prior_cost);
+//		tvPriorCost.setText(entity.getHasPriorCost()?"":entity.getPriorCost());
+		
+		// 担保方式
+		TextView tvGuaranteeType = (TextView) findViewById(R.id.tv_financing_guarantee_type);
+		tvGuaranteeType.setText(entity.getGuaranteeType());
+		
+		// 还款方式
+		TextView tvPayment = (TextView) findViewById(R.id.tv_financing_payment);
+		tvPayment.setText(entity.getPayment());
 
 		// 是否有佣金
-		TextView tvHaveCommission = (TextView) findViewById(R.id.tv_have_commission);
-		if (entity.getHaveCommission()) {
-			tvHaveCommission.setText("否");
+		TextView tvHasCommission = (TextView) findViewById(R.id.tv_financing_has_commission);
+		if (entity.getHasCommission()) {
+			tvHasCommission.setText("否");
 		} else {
-			tvHaveCommission.setText("是");
+			tvHasCommission.setText("是");
 		}
-		
+
 		// 佣金比例
-		TextView tvRadio = (TextView) findViewById(R.id.tv_radio);
-		tvRadio.setText(entity.getCommissionRatio());
+		TextView tvCommissionProportion = (TextView) findViewById(R.id.tv_financing_commission_proportion);
+		tvCommissionProportion.setText(entity.getCommissionProportion());
 
 		// 备注
-		TextView tvComments = (TextView) findViewById(R.id.tv_comments);
-		tvComments.setText(entity.getComments());
+		TextView tvComment = (TextView) findViewById(R.id.tv_financing_comment);
+		tvComment.setText(entity.getComment());
 	}
 }

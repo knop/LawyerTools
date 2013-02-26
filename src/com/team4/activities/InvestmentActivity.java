@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
-import com.team4.type.TCompanyEntity;
 import com.team4.type.TInvestmentEntity;
 
 public class InvestmentActivity extends Activity {
@@ -42,8 +41,8 @@ public class InvestmentActivity extends Activity {
 		});
 
 		// 公司名称
-		TextView tvCompanyTitle = (TextView) findViewById(R.id.tv_investment_title);
-		tvCompanyTitle.setText(entity.getName());
+		TextView tvTitle = (TextView) findViewById(R.id.tv_investment_title);
+		tvTitle.setText(entity.getName());
 
 		// 信息来源
 		TextView tvInfoSource = (TextView) findViewById(R.id.tv_investment_info_source);

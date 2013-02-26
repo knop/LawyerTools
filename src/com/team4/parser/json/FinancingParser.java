@@ -66,7 +66,7 @@ public class FinancingParser implements IJsonParser<IBaseType> {
 			}
 
 			if (json.has("has_commission")) {
-				obj.setHasCommission(json.getString("has_commission"));
+				obj.setHasCommission(json.getBoolean("has_commission"));
 			}
 
 			if (json.has("commission_proportion")) {

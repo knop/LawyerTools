@@ -25,7 +25,7 @@ public class TFinancingEntity extends TInfomationEntity {
 	private String mHorizonUpper;
 	private String mHorizonFloor;
 	private String mPayment;
-	private String mHasCommission;
+	private boolean mHasCommission;
 	private String mIsOut;
 	private String mIndustry;
 	
@@ -71,11 +71,11 @@ public class TFinancingEntity extends TInfomationEntity {
 		this.mCompanyType = companyType;
 	}
 
-	public String getHasCommission() {
+	public boolean getHasCommission() {
 		return mHasCommission;
 	}
 
-	public void setHasCommission(String hasCommission) {
+	public void setHasCommission(boolean hasCommission) {
 		this.mHasCommission = hasCommission;
 	}
 
@@ -96,7 +96,7 @@ public class TFinancingEntity extends TInfomationEntity {
 		this.mRate = rate;
 	}
 
-	public String getInvestmentIndustry() {
+	public String getIndustry() {
 		return mIndustry;
 	}
 
