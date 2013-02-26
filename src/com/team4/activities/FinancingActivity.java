@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
 import com.team4.type.TCompanyEntity;
 
@@ -15,7 +16,7 @@ public class FinancingActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_company);
+		setContentView(R.layout.activity_financing);
 		Intent intent = getIntent();
 		TCompanyEntity entity = (TCompanyEntity) intent
 				.getSerializableExtra(TCompanyEntity.class.getName());
@@ -34,6 +35,7 @@ public class FinancingActivity extends Activity {
 				intent.setClass(FinancingActivity.this, ComunicationActivity.class);
 				intent.putExtra(ComunicationActivity.EXTRA_KEY_ID, entity.getId());
 				intent.putExtra(ComunicationActivity.EXTRA_KEY_TITLE, entity.getName());
+				intent.putExtra(ComunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_FINANCING);
 				startActivity(intent);
 			}
 		});

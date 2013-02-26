@@ -43,10 +43,10 @@ public class MainActivity extends Activity {
 	private static final int FOCUS_LINE_WIDTH_DP = 60; // 单位为dp
 	
 	//注意:tabId和tabType需要个数匹配
-	private static final int tabId[] = { R.id.tv_tab_company, R.id.tv_tab_financing, 
-		R.id.tv_tab_investment, R.id.tv_tab_case };
-	private static final String tabType[] = { HttpManager.TYPE_COMPANY, 
-		HttpManager.TYPE_FINANCING, HttpManager.TYPE_INVESTMENT, HttpManager.TYPE_CASE };
+	private static final int tabId[] = { R.id.tv_tab_company, R.id.tv_tab_investment, 
+		R.id.tv_tab_financing, R.id.tv_tab_case };
+	private static final String tabType[] = { HttpManager.TYPE_COMPANY, HttpManager.TYPE_INVESTMENT,
+		HttpManager.TYPE_FINANCING, HttpManager.TYPE_CASE };
 	
 	private int mCurrentPos = -1;
 	private View mFocusLine;

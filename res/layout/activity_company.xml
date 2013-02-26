@@ -24,7 +24,7 @@
                 android:textColor="@color/color_bai" />
 
             <Button
-                android:id="@+id/btn_comunication"
+                android:id="@+id/btn_company_comunication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="联络" />

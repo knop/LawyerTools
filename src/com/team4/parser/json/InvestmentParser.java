@@ -110,7 +110,7 @@ public class InvestmentParser implements IJsonParser<IBaseType> {
 			}
 
 			if (json.has("has_prior_cost" )) {
-				obj.setHasPriorCost(json.getString("has_prior_cost"));
+				obj.setHasPriorCost(json.getBoolean("has_prior_cost"));
 			}
 
 			if (json.has("profit_upper")) {

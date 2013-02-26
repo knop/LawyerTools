@@ -7,9 +7,9 @@
     <string name="cancel">取消</string>
 
     <!-- 首页标签 -->
-    <string name="tab_title_company">投资公司</string>
-    <string name="tab_title_financing">资金</string>
-    <string name="tab_title_investment">项目</string>
+    <string name="tab_title_company">公司</string>
+    <string name="tab_title_investment">资金</string>
+    <string name="tab_title_financing">项目</string>
     <string name="tab_title_case">案件</string>
 
     <!-- 第一个标签页 -->

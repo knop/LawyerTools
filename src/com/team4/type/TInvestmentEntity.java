@@ -29,7 +29,7 @@ public class TInvestmentEntity extends TInfomationEntity {
 	private String mIndustry;
 	private String mProfitUpper;
 	private String mProfitFloor;
-	private String mHasPriorCost;
+	private boolean mHasPriorCost;
 	private String mExamineCycleUpper;
 	private String mExamineCycleFloor;
 	private String mCapitalSource;
@@ -231,11 +231,11 @@ public class TInvestmentEntity extends TInfomationEntity {
 		this.mProfitUpper = profitUpper;
 	}
 
-	public String getHasPriorCost() {
+	public boolean getHasPriorCost() {
 		return mHasPriorCost;
 	}
 
-	public void setHasPriorCost(String hasPriorCost) {
+	public void setHasPriorCost(boolean hasPriorCost) {
 		this.mHasPriorCost = hasPriorCost;
 	}
 

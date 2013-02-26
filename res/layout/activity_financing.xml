@@ -6,17 +6,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginBottom="3dp"
-            android:background="@color/title_bg" 
-            android:orientation="horizontal">
+            android:background="@color/title_bg"
+            android:orientation="horizontal" >
 
             <TextView
-                android:id="@+id/tv_company_title"
+                android:id="@+id/tv_financing_title"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
@@ -24,11 +24,10 @@
                 android:textColor="@color/color_bai" />
 
             <Button
-                android:id="@+id/btn_comunication"
+                android:id="@+id/btn_financing_comunication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="联络" />
-
         </LinearLayout>
 
         <TextView
@@ -54,11 +53,11 @@
                 android:text="@string/source" />
 
             <TextView
-                android:id="@+id/tv_source"
+                android:id="@+id/tv_financing_info_source"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
 
             <TextView
                 android:layout_width="0dp"
@@ -68,11 +67,11 @@
                 android:text="@string/company_type" />
 
             <TextView
-                android:id="@+id/tv_company_type"
+                android:id="@+id/tv_financing_company_type"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -90,11 +89,11 @@
                 android:text="@string/name" />
 
             <TextView
-                android:id="@+id/tv_name"
+                android:id="@+id/tv_financing_contact_person"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="3.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
 
             <TextView
                 android:layout_width="0dp"
@@ -104,64 +103,20 @@
                 android:text="@string/phone_number" />
 
             <TextView
-                android:id="@+id/tv_phone_number"
+                android:id="@+id/tv_financing_telephone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5.0"
-                android:paddingLeft="5dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/mail" />
-
-            <TextView
-                android:id="@+id/tv_mail"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5.0"
-                android:paddingLeft="5dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/address" />
-
-            <TextView
-                android:id="@+id/tv_address"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:paddingLeft="5dp"
             android:background="@color/title_bg"
-            android:text="@string/investment_info"
+            android:paddingLeft="5dp"
+            android:text="融资信息"
             android:textColor="@color/color_bai" />
 
         <LinearLayout
@@ -176,14 +131,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/capital_source" />
+                android:text="融资成本" />
 
             <TextView
-                android:id="@+id/tv_capital_source"
+                android:id="@+id/tv_financing_capital_source"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
 
             <TextView
                 android:layout_width="0dp"
@@ -193,11 +148,11 @@
                 android:text="@string/rating" />
 
             <TextView
-                android:id="@+id/tv_rating"
+                android:id="@+id/tv_financing_rate"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -212,14 +167,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/investment_industry" />
+                android:text="融资行业" />
 
             <TextView
-                android:id="@+id/tv_investment_industry"
+                android:id="@+id/tv_financing_industry"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="11.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -234,14 +189,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/investment_way" />
+                android:text="融资方式" />
 
             <TextView
-                android:id="@+id/tv_investment_way"
+                android:id="@+id/tv_financing_style"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="11.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -249,29 +204,136 @@
             android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="horizontal"
-            android:paddingTop="3dp" >
+            android:paddingTop="5dp" >
 
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/flow_area" />
+                android:text="融资额度" />
 
             <TextView
-                android:id="@+id/tv_flow_area"
+                android:id="@+id/tv_financing_quota"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="11.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4.0"
+                android:background="@color/color_zhonghui"
+                android:text="投资收益" />
+
+            <TextView
+                android:id="@+id/tv_financing_profit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="11.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4.0"
+                android:background="@color/color_zhonghui"
+                android:text="融资期限" />
+
+            <TextView
+                android:id="@+id/tv_financing_horizon"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="11.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4.0"
+                android:background="@color/color_zhonghui"
+                android:text="项目所在地" />
+
+            <TextView
+                android:id="@+id/tv_financing_prior_cost"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="11.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4.0"
+                android:background="@color/color_zhonghui"
+                android:text="担保方式" />
+
+            <TextView
+                android:id="@+id/tv_financing_guarantee_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="11.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4.0"
+                android:background="@color/color_zhonghui"
+                android:text="还款方式" />
+
+            <TextView
+                android:id="@+id/tv_financing_payment"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="11.0"
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:paddingLeft="5dp"
             android:background="@color/title_bg"
+            android:paddingLeft="5dp"
             android:text="@string/commission_info"
             android:textColor="@color/color_bai" />
 
@@ -290,11 +352,11 @@
                 android:text="@string/have_commission" />
 
             <TextView
-                android:id="@+id/tv_have_commission"
+                android:id="@+id/tv_financing_has_commission"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
 
             <TextView
                 android:layout_width="0dp"
@@ -304,40 +366,40 @@
                 android:text="@string/commission_ratio" />
 
             <TextView
-                android:id="@+id/tv_radio"
+                android:id="@+id/tv_financing_commission_proportion"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:paddingLeft="5dp"
             android:background="@color/title_bg"
+            android:paddingLeft="5dp"
             android:text="@string/comments"
             android:textColor="@color/color_bai" />
 
         <TextView
-            android:id="@+id/tv_comments"
+            android:id="@+id/tv_financing_comment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:paddingLeft="5dp"
             android:background="@color/title_bg"
+            android:paddingLeft="5dp"
             android:text="@string/attachments"
             android:textColor="@color/color_bai" />
 
         <TextView
             android:id="@+id/tv_attachments"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </ScrollView>

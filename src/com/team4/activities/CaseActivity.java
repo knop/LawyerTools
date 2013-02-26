@@ -27,7 +27,7 @@ public class CaseActivity extends Activity {
 		if (entity == null)
 			return;
 
-		Button btnComunication = (Button) findViewById(R.id.btn_comunication);
+		Button btnComunication = (Button) findViewById(R.id.btn_case_comunication);
 		btnComunication.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
