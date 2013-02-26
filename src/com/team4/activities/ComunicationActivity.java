@@ -25,9 +25,10 @@ import com.team4.utils.type.T4List;
 import com.team4.utils.util.T4Log;
 
 public class ComunicationActivity extends Activity {
-
+	
 	public final static String EXTRA_KEY_ID = "id";
 	public final static String EXTRA_KEY_TITLE = "title";
+	public final static String EXTRA_KEY_TYPE = "type";
 	
 	private ListView mListView;
 	
@@ -41,9 +42,10 @@ public class ComunicationActivity extends Activity {
 		TextView tvTitle = (TextView)findViewById(R.id.tv_comunication_title);
 		tvTitle.setText(title);
 		int id = intent.getIntExtra(EXTRA_KEY_ID, -1);
-		if (id > -1) {
-			TaskGetCompanyComunication task = new TaskGetCompanyComunication(ComunicationActivity.this, id);
-			task.execute();
+		String type = intent.getStringExtra(EXTRA_KEY_TYPE);
+		if (id > -1 && type != null && type.length() > 0) {
+			TaskGetComunication task = new TaskGetComunication(ComunicationActivity.this, id);
+			task.execute(type);
 		}
 	}
 
@@ -177,23 +179,24 @@ public class ComunicationActivity extends Activity {
 		}
 	}
 	
-	private static class TaskGetCompanyComunication extends
+	private static class TaskGetComunication extends
 			AsyncTask<String, Void, T4List<TComunicationEntity>> {
 
 		T4Exception mException = null;
 		ComunicationActivity mActivity = null;
 		int mId;
 
-		public TaskGetCompanyComunication(ComunicationActivity activity, int id) {
+		public TaskGetComunication(ComunicationActivity activity, int id) {
 			mActivity = activity;
 			mId = id;
 		}
 
 		@Override
 		public T4List<TComunicationEntity> doInBackground(String... params) {
+			String type = params[0];
 			T4List<TComunicationEntity> list = null;
 			try {
-				list = HttpManager.instance().getComunication(HttpManager.TYPE_COMPANY, mId);
+				list = HttpManager.instance().getComunication(type, mId);
 			} catch (T4Exception ex) {
 				mException = ex;
 			}

@@ -93,12 +93,12 @@ public class HttpManager {
 	
 	public IBaseType getMatch(String type, int id) throws T4Exception {
 		 
-		List<BasicNameValuePair> params = getParamList(
-				new BasicNameValuePair("id", String.valueOf(id)));
-		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_MATCH, type), userAgent, params);
-		
-		T4ListParser lParser = new T4ListParser(new ComunicationParser());
-		JsonParser parser = new JsonParser(lParser);
+//		List<BasicNameValuePair> params = getParamList(
+//				new BasicNameValuePair("id", String.valueOf(id)));
+//		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_MATCH, type), userAgent, params);
+//		
+//		T4ListParser lParser = new T4ListParser(new ComunicationParser());
+//		JsonParser parser = new JsonParser(lParser);
 		
 		return null;
 	}

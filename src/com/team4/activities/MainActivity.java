@@ -143,11 +143,14 @@ public class MainActivity extends Activity {
 			intent.setClass(this, CompanyActivity.class);
 			intent.putExtra(TCompanyEntity.class.getName(), entity);
 		} else if(type.equalsIgnoreCase(HttpManager.TYPE_FINANCING)) {
-			;
+			intent.setClass(this, FinancingActivity.class);
+			intent.putExtra(TFinancingEntity.class.getName(), entity);
 		} else if(type.equalsIgnoreCase(HttpManager.TYPE_INVESTMENT)) {
-			;
+			intent.setClass(this, InvestmentActivity.class);
+			intent.putExtra(TInvestmentEntity.class.getName(), entity);
 		} else if(type.equalsIgnoreCase(HttpManager.TYPE_CASE)) {
-			;
+			intent.setClass(this, CaseActivity.class);
+			intent.putExtra(TCaseEntity.class.getName(), entity);
 		} else {
 			T4Log.e(type+"类型不可用");
 		}

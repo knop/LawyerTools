@@ -10,7 +10,7 @@ public class TCaseEntity extends TInfomationEntity {
 	private String mClientName;
 	private String mClientPhone;
 	private String mClientAddress;
-	private String mClientReceived;
+	private boolean mClientReceived;
 	
 	private String mOppositeLawyerName;
 	private String mOppositeLawyerAddress;
@@ -75,11 +75,11 @@ public class TCaseEntity extends TInfomationEntity {
 		this.mClientAddress = clientAddress;
 	}
 
-	public String getClientReceived() {
+	public boolean getClientReceived() {
 		return mClientReceived;
 	}
 
-	public void setClientReceived(String clientReceived) {
+	public void setClientReceived(boolean clientReceived) {
 		this.mClientReceived = clientReceived;
 	}
 

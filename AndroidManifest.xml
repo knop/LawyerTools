@@ -28,6 +28,12 @@
             android:name="com.team4.activities.ComunicationActivity"/>
         <activity
             android:name="com.team4.activities.CompanyActivity"/>
+        <activity
+            android:name="com.team4.activities.CaseActivity"/>
+        <activity
+            android:name="com.team4.activities.FinancingActivity"/>
+        <activity
+            android:name="com.team4.activities.InvestmentActivity"/>                       
     </application>
 
 </manifest>

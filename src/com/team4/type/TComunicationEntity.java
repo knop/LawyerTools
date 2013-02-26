@@ -9,8 +9,8 @@ public class TComunicationEntity implements IBaseType, Serializable{
 	private static final long serialVersionUID = -2803125296226049400L;
 
 	public static interface EnumDirection {
-		final int from = 0;
 		final int to = 1;
+		final int from = 2;
 	};
 	
 	private int mDirection;

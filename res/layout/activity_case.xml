@@ -6,17 +6,17 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical" >
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:layout_marginBottom="3dp"
-            android:background="@color/title_bg" 
-            android:orientation="horizontal">
+            android:background="@color/title_bg"
+            android:orientation="horizontal" >
 
             <TextView
-                android:id="@+id/tv_company_title"
+                android:id="@+id/tv_case_title"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1.0"
@@ -28,16 +28,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="联络" />
-
         </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/title_bg"
-            android:paddingLeft="5dp"
-            android:text="@string/basic_info"
-            android:textColor="@color/color_bai" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -49,66 +40,30 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="2.0"
+                android:layout_weight="1.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/source" />
+                android:text="类别" />
 
             <TextView
-                android:id="@+id/tv_source"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:paddingLeft="5dp"/>
-
-            <TextView
+                android:id="@+id/tv_case_type"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/company_type" />
+                android:paddingLeft="5dp" />
 
             <TextView
-                android:id="@+id/tv_company_type"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5.0"
-                android:paddingLeft="5dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
+                android:layout_weight="1.0"
+                android:background="@color/color_zhonghui"
+                android:text="审级" />
 
             <TextView
+                android:id="@+id/tv_case_level"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/name" />
-
-            <TextView
-                android:id="@+id/tv_name"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:paddingLeft="5dp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/phone_number" />
-
-            <TextView
-                android:id="@+id/tv_phone_number"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -123,14 +78,14 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/mail" />
+                android:text="收案日期" />
 
             <TextView
-                android:id="@+id/tv_mail"
+                android:id="@+id/tv_case_receive_at"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="5.0"
-                android:paddingLeft="5dp"/>
+                android:layout_weight="4.0"
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -143,61 +98,16 @@
             <TextView
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="1.0"
+                android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/address" />
+                android:text="委托人" />
 
             <TextView
-                android:id="@+id/tv_address"
+                android:id="@+id/tv_case_client"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="5.0"
-                android:paddingLeft="5dp"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:paddingLeft="5dp"
-            android:background="@color/title_bg"
-            android:text="@string/investment_info"
-            android:textColor="@color/color_bai" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/capital_source" />
-
-            <TextView
-                android:id="@+id/tv_capital_source"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:paddingLeft="5dp"/>
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/rating" />
-
-            <TextView
-                android:id="@+id/tv_rating"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:paddingLeft="5dp"/>
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -205,139 +115,584 @@
             android:layout_height="wrap_content"
             android:baselineAligned="false"
             android:orientation="horizontal"
-            android:paddingTop="3dp" >
+            android:paddingTop="5dp" >
 
             <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/investment_industry" />
-
-            <TextView
-                android:id="@+id/tv_investment_industry"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/investment_way" />
-
-            <TextView
-                android:id="@+id/tv_investment_way"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/flow_area" />
-
-            <TextView
-                android:id="@+id/tv_flow_area"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp"/>
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:paddingLeft="5dp"
-            android:background="@color/title_bg"
-            android:text="@string/commission_info"
-            android:textColor="@color/color_bai" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/have_commission" />
-
-            <TextView
-                android:id="@+id/tv_have_commission"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
-                android:paddingLeft="5dp"/>
+                android:background="@color/color_zhonghui"
+                android:text="电话" />
 
             <TextView
+                android:id="@+id/tv_case_client_phone"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/commission_ratio" />
+                android:layout_weight="4.0"
+                android:paddingLeft="5dp" />
 
             <TextView
-                android:id="@+id/tv_radio"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
-                android:paddingLeft="5dp"/>
+                android:background="@color/color_zhonghui"
+                android:text="通讯" />
+
+            <TextView
+                android:id="@+id/tv_case_client_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="对方当事人" />
+
+            <TextView
+                android:id="@+id/tv_case_oppo_client"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="电话" />
+
+            <TextView
+                android:id="@+id/tv_case_oppo_client_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4.0"
+                android:paddingLeft="5dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="通讯" />
+
+            <TextView
+                android:id="@+id/tv_case_oppo_client_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="对方代理人" />
+
+            <TextView
+                android:id="@+id/tv_case_oppo_lawyer"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="电话" />
+
+            <TextView
+                android:id="@+id/tv_case_oppo_lawyer_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="4.0"
+                android:paddingLeft="5dp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="通讯" />
+
+            <TextView
+                android:id="@+id/tv_case_oppo_lawyer_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="案由" />
+
+            <TextView
+                android:id="@+id/tv_case_cause"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="法院案号" />
+
+            <TextView
+                android:id="@+id/tv_case_court_no"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="受理法院" />
+
+            <TextView
+                android:id="@+id/tv_case_court_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="法院通讯地址" />
+
+            <TextView
+                android:id="@+id/tv_case_court_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="受理日期" />
+
+            <TextView
+                android:id="@+id/tv_case_accept_at"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="收到应诉通知书日期" />
+
+            <TextView
+                android:id="@+id/tv_case_receive_notice_at"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="主审法官" />
+
+            <TextView
+                android:id="@+id/tv_case_juger_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="主审法官电话" />
+
+            <TextView
+                android:id="@+id/tv_case_juger_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="举证期限" />
+
+            <TextView
+                android:id="@+id/tv_case_proof_limit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="书记员" />
+
+            <TextView
+                android:id="@+id/tv_case_clerk_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="书记员电话" />
+
+            <TextView
+                android:id="@+id/tv_case_clerk_phone"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="答辩期限" />
+
+            <TextView
+                android:id="@+id/tv_case_reply_limit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="开庭日期" />
+
+            <TextView
+                android:id="@+id/tv_case_open_at"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="判决日期" />
+
+            <TextView
+                android:id="@+id/tv_case_judge_at"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="判决书签收日期" />
+
+            <TextView
+                android:id="@+id/tv_case_receive_judge_at"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="上诉期截止日期" />
+
+            <TextView
+                android:id="@+id/tv_case_appeal_limit"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="创建时间" />
+
+            <TextView
+                android:id="@+id/tv_case_create_at"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="最后修改时间" />
+
+            <TextView
+                android:id="@+id/tv_case_modify_at"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingTop="5dp" >
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:background="@color/color_zhonghui"
+                android:text="委托人签收" />
+
+            <TextView
+                android:id="@+id/tv_case_client_receive"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:paddingLeft="5dp" />
         </LinearLayout>
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            android:paddingLeft="5dp"
             android:background="@color/title_bg"
-            android:text="@string/comments"
-            android:textColor="@color/color_bai" />
-
-        <TextView
-            android:id="@+id/tv_comments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
             android:paddingLeft="5dp"
-            android:background="@color/title_bg"
             android:text="@string/attachments"
             android:textColor="@color/color_bai" />
 
         <TextView
             android:id="@+id/tv_attachments"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content" />
     </LinearLayout>
 
 </ScrollView>

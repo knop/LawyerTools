@@ -66,7 +66,7 @@ public class CaseParser implements IJsonParser<IBaseType> {
 			}
 
 			if (json.has("client_received")) {
-				obj.setClientReceived(json.getString("client_received"));
+				obj.setClientReceived(json.getBoolean("client_received"));
 			}
 
 			if (json.has("client_name")) {

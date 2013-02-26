@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
 import com.team4.type.TCompanyEntity;
 
@@ -34,6 +35,7 @@ public class CompanyActivity extends Activity {
 				intent.setClass(CompanyActivity.this, ComunicationActivity.class);
 				intent.putExtra(ComunicationActivity.EXTRA_KEY_ID, entity.getId());
 				intent.putExtra(ComunicationActivity.EXTRA_KEY_TITLE, entity.getName());
+				intent.putExtra(ComunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_COMPANY);
 				startActivity(intent);
 			}
 		});
