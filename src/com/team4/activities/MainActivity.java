@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,6 +16,9 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -102,8 +107,7 @@ public class MainActivity extends Activity {
 		mBtnRetry.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
-				
+				getInfomation(mCurrentPos);
 			}
 		});
 		mTvStateText = (TextView) findViewById(R.id.tv_state_text);
@@ -120,6 +124,30 @@ public class MainActivity extends Activity {
 				showDetail((TInfomationEntity)listView.getAdapter().getItem(pos));
 			}
 		});
+		final EditText et = (EditText)findViewById(R.id.et_search_keyword);
+		et.addTextChangedListener(new TextWatcher() {
+			
+			@SuppressWarnings("unchecked")
+			@Override
+			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
+				// TODO Auto-generated method stub
+				((InfomationAdapter<TInfomationEntity>)mLvData.getAdapter()).getFilter().filter(et.getText().toString());
+			}
+			
+			@Override
+			public void beforeTextChanged(CharSequence arg0, int arg1, int arg2,
+					int arg3) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			@Override
+			public void afterTextChanged(Editable arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		});
+		
 		resetContentView();
 	}
 
@@ -163,12 +191,7 @@ public class MainActivity extends Activity {
 		if (pos > tabId.length || pos < 0 || pos == mCurrentPos)
 			return;
 		//执行网络请求
-		if (mTaskGetInfo != null) {
-			mTaskGetInfo.cancel(true);
-			mTaskGetInfo = null;
-		}
-		mTaskGetInfo = new TaskGetInfomation(this);
-		mTaskGetInfo.execute(tabType[pos]);
+		getInfomation(pos);
 		resetContentView();
 		
 		//记录上一次focus line所在的位置
@@ -191,6 +214,15 @@ public class MainActivity extends Activity {
 		mFocusLine.setAnimation(animation);
 	}
 
+	private void getInfomation(int pos) {
+		if (mTaskGetInfo != null) {
+			mTaskGetInfo.cancel(true);
+			mTaskGetInfo = null;
+		}
+		mTaskGetInfo = new TaskGetInfomation(this);
+		mTaskGetInfo.execute(tabType[pos]);	
+	}
+	
 	public void onGetCompaniesComplete(String type, IBaseType entity, T4Exception ex) {
 		if (ex == null && entity != null) {
 			mLlStateView.setVisibility(View.GONE);
@@ -257,15 +289,20 @@ public class MainActivity extends Activity {
 		}
 	}
 	
-	private static class InfomationAdapter<T extends TInfomationEntity> extends BaseAdapter {
+	private static class InfomationAdapter<T extends TInfomationEntity> 
+		extends BaseAdapter implements Filterable {
 		
 		private LayoutInflater mInflater;
-		T4List<T> mList;
+		T4List<T> mOriginalList;
+		T4List<TInfomationEntity> mList;
 		
 		public InfomationAdapter(Context context, T4List<T> list) {
 			super();
 			mInflater = LayoutInflater.from(context);
-			mList = list;
+			mOriginalList = list;
+			if (mList == null)
+				mList = new T4List<TInfomationEntity>();
+			mList.addAll(mOriginalList);
 		}
 		
 		@Override
@@ -277,7 +314,7 @@ public class MainActivity extends Activity {
 		}
 
 		@Override
-		public T getItem(int pos) {
+		public TInfomationEntity getItem(int pos) {
 			// TODO Auto-generated method stub
 			if (mList == null || pos > mList.size())
 				return null;
@@ -294,7 +331,7 @@ public class MainActivity extends Activity {
 		public View getView(int pos, View convertView, ViewGroup parent) {
 			// TODO Auto-generated method stub
 			View view;
-			T entity = getItem(pos);
+			TInfomationEntity entity = getItem(pos);
 			if (convertView == null) {
 				view = newItemView(null);
 			} else {
@@ -306,7 +343,7 @@ public class MainActivity extends Activity {
 			return view;
 		}
 		
-		private void bindView(View view, T entity) {
+		private void bindView(View view, TInfomationEntity entity) {
 			if (view == null || entity == null)
 				return;
 			
@@ -324,6 +361,42 @@ public class MainActivity extends Activity {
 		
 		public static class ViewHolder {
 			public TextView tvName;
+		}
+
+		@Override
+		public Filter getFilter() {
+			Filter filter = new Filter() {
+				
+				@Override
+				protected void publishResults(CharSequence constraint, FilterResults results) {
+					notifyDataSetChanged();
+				}
+				
+				@Override
+				protected FilterResults performFiltering(CharSequence constraint) {
+					FilterResults results = new FilterResults();
+					
+					if (mList == null)
+						mList = new T4List<TInfomationEntity>();
+					mList.clear();
+					
+					if (constraint == null || constraint.length() <= 0) {
+						mList.addAll(mOriginalList);
+					} else {
+						for (int i=0; i<mOriginalList.size(); i++) {
+							T entity = mOriginalList.get(i);
+							if(entity.getName().startsWith(constraint.toString())) {
+								mList.add(entity);
+							}
+						}
+					}
+					
+					results.count = mList.size();
+					results.values = mList;
+					return results;
+				}
+			};
+			return filter;
 		}
 	}
 }
