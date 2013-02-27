@@ -85,8 +85,8 @@ public class FinancingActivity extends Activity {
 		tvHorizon.setText(entity.getHorizonFloor() + "-" + entity.getHorizonFloor() + "个月");
 		
 		// 融资成本
-//		TextView tvPriorCost = (TextView) findViewById(R.id.tv_investment_prior_cost);
-//		tvPriorCost.setText(entity.getHasPriorCost()?"":entity.getPriorCost());
+		TextView tvCost = (TextView) findViewById(R.id.tv_financing_cost);
+		tvCost.setText("");
 		
 		// 担保方式
 		TextView tvGuaranteeType = (TextView) findViewById(R.id.tv_financing_guarantee_type);
@@ -95,7 +95,11 @@ public class FinancingActivity extends Activity {
 		// 还款方式
 		TextView tvPayment = (TextView) findViewById(R.id.tv_financing_payment);
 		tvPayment.setText(entity.getPayment());
-
+		
+		// 项目所在地
+		TextView tvArea = (TextView) findViewById(R.id.tv_financing_area);
+		tvArea.setText(entity.getArea());
+		
 		// 是否有佣金
 		TextView tvHasCommission = (TextView) findViewById(R.id.tv_financing_has_commission);
 		if (entity.getHasCommission()) {
