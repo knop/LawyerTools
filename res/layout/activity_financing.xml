@@ -27,7 +27,7 @@
                 android:id="@+id/btn_financing_comunication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="联络" />
+                android:text="@string/comunication" />
         </LinearLayout>
 
         <TextView
@@ -138,7 +138,7 @@
             android:layout_marginTop="3dp"
             android:background="@color/title_bg"
             android:paddingLeft="5dp"
-            android:text="融资信息"
+            android:text="@string/finance_info"
             android:textColor="@color/color_bai" />
 
         <LinearLayout
@@ -153,7 +153,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="融资成本" />
+                android:text="@string/finance_cost" />
 
             <TextView
                 android:id="@+id/tv_financing_cost"
@@ -189,7 +189,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="融资行业" />
+                android:text="@string/finance_industry" />
 
             <TextView
                 android:id="@+id/tv_financing_industry"
@@ -211,7 +211,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="融资方式" />
+                android:text="@string/finance_style" />
 
             <TextView
                 android:id="@+id/tv_financing_style"
@@ -233,7 +233,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="融资额度" />
+                android:text="@string/finance_quota" />
 
             <TextView
                 android:id="@+id/tv_financing_quota"
@@ -255,29 +255,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="融资成本" />
-
-            <TextView
-                android:id="@+id/tv_financing_profit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="融资期限" />
+                android:text="@string/finance_horizon" />
 
             <TextView
                 android:id="@+id/tv_financing_horizon"
@@ -299,7 +277,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="项目所在地" />
+                android:text="@string/project_area" />
 
             <TextView
                 android:id="@+id/tv_financing_area"
@@ -321,7 +299,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="担保方式" />
+                android:text="@string/guarantee_type" />
 
             <TextView
                 android:id="@+id/tv_financing_guarantee_type"
@@ -343,7 +321,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="还款方式" />
+                android:text="@string/payment" />
 
             <TextView
                 android:id="@+id/tv_financing_payment"

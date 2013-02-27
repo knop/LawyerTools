@@ -27,7 +27,7 @@
                 android:id="@+id/btn_investment_comunication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="联络" />
+                android:text="@string/comunication" />
         </LinearLayout>
 
         <TextView
@@ -144,7 +144,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:background="@color/color_zhonghui"
-                android:text="审批周期" />
+                android:text="@string/examine_cycle" />
 
             <TextView
                 android:id="@+id/tv_investment_examine"
@@ -255,7 +255,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="投资额度" />
+                android:text="@string/investment_quota" />
 
             <TextView
                 android:id="@+id/tv_investment_quota"
@@ -277,7 +277,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="投资收益" />
+                android:text="@string/investment_profit" />
 
             <TextView
                 android:id="@+id/tv_investment_profit"
@@ -299,7 +299,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="投资期限" />
+                android:text="@string/investment_horizon" />
 
             <TextView
                 android:id="@+id/tv_investment_horizon"
@@ -320,7 +320,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="前期费用" />
+                android:text="@string/prior_cost" />
 
             <TextView
                 android:id="@+id/tv_investment_prior_cost"
@@ -341,7 +341,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="担保方式" />
+                android:text="@string/guarantee_type" />
 
             <TextView
                 android:id="@+id/tv_investment_guarantee_type"
@@ -362,7 +362,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="还款方式" />
+                android:text="@string/payment" />
 
             <TextView
                 android:id="@+id/tv_investment_payment"
@@ -383,7 +383,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="4.0"
                 android:background="@color/color_zhonghui"
-                android:text="投资用途" />
+                android:text="@string/investment_purpose" />
 
             <TextView
                 android:id="@+id/tv_investment_purpose"

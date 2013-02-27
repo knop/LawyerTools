@@ -5,6 +5,10 @@
     <string name="app_name">LawyerTools</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
+    <string name="search_keyword">请输入关键字</string>
+    <string name="search_done">搜索</string>
+    <string name="add">添加</string>
+    <string name="comunication">联络</string>
 
     <!-- 首页标签 -->
     <string name="tab_title_company">公司</string>
@@ -12,14 +16,6 @@
     <string name="tab_title_financing">项目</string>
     <string name="tab_title_case">案件</string>
 
-    <!-- 第一个标签页 -->
-    <string name="search_keyword">请输入关键字</string>
-    <string name="search_done">搜索</string>
-    <string name="add">添加</string>
-
-    <!-- View标题 -->
-    <string name="company_detail">公司详情</string>
-    
     <!-- 基本信息 -->
     <string name="basic_info">基本信息</string>
     <string name="name">姓名</string>
@@ -36,14 +32,30 @@
     <string name="have_commission">是否有佣金</string>
     <string name="commission_ratio">佣金比例</string>
 
-    <!-- 投资信息 -->
+    <!-- 资金信息 -->
     <string name="investment_info">投资信息</string>
     <string name="capital_source">资金来源</string>
     <string name="rating">评级</string>
     <string name="investment_industry">投资行业</string>
     <string name="investment_way">投资方式</string>
-    <string name="flow_area">流向区域</string>
+    <string name="prior_cost">前期费用</string>
+    <string name="examine_cycle">审批周期</string>
+    <string name="investment_quota">投资额度</string>
+    <string name="investment_horizon">投资期限</string>
+    <string name="investment_profit">投资收益</string>
+    <string name="investment_purpose">投资用途</string>
     
+    <string name="flow_area">流向区域</string>
+    <string name="guarantee_type">担保方式</string>
+    <string name="payment">还款方式</string>
+    <string name="finance_info">融资信息</string>
+    <string name="finance_cost">融资成本</string>
+    <string name="finance_quota">融资额度</string>
+    <string name="finance_style">融资方式</string>
+    <string name="finance_horizon">融资期限</string>
+	<string name="finance_industry">融资行业</string>
+    <string name="project_area">项目所在地</string>
+        
     <!-- 往来信息 -->
 	<string name="msg_direction_from">From</string>
     <string name="msg_direction_to">To</string>
