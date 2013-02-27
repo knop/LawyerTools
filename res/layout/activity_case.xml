@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/communication" />
+                android:text="@string/case_communication" />
 
             <TextView
                 android:id="@+id/tv_case_client_address"
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/communication" />
+                android:text="@string/case_communication" />
 
             <TextView
                 android:id="@+id/tv_case_oppo_client_address"
@@ -252,7 +252,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/communication" />
+                android:text="@string/case_communication" />
 
             <TextView
                 android:id="@+id/tv_case_oppo_lawyer_address"
@@ -406,7 +406,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="" />
+                android:text="@string/juger_name" />
 
             <TextView
                 android:id="@+id/tv_case_juger_name"

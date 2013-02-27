@@ -2,20 +2,25 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
-    android:paddingRight="50dp" >
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:background="@color/color_bai"
-        android:text="@string/msg_direction_to" />
+    android:layout_margin="20dp"
+    android:orientation="horizontal" >
 
     <TextView
         android:id="@+id/tv_communication_content_left"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
-        android:background="@color/color_bai" />
+        android:background="@color/color_bai"
+        android:gravity="left"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textColor="@color/color_hei" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/msg_direction_to"
+        android:textColor="@color/color_bai" />
 
 </LinearLayout>

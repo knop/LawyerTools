@@ -2,7 +2,7 @@
 <resources>
 
     <!-- 通用字符串 -->
-    <string name="app_name">LawyerTools</string>
+    <string name="app_name">律师助手</string>
     <string name="ok">确定</string>
     <string name="cancel">取消</string>
     <string name="yes">是</string>
@@ -82,11 +82,11 @@
     <string name="case_level">审级</string>
     <string name="proof_limit">举证期限</string>
     <string name="receive_at">收案日期</string>
-    <string name="communication">通讯</string>
+    <string name="case_communication">通讯</string>
           
     <!-- 联络信息 -->
-	<string name="msg_direction_from">From</string>
-    <string name="msg_direction_to">To</string>
+	<string name="msg_direction_from">收到</string>
+    <string name="msg_direction_to">发出</string>
 
     <!-- 提示信息 -->
 	<string name="state_text_request">正在获取数据</string>
