@@ -27,15 +27,15 @@ public class CaseActivity extends Activity {
 		if (entity == null)
 			return;
 
-		Button btnComunication = (Button) findViewById(R.id.btn_case_comunication);
+		Button btnComunication = (Button) findViewById(R.id.btn_case_communication);
 		btnComunication.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(CaseActivity.this, ComunicationActivity.class);
-				intent.putExtra(ComunicationActivity.EXTRA_KEY_ID, entity.getId());
-				intent.putExtra(ComunicationActivity.EXTRA_KEY_TITLE, entity.getName());
-				intent.putExtra(ComunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_CASE);
+				intent.setClass(CaseActivity.this, CommunicationActivity.class);
+				intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, entity.getId());
+				intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, entity.getName());
+				intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_CASE);
 				startActivity(intent);
 			}
 		});

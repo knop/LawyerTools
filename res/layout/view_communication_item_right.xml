@@ -6,7 +6,7 @@
     android:paddingLeft="50dp" >
 
     <TextView
-        android:id="@+id/tv_comunication_content_right"
+        android:id="@+id/tv_communication_content_right"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1.0"

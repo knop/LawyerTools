@@ -24,7 +24,7 @@ import com.team4.utils.exceptions.T4Exception;
 import com.team4.utils.type.T4List;
 import com.team4.utils.util.T4Log;
 
-public class ComunicationActivity extends Activity {
+public class CommunicationActivity extends Activity {
 	
 	public final static String EXTRA_KEY_ID = "id";
 	public final static String EXTRA_KEY_TITLE = "title";
@@ -35,51 +35,23 @@ public class ComunicationActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_comunication);
+		setContentView(R.layout.activity_communication);
 		
 		Intent intent = getIntent();
 		String title = intent.getStringExtra(EXTRA_KEY_TITLE);
-		TextView tvTitle = (TextView)findViewById(R.id.tv_comunication_title);
+		TextView tvTitle = (TextView)findViewById(R.id.tv_communication_title);
 		tvTitle.setText(title);
 		int id = intent.getIntExtra(EXTRA_KEY_ID, -1);
 		String type = intent.getStringExtra(EXTRA_KEY_TYPE);
 		if (id > -1 && type != null && type.length() > 0) {
-			TaskGetComunication task = new TaskGetComunication(ComunicationActivity.this, id);
+			TaskGetComunication task = new TaskGetComunication(CommunicationActivity.this, id);
 			task.execute(type);
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		return true;
-	}
-	
-//	private List<TComunicationEntity> getData() {
-//		ArrayList<TComunicationEntity> list = new ArrayList<TComunicationEntity>();
-//		TComunicationEntity c = new TComunicationEntity();
-//		c.setDirection(EnumDirection.from);
-//		c.setContent("!!!!!!!!!!!!!!!!!!!!!!!");		
-//		list.add(c);
-//		c = new TComunicationEntity();
-//		c.setDirection(EnumDirection.to);
-//		c.setContent("!!!!!!!!!!!!!!!!!!!!!!!");
-//		list.add(c);
-//		c = new TComunicationEntity();
-//		c.setDirection(EnumDirection.to);
-//		c.setContent("1111111");
-//		list.add(c);
-//		
-//		c = new TComunicationEntity();
-//		c.setDirection(EnumDirection.to);
-//		c.setContent("2222222222222");
-//		list.add(c);
-//		return list;
-//	}
-
 	public void onGetCompaniesComplete(T4List<TComunicationEntity> list, T4Exception ex) {
 		if (ex == null && list != null) {
-			mListView = (ListView)findViewById(R.id.lv_comunication);
+			mListView = (ListView)findViewById(R.id.lv_communication);
 			mListView.setAdapter(new ComunicationAdapter(this, list));
 		} else {
 			String message = "Exception Code: " + ex.getExceptionCode()
@@ -155,16 +127,16 @@ public class ComunicationActivity extends Activity {
 		private View newItemView(ViewGroup parent, int direction) {
 			if (direction == EnumDirection.to) {
 				ViewHolder holder = new ViewHolder();
-				View view = mInflater.inflate(R.layout.view_comunication_item_left, parent);
+				View view = mInflater.inflate(R.layout.view_communication_item_left, parent);
 				holder.isSended = false;
-				holder.tvContent = (TextView)view.findViewById(R.id.tv_comunication_content_left);
+				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_left);
 				view.setTag(holder);
 				return view;
 			} else if (direction == EnumDirection.from) {
 				ViewHolder holder = new ViewHolder();
-				View view = mInflater.inflate(R.layout.view_comunication_item_right, parent);
+				View view = mInflater.inflate(R.layout.view_communication_item_right, parent);
 				holder.isSended = true;
-				holder.tvContent = (TextView)view.findViewById(R.id.tv_comunication_content_right);
+				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_right);
 				view.setTag(holder);
 				return view;
 			} else {
@@ -183,10 +155,10 @@ public class ComunicationActivity extends Activity {
 			AsyncTask<String, Void, T4List<TComunicationEntity>> {
 
 		T4Exception mException = null;
-		ComunicationActivity mActivity = null;
+		CommunicationActivity mActivity = null;
 		int mId;
 
-		public TaskGetComunication(ComunicationActivity activity, int id) {
+		public TaskGetComunication(CommunicationActivity activity, int id) {
 			mActivity = activity;
 			mId = id;
 		}

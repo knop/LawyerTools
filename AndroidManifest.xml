@@ -25,7 +25,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.team4.activities.ComunicationActivity"/>
+            android:name="com.team4.activities.CommunicationActivity"/>
         <activity
             android:name="com.team4.activities.CompanyActivity"/>
         <activity

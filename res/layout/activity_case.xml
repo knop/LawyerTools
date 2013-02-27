@@ -24,10 +24,10 @@
                 android:textColor="@color/color_bai" />
 
             <Button
-                android:id="@+id/btn_case_comunication"
+                android:id="@+id/btn_case_communication"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="联络" />
+                android:text="@string/communication" />
         </LinearLayout>
 
         <LinearLayout
@@ -122,7 +122,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="电话" />
+                android:text="@string/phone_number" />
 
             <TextView
                 android:id="@+id/tv_case_client_phone"
@@ -180,7 +180,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="电话" />
+                android:text="@string/phone_number" />
 
             <TextView
                 android:id="@+id/tv_case_oppo_client_phone"
@@ -238,7 +238,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="电话" />
+                android:text="@string/phone_number" />
 
             <TextView
                 android:id="@+id/tv_case_oppo_lawyer_phone"

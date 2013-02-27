@@ -27,15 +27,15 @@ public class FinancingActivity extends Activity {
 		if (entity == null)
 			return;
 
-		Button btnComunication = (Button) findViewById(R.id.btn_financing_comunication);
+		Button btnComunication = (Button) findViewById(R.id.btn_financing_communication);
 		btnComunication.setOnClickListener(new View.OnClickListener() {
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent();
-				intent.setClass(FinancingActivity.this, ComunicationActivity.class);
-				intent.putExtra(ComunicationActivity.EXTRA_KEY_ID, entity.getId());
-				intent.putExtra(ComunicationActivity.EXTRA_KEY_TITLE, entity.getName());
-				intent.putExtra(ComunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_FINANCING);
+				intent.setClass(FinancingActivity.this, CommunicationActivity.class);
+				intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, entity.getId());
+				intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, entity.getName());
+				intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_FINANCING);
 				startActivity(intent);
 			}
 		});

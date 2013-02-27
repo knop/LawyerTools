@@ -12,7 +12,7 @@
         android:text="@string/msg_direction_to" />
 
     <TextView
-        android:id="@+id/tv_comunication_content_left"
+        android:id="@+id/tv_communication_content_left"
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="1.0"
