@@ -29,7 +29,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/ll_state_view"
+        android:id="@+id/ll_communication_state"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="center"
@@ -39,7 +39,7 @@
             android:id="@+id/tv_state_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="暂无联络信息"
+            android:text="@string/state_text_none"
             android:textAppearance="?android:attr/textAppearanceLarge" />
 
         <ProgressBar

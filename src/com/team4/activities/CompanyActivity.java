@@ -90,11 +90,7 @@ public class CompanyActivity extends Activity {
 
 		// 是否有佣金
 		TextView tvHaveCommission = (TextView) findViewById(R.id.tv_have_commission);
-		if (entity.getHaveCommission()) {
-			tvHaveCommission.setText("否");
-		} else {
-			tvHaveCommission.setText("是");
-		}
+		tvHaveCommission.setText(entity.getHaveCommission()?R.string.yes:R.string.no);
 
 		// 佣金比例
 		TextView tvRadio = (TextView) findViewById(R.id.tv_radio);

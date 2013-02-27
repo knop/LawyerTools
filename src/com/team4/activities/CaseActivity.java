@@ -166,6 +166,6 @@ public class CaseActivity extends Activity {
 		
 		//委托人签收
 		TextView tvClientReceive = (TextView) findViewById(R.id.tv_case_client_receive);
-		tvClientReceive.setText(entity.getClientReceived()?"是":"否");
+		tvClientReceive.setText(entity.getClientReceived()?R.string.yes:R.string.no);
 	}
 }

@@ -64,7 +64,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="@string/company_type" />
+                android:text="@string/type" />
 
             <TextView
                 android:id="@+id/tv_financing_company_type"

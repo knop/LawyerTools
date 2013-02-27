@@ -8,13 +8,12 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
@@ -31,12 +30,22 @@ public class CommunicationActivity extends Activity {
 	public final static String EXTRA_KEY_TYPE = "type";
 	
 	private ListView mListView;
+	private View mLlDataView;
+	private View mLlStateView;
+	private TextView mTvStateText;
+	private ProgressBar mPbWaiting;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_communication);
-		
+		mLlDataView = findViewById(R.id.ll_communication);
+		mLlStateView = findViewById(R.id.ll_communication_state);
+		mTvStateText = (TextView)findViewById(R.id.tv_state_text);
+		mPbWaiting = (ProgressBar)findViewById(R.id.pb_waiting);
+		mLlDataView.setVisibility(View.GONE);
+		mLlStateView.setVisibility(View.VISIBLE);
+		mTvStateText.setVisibility(View.VISIBLE);
 		Intent intent = getIntent();
 		String title = intent.getStringExtra(EXTRA_KEY_TITLE);
 		TextView tvTitle = (TextView)findViewById(R.id.tv_communication_title);
@@ -44,25 +53,42 @@ public class CommunicationActivity extends Activity {
 		int id = intent.getIntExtra(EXTRA_KEY_ID, -1);
 		String type = intent.getStringExtra(EXTRA_KEY_TYPE);
 		if (id > -1 && type != null && type.length() > 0) {
+			mPbWaiting.setVisibility(View.VISIBLE);
+			mTvStateText.setText(R.string.state_text_request);
 			TaskGetComunication task = new TaskGetComunication(CommunicationActivity.this, id);
 			task.execute(type);
+		} else {
+			mPbWaiting.setVisibility(View.GONE);
+			mTvStateText.setText(R.string.state_text_none);
 		}
 	}
 
 	public void onGetCompaniesComplete(T4List<TComunicationEntity> list, T4Exception ex) {
 		if (ex == null && list != null) {
-			mListView = (ListView)findViewById(R.id.lv_communication);
-			mListView.setAdapter(new ComunicationAdapter(this, list));
+			if (list.size() <= 0) {
+				mLlDataView.setVisibility(View.GONE);
+				mLlStateView.setVisibility(View.VISIBLE);
+				mPbWaiting.setVisibility(View.GONE);
+				mTvStateText.setText(R.string.state_text_none);				
+			} else {
+				mLlDataView.setVisibility(View.VISIBLE);
+				mLlStateView.setVisibility(View.GONE);
+				mListView = (ListView)findViewById(R.id.lv_communication);
+				mListView.setAdapter(new ComunicationAdapter(this, list));
+			}
 		} else {
 			String message = "Exception Code: " + ex.getExceptionCode()
 					+ "\r\n" + "Message: " + ex.getMessage();
 			T4Log.v(message);
-			Toast.makeText(this, "无联络信息", Toast.LENGTH_LONG).show();
+			mLlDataView.setVisibility(View.GONE);
+			mLlStateView.setVisibility(View.VISIBLE);
+			mPbWaiting.setVisibility(View.GONE);
+			mTvStateText.setText(R.string.state_text_none);
 		}
 	}
 	
 	private static class ComunicationAdapter extends BaseAdapter {
-		
+
 		private List<TComunicationEntity> mComunications;
 		private LayoutInflater mInflater;
 		
@@ -128,14 +154,12 @@ public class CommunicationActivity extends Activity {
 			if (direction == EnumDirection.to) {
 				ViewHolder holder = new ViewHolder();
 				View view = mInflater.inflate(R.layout.view_communication_item_left, parent);
-				holder.isSended = false;
 				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_left);
 				view.setTag(holder);
 				return view;
 			} else if (direction == EnumDirection.from) {
 				ViewHolder holder = new ViewHolder();
 				View view = mInflater.inflate(R.layout.view_communication_item_right, parent);
-				holder.isSended = true;
 				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_right);
 				view.setTag(holder);
 				return view;
@@ -145,9 +169,8 @@ public class CommunicationActivity extends Activity {
 			}		
 		}
 		
-		private static class ViewHolder {
+		static class ViewHolder {
 			public TextView tvContent;
-			public boolean isSended = true;
 		}
 	}
 	

@@ -62,6 +62,7 @@ public class MainActivity extends Activity {
 	private TCasesEntity mCasesEntity;
 	private TInvestmentsEntity mInvestmentsEntity;
 	private TFinancingsEntity mFinancingsEntity;
+	TaskGetInfomation mTaskGetInfo;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +126,7 @@ public class MainActivity extends Activity {
 	//重置数据显示区域，当切换标签的时候，需要重新load数据
 	private void resetContentView() {
 		mBtnRetry.setVisibility(View.GONE);		
-		mTvStateText.setText("正在获取数据");
+		mTvStateText.setText(R.string.state_text_request);
 		mTvStateText.setVisibility(View.VISIBLE);		
 		mPbWaiting.setVisibility(View.VISIBLE);		
 		mLlDataView.setVisibility(View.GONE);		
@@ -162,8 +163,12 @@ public class MainActivity extends Activity {
 		if (pos > tabId.length || pos < 0 || pos == mCurrentPos)
 			return;
 		//执行网络请求
-		TaskGetInfomation task = new TaskGetInfomation(this);
-		task.execute(tabType[pos]);
+		if (mTaskGetInfo != null) {
+			mTaskGetInfo.cancel(true);
+			mTaskGetInfo = null;
+		}
+		mTaskGetInfo = new TaskGetInfomation(this);
+		mTaskGetInfo.execute(tabType[pos]);
 		resetContentView();
 		
 		//记录上一次focus line所在的位置
@@ -212,7 +217,7 @@ public class MainActivity extends Activity {
 			mLlStateView.setVisibility(View.VISIBLE);
 			mLlDataView.setVisibility(View.GONE);
 			mBtnRetry.setVisibility(View.VISIBLE);
-			mTvStateText.setText("获取数据失败，请重试");
+			mTvStateText.setText(R.string.state_text_failed);
 			mTvStateText.setVisibility(View.VISIBLE);
 			mPbWaiting.setVisibility(View.GONE);
 		}
@@ -246,7 +251,7 @@ public class MainActivity extends Activity {
 
 		@Override
 		public void onPostExecute(IBaseType entity) {
-			if (mActivity != null) {
+			if (mActivity != null && !isCancelled()) {
 				mActivity.onGetCompaniesComplete(mType, entity, mException);
 			}
 		}

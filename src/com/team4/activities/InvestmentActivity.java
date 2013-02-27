@@ -69,10 +69,6 @@ public class InvestmentActivity extends Activity {
 		String examineCycle = entity.getExamineCycleFloor() + "-" + entity.getExamineCycleUpper() + "个月";
 		tvExamineCycle.setText(examineCycle);
 		
-		// 地址
-//		TextView tvAddress = (TextView) findViewById(R.id.tv_investment_address);
-//		tvAddress.setText(entity.getAddress());
-
 		// 资金来源
 		TextView tvCapitalSource = (TextView) findViewById(R.id.tv_investment_capital_source);
 		tvCapitalSource.setText(entity.getCapitalSource());
@@ -123,11 +119,7 @@ public class InvestmentActivity extends Activity {
 
 		// 是否有佣金
 		TextView tvHasCommission = (TextView) findViewById(R.id.tv_investment_has_commission);
-		if (entity.getHasCommission()) {
-			tvHasCommission.setText("否");
-		} else {
-			tvHasCommission.setText("是");
-		}
+		tvHasCommission.setText(entity.getHasCommission()?R.string.yes:R.string.no);
 
 		// 佣金比例
 		TextView tvCommissionProportion = (TextView) findViewById(R.id.tv_investment_commission_proportion);

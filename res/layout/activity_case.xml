@@ -42,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:background="@color/color_zhonghui"
-                android:text="类别" />
+                android:text="@string/type" />
 
             <TextView
                 android:id="@+id/tv_case_type"
@@ -56,7 +56,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:background="@color/color_zhonghui"
-                android:text="审级" />
+                android:text="@string/case_level" />
 
             <TextView
                 android:id="@+id/tv_case_level"
@@ -78,7 +78,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1.0"
                 android:background="@color/color_zhonghui"
-                android:text="收案日期" />
+                android:text="@string/receive_at" />
 
             <TextView
                 android:id="@+id/tv_case_receive_at"
@@ -100,7 +100,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="委托人" />
+                android:text="@string/client" />
 
             <TextView
                 android:id="@+id/tv_case_client"
@@ -136,7 +136,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="通讯" />
+                android:text="@string/communication" />
 
             <TextView
                 android:id="@+id/tv_case_client_address"
@@ -158,7 +158,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="对方当事人" />
+                android:text="@string/oppo_client" />
 
             <TextView
                 android:id="@+id/tv_case_oppo_client"
@@ -194,7 +194,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="通讯" />
+                android:text="@string/communication" />
 
             <TextView
                 android:id="@+id/tv_case_oppo_client_address"
@@ -216,7 +216,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="对方代理人" />
+                android:text="@string/oppo_lawyer" />
 
             <TextView
                 android:id="@+id/tv_case_oppo_lawyer"
@@ -252,7 +252,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="通讯" />
+                android:text="@string/communication" />
 
             <TextView
                 android:id="@+id/tv_case_oppo_lawyer_address"
@@ -274,7 +274,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="案由" />
+                android:text="@string/cause" />
 
             <TextView
                 android:id="@+id/tv_case_cause"
@@ -296,7 +296,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="法院案号" />
+                android:text="@string/case_no" />
 
             <TextView
                 android:id="@+id/tv_case_court_no"
@@ -318,7 +318,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="受理法院" />
+                android:text="@string/court_name" />
 
             <TextView
                 android:id="@+id/tv_case_court_name"
@@ -340,7 +340,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="法院通讯地址" />
+                android:text="@string/court_address" />
 
             <TextView
                 android:id="@+id/tv_case_court_address"
@@ -362,7 +362,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="受理日期" />
+                android:text="@string/accept_at" />
 
             <TextView
                 android:id="@+id/tv_case_accept_at"
@@ -384,7 +384,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="收到应诉通知书日期" />
+                android:text="@string/receive_notice_at" />
 
             <TextView
                 android:id="@+id/tv_case_receive_notice_at"
@@ -406,7 +406,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="主审法官" />
+                android:text="" />
 
             <TextView
                 android:id="@+id/tv_case_juger_name"
@@ -428,7 +428,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="主审法官电话" />
+                android:text="@string/juger_phone" />
 
             <TextView
                 android:id="@+id/tv_case_juger_phone"
@@ -450,7 +450,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="举证期限" />
+                android:text="@string/proof_limit" />
 
             <TextView
                 android:id="@+id/tv_case_proof_limit"
@@ -472,7 +472,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="书记员" />
+                android:text="@string/clerk_name" />
 
             <TextView
                 android:id="@+id/tv_case_clerk_name"
@@ -494,7 +494,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="书记员电话" />
+                android:text="@string/clerk_phone" />
 
             <TextView
                 android:id="@+id/tv_case_clerk_phone"
@@ -516,7 +516,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="答辩期限" />
+                android:text="@string/reply_limit" />
 
             <TextView
                 android:id="@+id/tv_case_reply_limit"
@@ -538,7 +538,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="开庭日期" />
+                android:text="@string/open_at" />
 
             <TextView
                 android:id="@+id/tv_case_open_at"
@@ -560,7 +560,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="判决日期" />
+                android:text="@string/judge_at" />
 
             <TextView
                 android:id="@+id/tv_case_judge_at"
@@ -582,7 +582,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="判决书签收日期" />
+                android:text="@string/receive_judge_at" />
 
             <TextView
                 android:id="@+id/tv_case_receive_judge_at"
@@ -604,7 +604,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="上诉期截止日期" />
+                android:text="@string/appeal_limit" />
 
             <TextView
                 android:id="@+id/tv_case_appeal_limit"
@@ -626,7 +626,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="创建时间" />
+                android:text="@string/create_at" />
 
             <TextView
                 android:id="@+id/tv_case_create_at"
@@ -648,7 +648,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="最后修改时间" />
+                android:text="@string/modify_at" />
 
             <TextView
                 android:id="@+id/tv_case_modify_at"
@@ -670,7 +670,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="2.0"
                 android:background="@color/color_zhonghui"
-                android:text="委托人签收" />
+                android:text="@string/client_receive" />
 
             <TextView
                 android:id="@+id/tv_case_client_receive"

@@ -102,11 +102,7 @@ public class FinancingActivity extends Activity {
 		
 		// 是否有佣金
 		TextView tvHasCommission = (TextView) findViewById(R.id.tv_financing_has_commission);
-		if (entity.getHasCommission()) {
-			tvHasCommission.setText("否");
-		} else {
-			tvHasCommission.setText("是");
-		}
+		tvHasCommission.setText(entity.getHasCommission()?R.string.yes:R.string.no);
 
 		// 佣金比例
 		TextView tvCommissionProportion = (TextView) findViewById(R.id.tv_financing_commission_proportion);
