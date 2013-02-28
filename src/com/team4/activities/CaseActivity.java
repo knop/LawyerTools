@@ -29,7 +29,8 @@ public class CaseActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) { 
 		MenuInflater inflater = new MenuInflater(this);  
-		inflater.inflate(R.menu.communication_menu, menu);  
+		inflater.inflate(R.menu.communication_menu, menu); 
+		menu.removeItem(R.id.match);
         return super.onCreateOptionsMenu(menu);
 	}
 	

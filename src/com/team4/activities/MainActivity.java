@@ -14,9 +14,12 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.animation.TranslateAnimation;
 import android.widget.AdapterView;
+import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.BaseAdapter;
 import android.widget.Button;
@@ -47,14 +50,18 @@ import com.team4.utils.util.T4Log;
 
 public class MainActivity extends Activity {
 	
-	private static final String RECORD_PERPAGE = "100";
-	private static final String PAGE_NUMBER = "1";
-	private static final int FOCUS_LINE_WIDTH_DP = 60; // 单位为dp
+	private final static String RECORD_PERPAGE = "100";
+	private final static String PAGE_NUMBER = "1";
+	private final static int FOCUS_LINE_WIDTH_DP = 60; // 单位为dp
 	
-	//注意:tabId和tabType需要个数匹配
-	private static final int tabId[] = { R.id.tv_tab_company, R.id.tv_tab_investment, 
+	private final int CONTEXT_MENU_DETAIL = 1;
+	private final int CONTEXT_MENU_COMMUNICATION = 2;
+	private final int CONTEXT_MENU_MATCH = 3;
+	
+	//注意:tabIds和tabTypes需要个数匹配
+	private static final int tabIds[] = { R.id.tv_tab_company, R.id.tv_tab_investment, 
 		R.id.tv_tab_financing, R.id.tv_tab_case };
-	private static final String tabType[] = { HttpManager.TYPE_COMPANY, HttpManager.TYPE_INVESTMENT,
+	private static final String tabTypes[] = { HttpManager.TYPE_COMPANY, HttpManager.TYPE_INVESTMENT,
 		HttpManager.TYPE_FINANCING, HttpManager.TYPE_CASE };
 	
 	private int mCurrentPos = -1;
@@ -106,13 +113,28 @@ public class MainActivity extends Activity {
 	}
 	
 	@Override
-	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-		
+	public boolean onContextItemSelected(MenuItem item) {
+		AdapterContextMenuInfo menuInfo = (AdapterContextMenuInfo)item.getMenuInfo();
+		TInfomationEntity entity =  (TInfomationEntity)mLvData.getAdapter().getItem(menuInfo.position);
+		switch (item.getItemId()) {
+		case CONTEXT_MENU_DETAIL:
+			showDetail(entity);
+			break;
+		case CONTEXT_MENU_COMMUNICATION:
+			showCommunicationPage(entity);
+			break;
+		case CONTEXT_MENU_MATCH:
+			showMatchPage(entity);
+			break;
+		default:
+			break;
+		}
+		return true;
 	}
 
 	private void initTabView() {
-		for (int i = 0; i < tabId.length; i++) {
-			TextView tv = (TextView) findViewById(tabId[i]);
+		for (int i = 0; i < tabIds.length; i++) {
+			TextView tv = (TextView) findViewById(tabIds[i]);
 			tv.setTag(i);
 			tv.setOnClickListener(new View.OnClickListener(){
 				@Override
@@ -129,7 +151,7 @@ public class MainActivity extends Activity {
 
 		DisplayMetrics dm = new DisplayMetrics();
 		getWindowManager().getDefaultDisplay().getMetrics(dm);
-		mTvWidth = dm.widthPixels / tabId.length;
+		mTvWidth = dm.widthPixels / tabIds.length;
 		mOffset = (mTvWidth - FuncUtil.dp2px(this, FOCUS_LINE_WIDTH_DP)) / 2;
 	}
 
@@ -146,12 +168,26 @@ public class MainActivity extends Activity {
 		mLlDataView = findViewById(R.id.ll_data_view);
 		mLlStateView = findViewById(R.id.ll_state_view);
 		mLvData = (ListView) findViewById(R.id.lv_data);
+		mLvData.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
+			
+			@Override
+			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
+				String tabType = tabTypes[mCurrentPos];
+				menu.add(Menu.NONE, CONTEXT_MENU_DETAIL, CONTEXT_MENU_DETAIL, R.string.detail);
+				menu.add(Menu.NONE, CONTEXT_MENU_COMMUNICATION, CONTEXT_MENU_COMMUNICATION, R.string.communication);
+				if (tabType.equalsIgnoreCase(HttpManager.TYPE_INVESTMENT)
+						|| tabType.equalsIgnoreCase(HttpManager.TYPE_FINANCING)) {
+					menu.add(Menu.NONE, CONTEXT_MENU_MATCH, CONTEXT_MENU_MATCH, R.string.match);	
+				}				
+			}
+			
+		});
+//		registerForContextMenu(mLvData);
 		mLvData.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
 			public void onItemClick(AdapterView<?> listView, View v, int pos,
 					long id) {
-				// TODO Auto-generated method stub
 				showDetail((TInfomationEntity)listView.getAdapter().getItem(pos));
 			}
 		});
@@ -192,13 +228,26 @@ public class MainActivity extends Activity {
 		mLlStateView.setVisibility(View.VISIBLE);		
 	}
 	
+	private void showMatchPage(TInfomationEntity entity) {
+		
+	}
+	
+	private void showCommunicationPage(TInfomationEntity entity) {
+		Intent intent = new Intent();
+		intent.setClass(this, CommunicationActivity.class);
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, entity.getId());
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, entity.getName());
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, tabTypes[mCurrentPos]);
+		startActivity(intent);
+	}
+	
 	private void showDetail(TInfomationEntity entity) {
 		if (entity == null) {
 			Toast.makeText(this, "没有详细信息", Toast.LENGTH_SHORT).show();
 			return;
 		}
 		Intent intent = new Intent();
-		String type = tabType[mCurrentPos];
+		String type = tabTypes[mCurrentPos];
 		if(type.equalsIgnoreCase(HttpManager.TYPE_COMPANY)) {
 			intent.setClass(this, CompanyActivity.class);
 			intent.putExtra(TCompanyEntity.class.getName(), entity);
@@ -219,7 +268,7 @@ public class MainActivity extends Activity {
 	
 	//选中某一个tab的时候，将文字置成高亮，并且滑动Focus line到指定项下方
 	private void setFocusTab(int pos) {
-		if (pos > tabId.length || pos < 0 || pos == mCurrentPos)
+		if (pos > tabIds.length || pos < 0 || pos == mCurrentPos)
 			return;
 		//执行网络请求
 		getInfomation(pos);
@@ -231,11 +280,11 @@ public class MainActivity extends Activity {
 		//切换颜色
 		TextView tv = null;
 		if (mCurrentPos >= 0) {
-			tv = (TextView) findViewById(tabId[mCurrentPos]);
+			tv = (TextView) findViewById(tabIds[mCurrentPos]);
 			tv.setTextColor(getResources().getColor(R.color.color_zhonghui));
 		}
 		mCurrentPos = pos;
-		tv = (TextView) findViewById(tabId[mCurrentPos]);
+		tv = (TextView) findViewById(tabIds[mCurrentPos]);
 		tv.setTextColor(getResources().getColor(R.color.white));
 
 		//focus line动画效果
@@ -251,7 +300,7 @@ public class MainActivity extends Activity {
 			mTaskGetInfo = null;
 		}
 		mTaskGetInfo = new TaskGetInfomation(this);
-		mTaskGetInfo.execute(tabType[pos]);	
+		mTaskGetInfo.execute(tabTypes[pos]);	
 		resetContentView();
 	}
 	

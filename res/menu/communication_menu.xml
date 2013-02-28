@@ -6,5 +6,10 @@
         android:icon="@drawable/ic_launcher"
         android:orderInCategory="1"
         android:title="@string/communication"/>
-
+    
+    <item
+        android:id="@+id/match"
+        android:icon="@drawable/ic_launcher"
+        android:orderInCategory="2"
+        android:title="@string/match"/>
 </menu>

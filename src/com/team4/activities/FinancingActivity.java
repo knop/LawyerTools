@@ -30,7 +30,7 @@ public class FinancingActivity extends Activity {
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) { 
 		MenuInflater inflater = new MenuInflater(this);  
-		inflater.inflate(R.menu.communication_menu, menu);  
+		inflater.inflate(R.menu.communication_menu, menu);
         return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -39,6 +39,8 @@ public class FinancingActivity extends Activity {
 		switch(item.getItemId()){
 		case R.id.communication:
 			showCommunicationPage();
+			break;
+		case R.id.match:
 			break;
 		default:
 			break;

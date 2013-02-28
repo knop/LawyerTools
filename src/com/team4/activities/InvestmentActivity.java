@@ -40,6 +40,8 @@ public class InvestmentActivity extends Activity {
 		case R.id.communication:
 			showCommunicationPage();
 			break;
+		case R.id.match:
+			break;
 		default:
 			break;
 		}
