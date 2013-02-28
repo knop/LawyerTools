@@ -14,14 +14,15 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@string/about"
-            android:textColor="@color/color_bai"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:textAppearance="?android:attr/textAppearanceLarge"
+            android:textColor="@color/color_bai" />
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="50dp"
         android:orientation="vertical" >
 
         <ImageView
@@ -29,27 +30,67 @@
             android:layout_height="wrap_content"
             android:contentDescription="@string/app_name"
             android:src="@drawable/ic_launcher" />
-
         <TextView
-            android:id="@+id/textView1"
+            android:id="@+id/tv_about_copyright"
+            android:layout_marginTop="10dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="版本：1.0（beta）"
             android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="邮箱：knop0211@gmail.com"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-
-        <TextView
-            android:id="@+id/textView3"
-            android:layout_width="wrap_content"
+            android:layout_marginTop="60dp"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:gravity="right"
+                android:text="@string/about_version"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <TextView
+                android:id="@+id/tv_about_version"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="版权所有 team4.us"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:gravity="right"
+                android:text="@string/about_rd"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <TextView
+                android:id="@+id/tv_about_rd"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.0"
+                android:gravity="right"
+                android:text="@string/about_email"
+                android:textAppearance="?android:attr/textAppearanceLarge" />
+            <TextView
+                android:id="@+id/tv_about_email"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="5.0"
+                android:textAppearance="?android:attr/textAppearanceMedium" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>
