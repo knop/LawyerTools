@@ -468,8 +468,8 @@
             android:text="@string/comments"
             android:textColor="@color/color_bai" />
 
-        <TextView
-            android:id="@+id/tv_investment_comment"
+        <WebView
+            android:id="@+id/wv_investment_comment"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

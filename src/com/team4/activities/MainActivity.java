@@ -192,7 +192,7 @@ public class MainActivity extends Activity {
 			return;
 		//执行网络请求
 		getInfomation(pos);
-		resetContentView();
+//		resetContentView();
 		
 		//记录上一次focus line所在的位置
 		int lastX = mTvWidth * mCurrentPos + mOffset;
@@ -221,6 +221,7 @@ public class MainActivity extends Activity {
 		}
 		mTaskGetInfo = new TaskGetInfomation(this);
 		mTaskGetInfo.execute(tabType[pos]);	
+		resetContentView();
 	}
 	
 	public void onGetCompaniesComplete(String type, IBaseType entity, T4Exception ex) {

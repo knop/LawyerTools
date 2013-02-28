@@ -385,10 +385,10 @@
             android:text="@string/comments"
             android:textColor="@color/color_bai" />
 
-        <TextView
-            android:id="@+id/tv_financing_comment"
+        <WebView
+            android:id="@+id/wv_financing_comment"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"/>
 
         <TextView
             android:layout_width="match_parent"

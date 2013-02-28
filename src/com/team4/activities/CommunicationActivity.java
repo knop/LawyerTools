@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.webkit.WebView;
 import android.widget.BaseAdapter;
 import android.widget.ListView;
 import android.widget.ProgressBar;
@@ -147,20 +148,27 @@ public class CommunicationActivity extends Activity {
 				return;
 			
 			ViewHolder holder = (ViewHolder)view.getTag();
-			holder.tvContent.setText(entity.getContent());
+//			holder.tvContent.setText(entity.getContent());
+			String data = entity.getContent();
+			data = data.replaceAll("%","%25");//当字符串中包含%时，会出现无法显示的问题，所以要替换成%25
+			holder.wvContent.loadData(data, "text/html", null);
 		}
 		
 		private View newItemView(ViewGroup parent, int direction) {
 			if (direction == EnumDirection.to) {
 				ViewHolder holder = new ViewHolder();
 				View view = mInflater.inflate(R.layout.view_communication_item_left, parent);
-				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_left);
+//				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_left);
+				holder.wvContent = (WebView)view.findViewById(R.id.wv_communication_content_left);
+				holder.wvContent.getSettings().setDefaultTextEncodingName("utf-8");
 				view.setTag(holder);
 				return view;
 			} else if (direction == EnumDirection.from) {
 				ViewHolder holder = new ViewHolder();
 				View view = mInflater.inflate(R.layout.view_communication_item_right, parent);
-				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_right);
+//				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_right);
+				holder.wvContent = (WebView)view.findViewById(R.id.wv_communication_content_right);
+				holder.wvContent.getSettings().setDefaultTextEncodingName("utf-8");
 				view.setTag(holder);
 				return view;
 			} else {
@@ -170,7 +178,8 @@ public class CommunicationActivity extends Activity {
 		}
 		
 		static class ViewHolder {
-			public TextView tvContent;
+//			public TextView tvContent;
+			public WebView wvContent;
 		}
 	}
 	

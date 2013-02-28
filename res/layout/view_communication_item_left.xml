@@ -14,6 +14,18 @@
         android:gravity="left"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
+        android:visibility="gone"
+        android:textColor="@color/color_hei" />
+
+    <WebView
+        android:id="@+id/wv_communication_content_left"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1.0"
+        android:background="@color/color_bai"
+        android:gravity="left"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
         android:textColor="@color/color_hei" />
 
     <TextView

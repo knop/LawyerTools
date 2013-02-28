@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -109,7 +110,15 @@ public class FinancingActivity extends Activity {
 		tvCommissionProportion.setText(entity.getCommissionProportion());
 
 		// 备注
-		TextView tvComment = (TextView) findViewById(R.id.tv_financing_comment);
-		tvComment.setText(entity.getComment());
+//		TextView tvComment = (TextView) findViewById(R.id.tv_financing_comment);
+//		tvComment.setText(entity.getComment());
+		String data = entity.getComment();
+		if (data == null || data.length() <= 0)
+			data = this.getResources().getString(R.string.text_none);
+		else
+			data = data.replaceAll("%","%25");//当字符串中包含%时，会出现无法显示的问题，所以要替换成%25
+		WebView wvComment = (WebView) findViewById(R.id.wv_financing_comment);
+		wvComment.getSettings().setDefaultTextEncodingName("utf-8");
+		wvComment.loadData(data, "text/html", null);
 	}
 }

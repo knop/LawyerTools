@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -97,7 +98,13 @@ public class CompanyActivity extends Activity {
 		tvRadio.setText(entity.getCommissionRatio());
 
 		// 备注
-		TextView tvComments = (TextView) findViewById(R.id.tv_comments);
-		tvComments.setText(entity.getComments());
+		String data = entity.getComments();
+		if (data == null || data.length() <= 0)
+			data = this.getResources().getString(R.string.text_none);
+		else
+			data = data.replaceAll("%","%25");//当字符串中包含%时，会出现无法显示的问题，所以要替换成%25
+		WebView wvComments = (WebView) findViewById(R.id.wv_comments);
+		wvComments.getSettings().setDefaultTextEncodingName("utf-8");
+		wvComments.loadData(data, "text/html", null);
 	}
 }

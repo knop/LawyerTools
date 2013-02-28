@@ -320,8 +320,8 @@
             android:text="@string/comments"
             android:textColor="@color/color_bai" />
 
-        <TextView
-            android:id="@+id/tv_comments"
+        <WebView
+            android:id="@+id/wv_comments"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
