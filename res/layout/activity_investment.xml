@@ -1,491 +1,501 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content" >
+    android:layout_height="wrap_content"
+    android:orientation="vertical" >
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical" >
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="35dp"
-            android:layout_marginBottom="3dp"
-            android:background="@color/title_bg"
-            android:orientation="horizontal" >
-
-            <TextView
-                android:id="@+id/tv_investment_title"
-                android:layout_width="0dp"
-                android:layout_height="match_parent"
-                android:layout_weight="1.0"
-                android:gravity="center"
-                android:textColor="@color/color_bai" />
-
-            <Button
-                android:id="@+id/btn_investment_communication"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/communication" />
-        </LinearLayout>
+        android:layout_height="44dp"
+        android:layout_marginBottom="3dp"
+        android:background="@color/title_bg"
+        android:orientation="horizontal" >
 
         <TextView
+            android:id="@+id/tv_investment_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@color/title_bg"
-            android:paddingLeft="5dp"
-            android:text="@string/basic_info"
+            android:layout_height="match_parent"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:focusableInTouchMode="true"
+            android:gravity="center"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:singleLine="true"
+            android:textAppearance="?android:attr/textAppearanceLarge"
             android:textColor="@color/color_bai" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/source" />
-
-            <TextView
-                android:id="@+id/tv_investment_info_source"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:paddingLeft="5dp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/type" />
-
-            <TextView
-                android:id="@+id/tv_investment_company_type"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/name" />
-
-            <TextView
-                android:id="@+id/tv_investment_contact_person"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:paddingLeft="5dp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/phone_number" />
-
-            <TextView
-                android:id="@+id/tv_investment_telephone"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/mail" />
-
-            <TextView
-                android:id="@+id/tv_investment_email"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="5.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/examine_cycle" />
-
-            <TextView
-                android:id="@+id/tv_investment_examine"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:background="@color/title_bg"
-            android:paddingLeft="5dp"
-            android:text="@string/investment_info"
-            android:textColor="@color/color_bai" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/capital_source" />
-
-            <TextView
-                android:id="@+id/tv_investment_capital_source"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:paddingLeft="5dp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/rating" />
-
-            <TextView
-                android:id="@+id/tv_investment_rate"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/investment_industry" />
-
-            <TextView
-                android:id="@+id/tv_investment_industry"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/investment_way" />
-
-            <TextView
-                android:id="@+id/tv_investment_style"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/investment_quota" />
-
-            <TextView
-                android:id="@+id/tv_investment_quota"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/investment_profit" />
-
-            <TextView
-                android:id="@+id/tv_investment_profit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/investment_horizon" />
-
-            <TextView
-                android:id="@+id/tv_investment_horizon"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/prior_cost" />
-
-            <TextView
-                android:id="@+id/tv_investment_prior_cost"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/guarantee_type" />
-
-            <TextView
-                android:id="@+id/tv_investment_guarantee_type"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/payment" />
-
-            <TextView
-                android:id="@+id/tv_investment_payment"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-              <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="5dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/investment_purpose" />
-
-            <TextView
-                android:id="@+id/tv_investment_purpose"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="4.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/flow_area" />
-
-            <TextView
-                android:id="@+id/tv_investment_areas"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="11.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:background="@color/title_bg"
-            android:paddingLeft="5dp"
-            android:text="@string/commission_info"
-            android:textColor="@color/color_bai" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:baselineAligned="false"
-            android:orientation="horizontal"
-            android:paddingTop="3dp" >
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/have_commission" />
-
-            <TextView
-                android:id="@+id/tv_investment_has_commission"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.0"
-                android:paddingLeft="5dp" />
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="3.0"
-                android:background="@color/color_zhonghui"
-                android:text="@string/commission_ratio" />
-
-            <TextView
-                android:id="@+id/tv_investment_commission_proportion"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="2.0"
-                android:paddingLeft="5dp" />
-        </LinearLayout>
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:background="@color/title_bg"
-            android:paddingLeft="5dp"
-            android:text="@string/comments"
-            android:textColor="@color/color_bai" />
-
-        <WebView
-            android:id="@+id/wv_investment_comment"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="3dp"
-            android:background="@color/title_bg"
-            android:paddingLeft="5dp"
-            android:text="@string/attachments"
-            android:textColor="@color/color_bai" />
-
-        <TextView
-            android:id="@+id/tv_attachments"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
     </LinearLayout>
 
-</ScrollView>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/title_bg"
+                android:paddingLeft="5dp"
+                android:text="@string/basic_info"
+                android:textColor="@color/color_bai" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="3dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/source" />
+
+                <TextView
+                    android:id="@+id/tv_investment_info_source"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.0"
+                    android:paddingLeft="5dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/type" />
+
+                <TextView
+                    android:id="@+id/tv_investment_company_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/name" />
+
+                <TextView
+                    android:id="@+id/tv_investment_contact_person"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.0"
+                    android:paddingLeft="5dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/phone_number" />
+
+                <TextView
+                    android:id="@+id/tv_investment_telephone"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/mail" />
+
+                <TextView
+                    android:id="@+id/tv_investment_email"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="5.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/examine_cycle" />
+
+                <TextView
+                    android:id="@+id/tv_investment_examine"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@color/title_bg"
+                android:paddingLeft="5dp"
+                android:text="@string/investment_info"
+                android:textColor="@color/color_bai" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="3dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/capital_source" />
+
+                <TextView
+                    android:id="@+id/tv_investment_capital_source"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:paddingLeft="5dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/rating" />
+
+                <TextView
+                    android:id="@+id/tv_investment_rate"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="3dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/investment_industry" />
+
+                <TextView
+                    android:id="@+id/tv_investment_industry"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="3dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/investment_way" />
+
+                <TextView
+                    android:id="@+id/tv_investment_style"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/investment_quota" />
+
+                <TextView
+                    android:id="@+id/tv_investment_quota"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/investment_profit" />
+
+                <TextView
+                    android:id="@+id/tv_investment_profit"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/investment_horizon" />
+
+                <TextView
+                    android:id="@+id/tv_investment_horizon"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/prior_cost" />
+
+                <TextView
+                    android:id="@+id/tv_investment_prior_cost"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/guarantee_type" />
+
+                <TextView
+                    android:id="@+id/tv_investment_guarantee_type"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/payment" />
+
+                <TextView
+                    android:id="@+id/tv_investment_payment"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="5dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/investment_purpose" />
+
+                <TextView
+                    android:id="@+id/tv_investment_purpose"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="3dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/flow_area" />
+
+                <TextView
+                    android:id="@+id/tv_investment_areas"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="11.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@color/title_bg"
+                android:paddingLeft="5dp"
+                android:text="@string/commission_info"
+                android:textColor="@color/color_bai" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:paddingTop="3dp" >
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/have_commission" />
+
+                <TextView
+                    android:id="@+id/tv_investment_has_commission"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.0"
+                    android:paddingLeft="5dp" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="3.0"
+                    android:background="@color/color_zhonghui"
+                    android:text="@string/commission_ratio" />
+
+                <TextView
+                    android:id="@+id/tv_investment_commission_proportion"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="2.0"
+                    android:paddingLeft="5dp" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@color/title_bg"
+                android:paddingLeft="5dp"
+                android:text="@string/comments"
+                android:textColor="@color/color_bai" />
+
+            <WebView
+                android:id="@+id/wv_investment_comment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@color/title_bg"
+                android:paddingLeft="5dp"
+                android:text="@string/attachments"
+                android:textColor="@color/color_bai" />
+
+            <TextView
+                android:id="@+id/tv_attachments"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

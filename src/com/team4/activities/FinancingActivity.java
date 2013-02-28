@@ -3,9 +3,10 @@ package com.team4.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.team4.http.HttpManager;
@@ -14,32 +15,40 @@ import com.team4.type.TFinancingEntity;
 
 public class FinancingActivity extends Activity {
 
+	private TFinancingEntity mFinancingEntity;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_financing);
 		Intent intent = getIntent();
-		TFinancingEntity entity = (TFinancingEntity) intent
+		mFinancingEntity = (TFinancingEntity) intent
 				.getSerializableExtra(TFinancingEntity.class.getName());
-		showDetail(entity);
+		showDetail(mFinancingEntity);
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) { 
+		MenuInflater inflater = new MenuInflater(this);  
+		inflater.inflate(R.menu.communication_menu, menu);  
+        return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override  
+    public boolean onOptionsItemSelected(MenuItem item) { 
+		switch(item.getItemId()){
+		case R.id.communication:
+			showCommunicationPage();
+			break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	private void showDetail(final TFinancingEntity entity) {
 		if (entity == null)
 			return;
-
-		Button btnComunication = (Button) findViewById(R.id.btn_financing_communication);
-		btnComunication.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(FinancingActivity.this, CommunicationActivity.class);
-				intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, entity.getId());
-				intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, entity.getName());
-				intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_FINANCING);
-				startActivity(intent);
-			}
-		});
 
 		// 公司名称
 		TextView tvTitle = (TextView) findViewById(R.id.tv_financing_title);
@@ -120,5 +129,16 @@ public class FinancingActivity extends Activity {
 		WebView wvComment = (WebView) findViewById(R.id.wv_financing_comment);
 		wvComment.getSettings().setDefaultTextEncodingName("utf-8");
 		wvComment.loadData(data, "text/html", null);
+	}
+	
+	private void showCommunicationPage() {
+		if (mFinancingEntity == null)
+			return;
+		Intent intent = new Intent();
+		intent.setClass(this, CommunicationActivity.class);
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, mFinancingEntity.getId());
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, mFinancingEntity.getName());
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_FINANCING);
+		startActivity(intent);
 	}
 }

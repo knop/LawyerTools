@@ -3,9 +3,10 @@ package com.team4.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.webkit.WebView;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.team4.http.HttpManager;
@@ -14,32 +15,40 @@ import com.team4.type.TCompanyEntity;
 
 public class CompanyActivity extends Activity {
 
+	private TCompanyEntity mCompanyEntity;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_company);
 		Intent intent = getIntent();
-		TCompanyEntity entity = (TCompanyEntity) intent
+		mCompanyEntity = (TCompanyEntity) intent
 				.getSerializableExtra(TCompanyEntity.class.getName());
-		showDetail(entity);
+		showDetail(mCompanyEntity);
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) { 
+		MenuInflater inflater = new MenuInflater(this);  
+		inflater.inflate(R.menu.communication_menu, menu);  
+        return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override  
+    public boolean onOptionsItemSelected(MenuItem item) { 
+		switch(item.getItemId()){
+		case R.id.communication:
+			showCommunicationPage();
+			break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	private void showDetail(final TCompanyEntity entity) {
 		if (entity == null)
 			return;
-
-		Button btnComunication = (Button) findViewById(R.id.btn_company_communication);
-		btnComunication.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(CompanyActivity.this, CommunicationActivity.class);
-				intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, entity.getId());
-				intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, entity.getName());
-				intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_COMPANY);
-				startActivity(intent);
-			}
-		});
 
 		// 公司名称
 		TextView tvCompanyTitle = (TextView) findViewById(R.id.tv_company_title);
@@ -106,5 +115,16 @@ public class CompanyActivity extends Activity {
 		WebView wvComments = (WebView) findViewById(R.id.wv_comments);
 		wvComments.getSettings().setDefaultTextEncodingName("utf-8");
 		wvComments.loadData(data, "text/html", null);
+	}
+
+	private void showCommunicationPage() {
+		if (mCompanyEntity == null)
+			return;
+		Intent intent = new Intent();
+		intent.setClass(this, CommunicationActivity.class);
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, mCompanyEntity.getId());
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, mCompanyEntity.getName());
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_COMPANY);
+		startActivity(intent);
 	}
 }

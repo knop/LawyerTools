@@ -3,8 +3,9 @@ package com.team4.activities;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.TextView;
 
 import com.team4.http.HttpManager;
@@ -13,32 +14,40 @@ import com.team4.type.TCaseEntity;
 
 public class CaseActivity extends Activity {
 
+	private TCaseEntity mCaseEntity;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_case);
 		Intent intent = getIntent();
-		TCaseEntity entity = (TCaseEntity) intent
+		mCaseEntity = (TCaseEntity) intent
 				.getSerializableExtra(TCaseEntity.class.getName());
-		showDetail(entity);
+		showDetail(mCaseEntity);
 	}
 
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) { 
+		MenuInflater inflater = new MenuInflater(this);  
+		inflater.inflate(R.menu.communication_menu, menu);  
+        return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override  
+    public boolean onOptionsItemSelected(MenuItem item) { 
+		switch(item.getItemId()){
+		case R.id.communication:
+			showCommunicationPage();
+			break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 	private void showDetail(final TCaseEntity entity) {
 		if (entity == null)
 			return;
-
-		Button btnComunication = (Button) findViewById(R.id.btn_case_communication);
-		btnComunication.setOnClickListener(new View.OnClickListener() {
-			@Override
-			public void onClick(View v) {
-				Intent intent = new Intent();
-				intent.setClass(CaseActivity.this, CommunicationActivity.class);
-				intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, entity.getId());
-				intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, entity.getName());
-				intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_CASE);
-				startActivity(intent);
-			}
-		});
 		
 		//标题
 		TextView tvTitle = (TextView) findViewById(R.id.tv_case_title);
@@ -167,5 +176,16 @@ public class CaseActivity extends Activity {
 		//委托人签收
 		TextView tvClientReceive = (TextView) findViewById(R.id.tv_case_client_receive);
 		tvClientReceive.setText(entity.getClientReceived()?R.string.yes:R.string.no);
+	}
+	
+	private void showCommunicationPage() {
+		if (mCaseEntity == null)
+			return;
+		Intent intent = new Intent();
+		intent.setClass(this, CommunicationActivity.class);
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, mCaseEntity.getId());
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, mCaseEntity.getName());
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_CASE);
+		startActivity(intent);
 	}
 }

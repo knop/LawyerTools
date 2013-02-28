@@ -85,8 +85,8 @@ public class MainActivity extends Activity {
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) { 
-		MenuInflater mflater = new MenuInflater(this);  
-        mflater.inflate(R.menu.main_menu, menu);  
+		MenuInflater inflater = new MenuInflater(this);  
+        inflater.inflate(R.menu.main_menu, menu);  
         return super.onCreateOptionsMenu(menu);
 	}
 	
