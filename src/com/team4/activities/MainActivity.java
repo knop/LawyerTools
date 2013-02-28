@@ -8,7 +8,11 @@ import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.TranslateAnimation;
@@ -77,6 +81,33 @@ public class MainActivity extends Activity {
 		initContentView();
 		initFocusLine();
 		setFocusTab(0);
+	}
+	
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) { 
+		MenuInflater mflater = new MenuInflater(this);  
+        mflater.inflate(R.menu.main_menu, menu);  
+        return super.onCreateOptionsMenu(menu);
+	}
+	
+	@Override  
+    public boolean onOptionsItemSelected(MenuItem item) { 
+		switch(item.getItemId()){
+		case R.id.refresh:
+			getInfomation(mCurrentPos);
+			break;
+		case R.id.about:
+			showAboutPage();
+			break;
+		default:
+			break;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+		
 	}
 
 	private void initTabView() {
@@ -222,6 +253,12 @@ public class MainActivity extends Activity {
 		mTaskGetInfo = new TaskGetInfomation(this);
 		mTaskGetInfo.execute(tabType[pos]);	
 		resetContentView();
+	}
+	
+	private void showAboutPage() {
+		Intent intent = new Intent();
+		intent.setClass(this, AboutActivity.class);
+		this.startActivity(intent);
 	}
 	
 	public void onGetCompaniesComplete(String type, IBaseType entity, T4Exception ex) {

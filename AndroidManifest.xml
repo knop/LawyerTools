@@ -7,7 +7,7 @@
     <uses-sdk
         android:minSdkVersion="8"
         android:targetSdkVersion="17" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
@@ -24,16 +24,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.team4.activities.CommunicationActivity"/>
-        <activity
-            android:name="com.team4.activities.CompanyActivity"/>
-        <activity
-            android:name="com.team4.activities.CaseActivity"/>
-        <activity
-            android:name="com.team4.activities.FinancingActivity"/>
-        <activity
-            android:name="com.team4.activities.InvestmentActivity"/>                       
+        <activity android:name="com.team4.activities.CommunicationActivity" />
+        <activity android:name="com.team4.activities.CompanyActivity" />
+        <activity android:name="com.team4.activities.CaseActivity" />
+        <activity android:name="com.team4.activities.FinancingActivity" />
+        <activity android:name="com.team4.activities.InvestmentActivity" />
+        <activity android:name="com.team4.activities.AboutActivity" />
     </application>
 
 </manifest>
