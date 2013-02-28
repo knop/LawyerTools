@@ -24,7 +24,7 @@ public class AboutActivity extends Activity {
 		tvVersion.setText(version);
 		
 		TextView tvRD = (TextView)findViewById(R.id.tv_about_rd);
-		tvRD.setText("陈小辉");	
+		tvRD.setText("陈小辉\n徐淮杰");	
 		
 		TextView tvEmail = (TextView)findViewById(R.id.tv_about_email);
 		tvEmail.setText("knop0211@gmail.com");
