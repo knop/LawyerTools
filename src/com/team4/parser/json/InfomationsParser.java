@@ -13,7 +13,7 @@ import com.team4.utils.type.IBaseType;
  *  @Project       : LawyerTools
  *  @Program Name  : com.team4.parser.json.InfomationsParser.java
  *  @Class Name    : InfomationsParser
- *  @Description   : 类描述
+ *  @Description   : 信息通用解析类
  *  @Author        : Xiaohui Chen
  *  @Creation Date : 2013-3-1 下午1:40:13 
  *  @ModificationHistory  
@@ -36,6 +36,14 @@ public class InfomationsParser implements IJsonParser<IBaseType> {
 			TInfomationsEntity obj = new TInfomationsEntity();
 			if (json.has("total_count")) {
 				obj.setTotalCount(json.getInt("total_count"));
+			}
+			
+			if (json.has("start_index")) {
+				obj.setBeginIndex(json.getInt("start_index"));
+			}
+			
+			if (json.has("end_index")) {
+				obj.setEndIndex(json.getInt("end_index"));
 			}
 			
 			if (json.has("records")) {

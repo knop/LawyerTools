@@ -65,7 +65,7 @@ public class CommunicationActivity extends Activity {
 		}
 	}
 
-	public void onGetCompaniesComplete(T4List<TComunicationEntity> list, T4Exception ex) {
+	public void onGetCommunicationsComplete(T4List<TComunicationEntity> list, T4Exception ex) {
 		if (ex == null && list != null) {
 			if (list.size() <= 0) {
 				mLlDataView.setVisibility(View.GONE);
@@ -216,7 +216,7 @@ public class CommunicationActivity extends Activity {
 		@Override
 		public void onPostExecute(T4List<TComunicationEntity> list) {
 			if (mActivity != null) {
-				mActivity.onGetCompaniesComplete(list, mException);
+				mActivity.onGetCommunicationsComplete(list, mException);
 			}
 		}
 	}

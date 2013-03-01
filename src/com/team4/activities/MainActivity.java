@@ -61,9 +61,10 @@ import com.team4.utils.util.T4Log;
 */
 public class MainActivity extends Activity {
 	
-	private final static String RECORD_PERPAGE = "100";
-	private final static String PAGE_NUMBER = "1";
-	private final static int FOCUS_LINE_WIDTH_DP = 60; // 单位为dp
+	//每次获取记录的条数
+	private final static int RECORD_PERPAGE = 10;
+	// 单位为dp
+	private final static int FOCUS_LINE_WIDTH_DP = 60; 
 	
 	private final int CONTEXT_MENU_DETAIL = 1;
 	private final int CONTEXT_MENU_COMMUNICATION = 2;
@@ -81,7 +82,7 @@ public class MainActivity extends Activity {
 		HttpManager.TYPE_FINANCING, 
 		HttpManager.TYPE_CASE };
 	
-	private int mCurrentPos = -1;
+	private int mCurrentIndex = -1;
 	private View mFocusLine;
 	private int mTvWidth;
 	private int mOffset;
@@ -91,16 +92,19 @@ public class MainActivity extends Activity {
 	private View mLlDataView;
 	private View mLlStateView;
 	private ListView mLvData;
-//	private TCompaniesEntity mCompaniesEntity;
-//	private TCasesEntity mCasesEntity;
-//	private TInvestmentsEntity mInvestmentsEntity;
-//	private TFinancingsEntity mFinancingsEntity;
+	private View mFooterView;
+	private int mTotalCount;
+	private int mEndIndex;
+	private T4List<TInfomationEntity> mInfos;
 	TaskGetInfomation mTaskGetInfo;
+	private boolean mIsLoading;
+	private InfomationAdapter mAdapter;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
+		resetData();
 		initTabView();
 		initContentView();
 		initFocusLine();
@@ -118,7 +122,7 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) { 
 		switch(item.getItemId()){
 		case R.id.refresh:
-			getInfomation(mCurrentPos);
+			getInfomationFirst();
 			break;
 		case R.id.about:
 			showAboutPage();
@@ -149,6 +153,14 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	private void resetData() {
+		if(mInfos == null)
+			mInfos = new T4List<TInfomationEntity>();
+		mInfos.clear();
+		mTotalCount = 0;
+		mEndIndex = 0;
+	}
+	
 	private void initTabView() {
 		for (int i = 0; i < tabIds.length; i++) {
 			TextView tv = (TextView) findViewById(tabIds[i]);
@@ -177,7 +189,7 @@ public class MainActivity extends Activity {
 		mBtnRetry.setOnClickListener(new View.OnClickListener(){
 			@Override
 			public void onClick(View v) {
-				getInfomation(mCurrentPos);
+				getInfomationFirst();
 			}
 		});
 		mTvStateText = (TextView) findViewById(R.id.tv_state_text);
@@ -185,18 +197,22 @@ public class MainActivity extends Activity {
 		mLlDataView = findViewById(R.id.ll_data_view);
 		mLlStateView = findViewById(R.id.ll_state_view);
 		mLvData = (ListView) findViewById(R.id.lv_data);
+		if (mAdapter == null) {
+			mAdapter = new InfomationAdapter(this);
+		}
+		mLvData.setAdapter(mAdapter);
+		mFooterView = getLayoutInflater().inflate(R.layout.activity_main_footer, null);
+		mLvData.addFooterView(mFooterView);
 		mLvData.setOnScrollListener(new OnScrollListener() {
 			
 			@Override
 			public void onScrollStateChanged(AbsListView view, int scrollState) {
-				// TODO Auto-generated method stub
 
 			}
 			
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem,
 					int visibleItemCount, int totalItemCount) {
-				// TODO Auto-generated method stub
 				if (view.getLastVisiblePosition() >= totalItemCount - 1) {
 					loadMoreInfo();
 				}				
@@ -206,7 +222,7 @@ public class MainActivity extends Activity {
 			
 			@Override
 			public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
-				String tabType = tabTypes[mCurrentPos];
+				String tabType = tabTypes[mCurrentIndex];
 				menu.add(Menu.NONE, CONTEXT_MENU_DETAIL, CONTEXT_MENU_DETAIL, R.string.detail);
 				menu.add(Menu.NONE, CONTEXT_MENU_COMMUNICATION, CONTEXT_MENU_COMMUNICATION, R.string.communication);
 				if (tabType.equalsIgnoreCase(HttpManager.TYPE_INVESTMENT)
@@ -230,7 +246,8 @@ public class MainActivity extends Activity {
 			@Override
 			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 				// TODO Auto-generated method stub
-				((InfomationAdapter)mLvData.getAdapter()).getFilter().filter(et.getText().toString());
+				String keyword = et.getText().toString();
+				((InfomationAdapter)mLvData.getAdapter()).getFilter().filter(keyword);
 			}
 			
 			@Override
@@ -285,7 +302,7 @@ public class MainActivity extends Activity {
 		intent.setClass(this, CommunicationActivity.class);
 		intent.putExtra(CommunicationActivity.EXTRA_KEY_ID, entity.getId());
 		intent.putExtra(CommunicationActivity.EXTRA_KEY_TITLE, entity.getName());
-		intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, tabTypes[mCurrentPos]);
+		intent.putExtra(CommunicationActivity.EXTRA_KEY_TYPE, tabTypes[mCurrentIndex]);
 		startActivity(intent);
 	}
 	
@@ -301,7 +318,7 @@ public class MainActivity extends Activity {
 			return;
 		}
 		Intent intent = new Intent();
-		String type = tabTypes[mCurrentPos];
+		String type = tabTypes[mCurrentIndex];
 		if(type.equalsIgnoreCase(HttpManager.TYPE_COMPANY)) {
 			intent.setClass(this, CompanyActivity.class);
 			intent.putExtra(TCompanyEntity.class.getName(), entity);
@@ -327,45 +344,64 @@ public class MainActivity extends Activity {
 	*  @Author         : Xiaohui Chen
 	*/
 	private void setFocusTab(int pos) {
-		if (pos > tabIds.length || pos < 0 || pos == mCurrentPos)
-			return;
-		//执行网络请求
-		getInfomation(pos);
+		if (pos > tabIds.length || pos < 0 || pos == mCurrentIndex)
+			return; 
 		
 		//记录上一次focus line所在的位置
-		int lastX = mTvWidth * mCurrentPos + mOffset;
+		int lastX = mTvWidth * mCurrentIndex + mOffset;
 		
 		//切换颜色
 		TextView tv = null;
-		if (mCurrentPos >= 0) {
-			tv = (TextView) findViewById(tabIds[mCurrentPos]);
+		if (mCurrentIndex >= 0) {
+			tv = (TextView) findViewById(tabIds[mCurrentIndex]);
 			tv.setTextColor(getResources().getColor(R.color.color_zhonghui));
 		}
-		mCurrentPos = pos;
-		tv = (TextView) findViewById(tabIds[mCurrentPos]);
+		mCurrentIndex = pos;
+		tv = (TextView) findViewById(tabIds[mCurrentIndex]);
 		tv.setTextColor(getResources().getColor(R.color.white));
-
+		
 		//focus line动画效果
 		TranslateAnimation animation = new TranslateAnimation(lastX, mTvWidth
-				* mCurrentPos + mOffset, 0, 0);
+				* mCurrentIndex + mOffset, 0, 0);
 		animation.setFillAfter(true);
 		mFocusLine.setAnimation(animation);
+		
+		//获取数据
+		getInfomationFirst();
 	}
-
+	
+	/** 
+	*  @Author Xiaohui Chen
+	*  @Creation 2013-3-1 下午4:36:17 
+	*  @param index
+	*  @Description 在该tab页首次获取信息时调用
+	*
+	*/
+	private void getInfomationFirst() {
+		//在切换tab的时候，需要清空当前的数据
+		resetData();
+		
+		//执行网络请求获取数据
+		getInfomation();
+		
+		//在第一次执行时，需要初始的loading界面
+		resetContentView();
+	}
+	
 	/** 
 	*  @Description    : 取消正在进行的请求Task，并开始一个新的Task，同时会设置tab的位置
 	*  @param pos
 	*  @Creation Date  : 2013-3-1 下午1:11:27 
 	*  @Author         : Xiaohui Chen
 	*/
-	private void getInfomation(int pos) {
+	private void getInfomation() {
 		if (mTaskGetInfo != null) {
 			mTaskGetInfo.cancel(true);
 			mTaskGetInfo = null;
 		}
 		mTaskGetInfo = new TaskGetInfomation(this);
-		mTaskGetInfo.execute(tabTypes[pos]);	
-		resetContentView();
+		mIsLoading = true;
+		mTaskGetInfo.execute(tabTypes[mCurrentIndex], String.valueOf(mEndIndex / RECORD_PERPAGE + 1));			
 	}
 	
 	/** 
@@ -373,8 +409,21 @@ public class MainActivity extends Activity {
 	*  @Creation Date  : 2013-3-1 下午1:12:40 
 	*  @Author         : Xiaohui Chen
 	*/
-	private void loadMoreInfo() {
-//		String type = tabTypes[mCurrentPos];
+	private void loadMoreInfo() {		
+		if (!mIsLoading 
+				&& mCurrentIndex >= 0 
+				&& mTotalCount != 0 
+				&& mTotalCount > mEndIndex) {
+			boolean isFiltered = ((InfomationAdapter)mLvData.getAdapter()).isFiltered();
+			if (!isFiltered) {
+				T4Log.d("loadMoreInfo");
+//				mFooterView = getLayoutInflater().inflate(R.layout.activity_main_footer, null);
+	//			mFooterView.setVisibility(View.GONE);
+//				mLvData.addFooterView(mFooterView);
+	//			mFooterView.setVisibility(View.VISIBLE);
+				getInfomation();
+			}
+		}
 	}
 	
 	/** 
@@ -397,22 +446,37 @@ public class MainActivity extends Activity {
 	*  @Author         : Xiaohui Chen
 	*/
 	@SuppressWarnings("unchecked")
-	public void onGetCompaniesComplete(String type, TInfomationsEntity entity, T4Exception ex) {
+	public void onGetInfosComplete(String type, TInfomationsEntity entity, T4Exception ex) {
 		if (ex == null && entity != null) {
 			mLlStateView.setVisibility(View.GONE);
 			mLlDataView.setVisibility(View.VISIBLE);
-			mLvData.setAdapter(new InfomationAdapter(this, (T4List<TInfomationEntity>)entity.getRecords()));
+			if (mTotalCount == 0) {
+				mAdapter.reset();
+				mAdapter.getList().addAll((T4List<TInfomationEntity>)entity.getRecords());
+			} else {
+				mAdapter.getList().addAll(mEndIndex, (T4List<TInfomationEntity>)entity.getRecords());
+				mAdapter.notifyDataSetChanged();
+			}
+			mTotalCount = entity.getTotalCount();
+			mEndIndex = entity.getEndIndex();			
 		} else {
 			String message = "Exception Code: " + ex.getExceptionCode()
 					+ "\r\n" + "Message: " + ex.getMessage();
 			T4Log.v(message);
-			mLlStateView.setVisibility(View.VISIBLE);
-			mLlDataView.setVisibility(View.GONE);
-			mBtnRetry.setVisibility(View.VISIBLE);
-			mTvStateText.setText(R.string.state_text_failed);
-			mTvStateText.setVisibility(View.VISIBLE);
-			mPbWaiting.setVisibility(View.GONE);
+			if (mTotalCount == 0) {
+				mLlStateView.setVisibility(View.VISIBLE);
+				mLlDataView.setVisibility(View.GONE);
+				mBtnRetry.setVisibility(View.VISIBLE);
+				mTvStateText.setText(R.string.state_text_failed);
+				mTvStateText.setVisibility(View.VISIBLE);
+				mPbWaiting.setVisibility(View.GONE);
+			} else {
+				Toast.makeText(this, "加载数据失败，请重试", Toast.LENGTH_LONG).show();
+			}
 		}
+		mIsLoading = false;
+//		mLvData.removeFooterView(mFooterView);
+//		mFooterView.setVisibility(View.GONE);
 	}
 	
 	/**
@@ -434,6 +498,7 @@ public class MainActivity extends Activity {
 		T4Exception mException = null;
 		MainActivity mActivity = null;
 		String mType;
+		String mCurrentPage;
 
 		public TaskGetInfomation(MainActivity activity) {
 			mActivity = activity;
@@ -442,11 +507,12 @@ public class MainActivity extends Activity {
 		@Override
 		public TInfomationsEntity doInBackground(String... params) {
 			mType = params[0];
+			mCurrentPage = params[1];
 			
 			TInfomationsEntity entity = null;
 
 			try {
-				entity = HttpManager.instance().getInfomation(mActivity, mType, RECORD_PERPAGE, PAGE_NUMBER);
+				entity = HttpManager.instance().getInfomation(mActivity, mType, String.valueOf(RECORD_PERPAGE), mCurrentPage);
 			} catch (T4Exception ex) {
 				mException = ex;
 			} 
@@ -457,7 +523,7 @@ public class MainActivity extends Activity {
 		@Override
 		public void onPostExecute(TInfomationsEntity entity) {
 			if (mActivity != null && !isCancelled()) {
-				mActivity.onGetCompaniesComplete(mType, entity, mException);
+				mActivity.onGetInfosComplete(mType, entity, mException);
 			}
 		}
 	}
@@ -467,31 +533,49 @@ public class MainActivity extends Activity {
 		
 		private LayoutInflater mInflater;
 		T4List<TInfomationEntity> mOriginalList;
-		T4List<TInfomationEntity> mList;
+		T4List<TInfomationEntity> mFilteredList;
+		boolean mIsFiltered;
 		
-		public InfomationAdapter(Context context, T4List<TInfomationEntity> list) {
+		public InfomationAdapter(Context context) {
 			super();
 			mInflater = LayoutInflater.from(context);
-			mOriginalList = list;
-			if (mList == null)
-				mList = new T4List<TInfomationEntity>();
-			mList.addAll(mOriginalList);
+			mIsFiltered = false;
+		}
+		
+		public void reset() {
+			if (mOriginalList != null)
+				mOriginalList.clear();
+			if (mFilteredList != null)
+				mFilteredList.clear();
+			mIsFiltered = false;
+		}
+		
+		public T4List<TInfomationEntity> getList() {
+			if (mIsFiltered) {
+				if (mOriginalList == null)
+					mOriginalList = new T4List<TInfomationEntity>(); 
+				return mOriginalList;
+			} else {
+				if (mFilteredList == null)
+					mFilteredList = new T4List<TInfomationEntity>(); 
+				return mFilteredList;				
+			}
+		}
+		
+		public boolean isFiltered() {
+			return mIsFiltered;
 		}
 		
 		@Override
 		public int getCount() {
 			// TODO Auto-generated method stub
-			if (mList == null)
-				return 0;
-			return mList.size();
+			return getList().size();
 		}
 
 		@Override
 		public TInfomationEntity getItem(int pos) {
 			// TODO Auto-generated method stub
-			if (mList == null || pos > mList.size())
-				return null;
-			return mList.get(pos);
+			return getList().get(pos);
 		}
 
 		@Override
@@ -554,25 +638,28 @@ public class MainActivity extends Activity {
 				
 				@Override
 				protected FilterResults performFiltering(CharSequence constraint) {
+					
 					FilterResults results = new FilterResults();
 					
-					if (mList == null)
-						mList = new T4List<TInfomationEntity>();
-					mList.clear();
-					
 					if (constraint == null || constraint.length() <= 0) {
-						mList.addAll(mOriginalList);
+						mIsFiltered = false;
+						results.count = mOriginalList.size();
+						results.values = mOriginalList;
 					} else {
+						mIsFiltered = true;
+						if (mFilteredList == null)
+							mFilteredList = new T4List<TInfomationEntity>();
+						mFilteredList.clear();
 						for (int i=0; i<mOriginalList.size(); i++) {
 							TInfomationEntity entity = mOriginalList.get(i);
 							if(entity.getName().startsWith(constraint.toString())) {
-								mList.add(entity);
+								mFilteredList.add(entity);
 							}
 						}
+						results.count = mFilteredList.size();
+						results.values = mFilteredList;
 					}
 					
-					results.count = mList.size();
-					results.values = mList;
 					return results;
 				}
 			};
