@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.DisplayMetrics;
 import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -16,8 +17,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnCreateContextMenuListener;
 import android.view.ViewGroup;
-import android.view.ContextMenu.ContextMenuInfo;
 import android.view.animation.TranslateAnimation;
+import android.widget.AbsListView;
+import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -48,6 +50,19 @@ import com.team4.utils.type.T4List;
 import com.team4.utils.util.FuncUtil;
 import com.team4.utils.util.T4Log;
 
+/**
+*  @Project       : LawyerTools
+*  @Program Name  : com.team4.activities.MainActivity.java
+*  @Class Name    : MainActivity
+*  @Description   : 主页面
+*  @Author        : Xiaohui Chen
+*  @Creation Date : 2013-3-1 下午1:19:02 
+*  @ModificationHistory  
+*  Who            When          What 
+*  ------------   -----------   ------------------------------------
+*  Xiaohui Chen   2013-3-1       Create
+*
+*/
 public class MainActivity extends Activity {
 	
 	private final static String RECORD_PERPAGE = "100";
@@ -168,6 +183,23 @@ public class MainActivity extends Activity {
 		mLlDataView = findViewById(R.id.ll_data_view);
 		mLlStateView = findViewById(R.id.ll_state_view);
 		mLvData = (ListView) findViewById(R.id.lv_data);
+		mLvData.setOnScrollListener(new OnScrollListener() {
+			
+			@Override
+			public void onScrollStateChanged(AbsListView view, int scrollState) {
+				// TODO Auto-generated method stub
+
+			}
+			
+			@Override
+			public void onScroll(AbsListView view, int firstVisibleItem,
+					int visibleItemCount, int totalItemCount) {
+				// TODO Auto-generated method stub
+				if (view.getLastVisiblePosition() >= totalItemCount - 1) {
+					loadMoreInfo();
+				}				
+			}
+		});
 		mLvData.setOnCreateContextMenuListener(new OnCreateContextMenuListener() {
 			
 			@Override
@@ -182,7 +214,6 @@ public class MainActivity extends Activity {
 			}
 			
 		});
-//		registerForContextMenu(mLvData);
 		mLvData.setOnItemClickListener(new OnItemClickListener() {
 
 			@Override
@@ -218,7 +249,11 @@ public class MainActivity extends Activity {
 		resetContentView();
 	}
 
-	//重置数据显示区域，当切换标签的时候，需要重新load数据
+	/** 
+	*  @Description    : 重置数据显示区域，当切换标签的时候，需要重新load数据
+	*  @Creation Date  : 2013-3-1 下午1:09:32 
+	*  @Author         : Xiaohui Chen
+	*/
 	private void resetContentView() {
 		mBtnRetry.setVisibility(View.GONE);		
 		mTvStateText.setText(R.string.state_text_request);
@@ -228,10 +263,22 @@ public class MainActivity extends Activity {
 		mLlStateView.setVisibility(View.VISIBLE);		
 	}
 	
+	/** 
+	*  @Description    : 显示匹配信息页面，只有Financing和Investment两种页面会调用到这个函数
+	*  @param entity
+	*  @Creation Date  : 2013-3-1 下午1:09:47 
+	*  @Author         : Xiaohui Chen
+	*/
 	private void showMatchPage(TInfomationEntity entity) {
 		
 	}
 	
+	/** 
+	*  @Description    : 显示联络信息页面
+	*  @param entity
+	*  @Creation Date  : 2013-3-1 下午1:09:11 
+	*  @Author         : Xiaohui Chen
+	*/
 	private void showCommunicationPage(TInfomationEntity entity) {
 		Intent intent = new Intent();
 		intent.setClass(this, CommunicationActivity.class);
@@ -241,6 +288,12 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	
+	/** 
+	*  @Description    : 显示详情页面
+	*  @param entity
+	*  @Creation Date  : 2013-3-1 下午1:10:45 
+	*  @Author         : Xiaohui Chen
+	*/
 	private void showDetail(TInfomationEntity entity) {
 		if (entity == null) {
 			Toast.makeText(this, "没有详细信息", Toast.LENGTH_SHORT).show();
@@ -266,13 +319,17 @@ public class MainActivity extends Activity {
 		startActivity(intent);
 	}
 	
-	//选中某一个tab的时候，将文字置成高亮，并且滑动Focus line到指定项下方
+	/** 
+	*  @Description    : 选中某一个tab的时候，将文字置成高亮，并且滑动Focus line到指定项下方
+	*  @param pos
+	*  @Creation Date  : 2013-3-1 下午1:11:07 
+	*  @Author         : Xiaohui Chen
+	*/
 	private void setFocusTab(int pos) {
 		if (pos > tabIds.length || pos < 0 || pos == mCurrentPos)
 			return;
 		//执行网络请求
 		getInfomation(pos);
-//		resetContentView();
 		
 		//记录上一次focus line所在的位置
 		int lastX = mTvWidth * mCurrentPos + mOffset;
@@ -294,6 +351,12 @@ public class MainActivity extends Activity {
 		mFocusLine.setAnimation(animation);
 	}
 
+	/** 
+	*  @Description    : 取消正在进行的请求Task，并开始一个新的Task，同时会设置tab的位置
+	*  @param pos
+	*  @Creation Date  : 2013-3-1 下午1:11:27 
+	*  @Author         : Xiaohui Chen
+	*/
 	private void getInfomation(int pos) {
 		if (mTaskGetInfo != null) {
 			mTaskGetInfo.cancel(true);
@@ -304,13 +367,34 @@ public class MainActivity extends Activity {
 		resetContentView();
 	}
 	
+	/** 
+	*  @Description    : 当滑动到listView的最后一条时，会调用这个函数载入更多信息
+	*  @Creation Date  : 2013-3-1 下午1:12:40 
+	*  @Author         : Xiaohui Chen
+	*/
+	private void loadMoreInfo() {
+		String type = tabTypes[mCurrentPos];
+	}
+	
+	/** 
+	*  @Description    : 显示“关于”页面
+	*  @Creation Date  : 2013-3-1 下午1:13:23 
+	*  @Author         : Xiaohui Chen
+	*/
 	private void showAboutPage() {
 		Intent intent = new Intent();
 		intent.setClass(this, AboutActivity.class);
 		this.startActivity(intent);
 	}
 	
-	//Http请求完成后的回调
+	/** 
+	*  @Description    : Http请求完成后的回调
+	*  @param type 请求信息的类型
+	*  @param entity 请求返回的数据，如发生异常则为null
+	*  @param ex 如请求未成功则需要获取异常信息，否则这个参数为null
+	*  @Creation Date  : 2013-3-1 下午1:13:39 
+	*  @Author         : Xiaohui Chen
+	*/
 	public void onGetCompaniesComplete(String type, IBaseType entity, T4Exception ex) {
 		if (ex == null && entity != null) {
 			mLlStateView.setVisibility(View.GONE);
@@ -343,6 +427,19 @@ public class MainActivity extends Activity {
 		}
 	}
 	
+	/**
+	*  @Project       : LawyerTools
+	*  @Program Name  : com.team4.activities.MainActivity.java
+	*  @Class Name    : TaskGetInfomation
+	*  @Description   : 获取信息的异步执行类，调用excute时需要传入Type，
+	*  @Author        : Xiaohui Chen
+	*  @Creation Date : 2013-3-1 下午1:16:01 
+	*  @ModificationHistory  
+	*  Who            When          What 
+	*  ------------   -----------   ------------------------------------
+	*  Xiaohui Chen   2013-3-1       Create
+	*
+	*/
 	private static class TaskGetInfomation extends
 			AsyncTask<String, Void, IBaseType> {
 
@@ -364,7 +461,7 @@ public class MainActivity extends Activity {
 				entity = HttpManager.instance().getInfomation(mActivity, mType, RECORD_PERPAGE, PAGE_NUMBER);
 			} catch (T4Exception ex) {
 				mException = ex;
-			}
+			} 
 
 			return entity;
 		}
@@ -451,6 +548,13 @@ public class MainActivity extends Activity {
 			public TextView tvName;
 		}
 
+		/** 
+		*  @Description    : 用于根据查找的关键字过滤结果
+		*  @Method_Name    : getFilter
+		*  @return
+		*  @Creation Date  : 2013-3-1 下午1:18:02 
+		*  @Author         : Xiaohui Chen
+		*/
 		@Override
 		public Filter getFilter() {
 			Filter filter = new Filter() {
