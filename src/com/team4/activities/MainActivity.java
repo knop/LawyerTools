@@ -70,10 +70,16 @@ public class MainActivity extends Activity {
 	private final int CONTEXT_MENU_MATCH = 3;
 	
 	//注意:tabIds和tabTypes需要个数匹配
-	private static final int tabIds[] = { R.id.tv_tab_company, R.id.tv_tab_investment, 
-		R.id.tv_tab_financing, R.id.tv_tab_case };
-	private static final String tabTypes[] = { HttpManager.TYPE_COMPANY, HttpManager.TYPE_INVESTMENT,
-		HttpManager.TYPE_FINANCING, HttpManager.TYPE_CASE };
+	private static final int tabIds[] = { 
+		R.id.tv_tab_company, 
+		R.id.tv_tab_investment, 
+		R.id.tv_tab_financing, 
+		R.id.tv_tab_case };
+	private static final String tabTypes[] = { 
+		HttpManager.TYPE_COMPANY, 
+		HttpManager.TYPE_INVESTMENT,
+		HttpManager.TYPE_FINANCING, 
+		HttpManager.TYPE_CASE };
 	
 	private int mCurrentPos = -1;
 	private View mFocusLine;
