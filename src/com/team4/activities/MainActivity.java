@@ -310,6 +310,7 @@ public class MainActivity extends Activity {
 		this.startActivity(intent);
 	}
 	
+	//Http请求完成后的回调
 	public void onGetCompaniesComplete(String type, IBaseType entity, T4Exception ex) {
 		if (ex == null && entity != null) {
 			mLlStateView.setVisibility(View.GONE);
@@ -360,7 +361,7 @@ public class MainActivity extends Activity {
 			IBaseType entity = null;
 
 			try {
-				entity = HttpManager.instance().getInfomation(mType, RECORD_PERPAGE, PAGE_NUMBER);
+				entity = HttpManager.instance().getInfomation(mActivity, mType, RECORD_PERPAGE, PAGE_NUMBER);
 			} catch (T4Exception ex) {
 				mException = ex;
 			}

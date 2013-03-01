@@ -16,6 +16,7 @@ import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.team4.common.CommonDef;
 import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
 import com.team4.type.TComunicationEntity;
@@ -151,7 +152,7 @@ public class CommunicationActivity extends Activity {
 //			holder.tvContent.setText(entity.getContent());
 			String data = entity.getContent();
 			data = data.replaceAll("%","%25");//当字符串中包含%时，会出现无法显示的问题，所以要替换成%25
-			holder.wvContent.loadData(data, "text/html", null);
+			holder.wvContent.loadData(data, CommonDef.MINE_TYPE, null);
 		}
 		
 		private View newItemView(ViewGroup parent, int direction) {
@@ -160,7 +161,7 @@ public class CommunicationActivity extends Activity {
 				View view = mInflater.inflate(R.layout.view_communication_item_left, parent);
 //				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_left);
 				holder.wvContent = (WebView)view.findViewById(R.id.wv_communication_content_left);
-				holder.wvContent.getSettings().setDefaultTextEncodingName("utf-8");
+				holder.wvContent.getSettings().setDefaultTextEncodingName(CommonDef.ENCODING);
 				view.setTag(holder);
 				return view;
 			} else if (direction == EnumDirection.from) {
@@ -168,7 +169,7 @@ public class CommunicationActivity extends Activity {
 				View view = mInflater.inflate(R.layout.view_communication_item_right, parent);
 //				holder.tvContent = (TextView)view.findViewById(R.id.tv_communication_content_right);
 				holder.wvContent = (WebView)view.findViewById(R.id.wv_communication_content_right);
-				holder.wvContent.getSettings().setDefaultTextEncodingName("utf-8");
+				holder.wvContent.getSettings().setDefaultTextEncodingName(CommonDef.ENCODING);
 				view.setTag(holder);
 				return view;
 			} else {
@@ -200,7 +201,7 @@ public class CommunicationActivity extends Activity {
 			String type = params[0];
 			T4List<TComunicationEntity> list = null;
 			try {
-				list = HttpManager.instance().getComunication(type, mId);
+				list = HttpManager.instance().getComunication(mActivity, type, mId);
 			} catch (T4Exception ex) {
 				mException = ex;
 			}

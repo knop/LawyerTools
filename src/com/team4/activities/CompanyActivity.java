@@ -9,6 +9,7 @@ import android.view.MenuItem;
 import android.webkit.WebView;
 import android.widget.TextView;
 
+import com.team4.common.CommonDef;
 import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
 import com.team4.type.TCompanyEntity;
@@ -114,8 +115,8 @@ public class CompanyActivity extends Activity {
 		else
 			data = data.replaceAll("%","%25");//当字符串中包含%时，会出现无法显示的问题，所以要替换成%25
 		WebView wvComments = (WebView) findViewById(R.id.wv_comments);
-		wvComments.getSettings().setDefaultTextEncodingName("utf-8");
-		wvComments.loadData(data, "text/html", null);
+		wvComments.getSettings().setDefaultTextEncodingName(CommonDef.ENCODING);
+		wvComments.loadData(data, CommonDef.MINE_TYPE, null);
 	}
 
 	private void showCommunicationPage() {

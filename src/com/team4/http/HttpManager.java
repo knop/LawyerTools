@@ -8,6 +8,8 @@ import java.util.List;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.message.BasicNameValuePair;
 
+import android.content.Context;
+
 import com.team4.exceptions.ErrorCode;
 import com.team4.parser.json.CasesParser;
 import com.team4.parser.json.CompaniesParser;
@@ -57,8 +59,7 @@ public class HttpManager {
 	}
 	
 	//Http请求调用
-	public IBaseType getInfomation(String type, String countPrePage, String pageNum) throws T4Exception {
-		 
+	public IBaseType getInfomation(Context context, String type, String countPrePage, String pageNum) throws T4Exception { 
 		List<BasicNameValuePair> params = getParamList(
 				new BasicNameValuePair("record_perpage", countPrePage), 
 				new BasicNameValuePair("page_number", pageNum));
@@ -76,11 +77,11 @@ public class HttpManager {
 			throw new T4Exception(ErrorCode.APP_ERROR_PARAM_INVALID, type+"不可用于该请求");
 		}
 		JsonParser jsonParser = new JsonParser(parser);
-		return HttpUtility.executeHttpRequest(get, jsonParser);
+		return HttpUtility.executeHttpRequest(context, get, jsonParser);
 	}
 	
 	@SuppressWarnings("unchecked")
-	public T4List<TComunicationEntity> getComunication(String type, int id) throws T4Exception {
+	public T4List<TComunicationEntity> getComunication(Context context, String type, int id) throws T4Exception {
 		 
 		List<BasicNameValuePair> params = getParamList(
 				new BasicNameValuePair("id", String.valueOf(id)));
@@ -88,10 +89,10 @@ public class HttpManager {
 		T4ListParser listParser = new T4ListParser(new ComunicationParser());
 		JsonParser jsonParser = new JsonParser(listParser);
 		
-		return (T4List<TComunicationEntity>)HttpUtility.executeHttpRequest(get, jsonParser);
+		return (T4List<TComunicationEntity>)HttpUtility.executeHttpRequest(context, get, jsonParser);
 	}
 	
-	public IBaseType getMatch(String type, int id) throws T4Exception {
+	public IBaseType getMatch(Context context, String type, int id) throws T4Exception {
 		 
 		List<BasicNameValuePair> params = getParamList(
 				new BasicNameValuePair("id", String.valueOf(id)));
@@ -100,7 +101,7 @@ public class HttpManager {
 		T4ListParser lParser = new T4ListParser(new ComunicationParser());
 		JsonParser jsonParser = new JsonParser(lParser);
 		
-		return HttpUtility.executeHttpRequest(get, jsonParser);
+		return HttpUtility.executeHttpRequest(context, get, jsonParser);
 	}
 	
 	//私有函数
