@@ -18,8 +18,7 @@ public class T4ListParser implements IJsonParser<IBaseType> {
 	}
 
 	@Override
-	public T4List<? extends IBaseType> parse(JSONArray jsonArray)
-			throws T4Exception {
+	public IBaseType parse(JSONArray jsonArray) throws T4Exception {
 		try {
 			T4List<IBaseType> list = new T4List<IBaseType>();
 

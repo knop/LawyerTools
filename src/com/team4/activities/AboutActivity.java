@@ -11,6 +11,13 @@ import com.team4.lawyertools.R;
 
 public class AboutActivity extends Activity {
 
+	/** 
+	*  @Description    : 方法描述
+	*  @Method_Name    : onCreate
+	*  @param savedInstanceState
+	*  @Creation Date  : 2013-3-1 上午10:15:25 
+	*  @Author         : Xiaohui Chen
+	*/
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);

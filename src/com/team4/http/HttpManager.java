@@ -11,14 +11,16 @@ import org.apache.http.message.BasicNameValuePair;
 import android.content.Context;
 
 import com.team4.exceptions.ErrorCode;
-import com.team4.parser.json.CasesParser;
-import com.team4.parser.json.CompaniesParser;
+import com.team4.parser.json.CaseParser;
+import com.team4.parser.json.CompanyParser;
 import com.team4.parser.json.ComunicationParser;
-import com.team4.parser.json.FinancingsParser;
-import com.team4.parser.json.InvestmentsParser;
+import com.team4.parser.json.FinancingParser;
+import com.team4.parser.json.InfomationsParser;
+import com.team4.parser.json.InvestmentParser;
 import com.team4.parser.json.JsonParser;
 import com.team4.parser.json.T4ListParser;
 import com.team4.type.TComunicationEntity;
+import com.team4.type.TInfomationsEntity;
 import com.team4.utils.exceptions.T4Exception;
 import com.team4.utils.http.HttpUtility;
 import com.team4.utils.parser.IJsonParser;
@@ -59,25 +61,26 @@ public class HttpManager {
 	}
 	
 	//Http请求调用
-	public IBaseType getInfomation(Context context, String type, String countPrePage, String pageNum) throws T4Exception { 
+	public TInfomationsEntity getInfomation(Context context, String type, String countPrePage, String pageNum) throws T4Exception { 
 		List<BasicNameValuePair> params = getParamList(
 				new BasicNameValuePair("record_perpage", countPrePage), 
 				new BasicNameValuePair("page_number", pageNum));
 		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_INFOMATION, type)+"/", userAgent, params);
-		IJsonParser<IBaseType> parser = null;
+		IJsonParser<IBaseType> subParser = null;
 		if (type.equalsIgnoreCase(HttpManager.TYPE_COMPANY)){
-			parser = new CompaniesParser();
+			subParser = new CompanyParser();
 		} else if (type.equalsIgnoreCase(HttpManager.TYPE_CASE)){
-			parser = new CasesParser();
+			subParser = new CaseParser();
 		} else if (type.equalsIgnoreCase(HttpManager.TYPE_FINANCING)){
-			parser = new FinancingsParser();
+			subParser = new FinancingParser();
 		} else if (type.equalsIgnoreCase(HttpManager.TYPE_INVESTMENT)){
-			parser = new InvestmentsParser();
+			subParser = new InvestmentParser();
 		} else {
 			throw new T4Exception(ErrorCode.APP_ERROR_PARAM_INVALID, type+"不可用于该请求");
 		}
-		JsonParser jsonParser = new JsonParser(parser);
-		return HttpUtility.executeHttpRequest(context, get, jsonParser);
+		InfomationsParser parser = new InfomationsParser(subParser);
+		JsonParser jsonParser = new JsonParser(parser);		
+		return (TInfomationsEntity)HttpUtility.executeHttpRequest(context, get, jsonParser);
 	}
 	
 	@SuppressWarnings("unchecked")

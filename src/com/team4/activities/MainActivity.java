@@ -36,16 +36,12 @@ import android.widget.Toast;
 import com.team4.http.HttpManager;
 import com.team4.lawyertools.R;
 import com.team4.type.TCaseEntity;
-import com.team4.type.TCasesEntity;
-import com.team4.type.TCompaniesEntity;
 import com.team4.type.TCompanyEntity;
 import com.team4.type.TFinancingEntity;
-import com.team4.type.TFinancingsEntity;
 import com.team4.type.TInfomationEntity;
+import com.team4.type.TInfomationsEntity;
 import com.team4.type.TInvestmentEntity;
-import com.team4.type.TInvestmentsEntity;
 import com.team4.utils.exceptions.T4Exception;
-import com.team4.utils.type.IBaseType;
 import com.team4.utils.type.T4List;
 import com.team4.utils.util.FuncUtil;
 import com.team4.utils.util.T4Log;
@@ -89,10 +85,10 @@ public class MainActivity extends Activity {
 	private View mLlDataView;
 	private View mLlStateView;
 	private ListView mLvData;
-	private TCompaniesEntity mCompaniesEntity;
-	private TCasesEntity mCasesEntity;
-	private TInvestmentsEntity mInvestmentsEntity;
-	private TFinancingsEntity mFinancingsEntity;
+//	private TCompaniesEntity mCompaniesEntity;
+//	private TCasesEntity mCasesEntity;
+//	private TInvestmentsEntity mInvestmentsEntity;
+//	private TFinancingsEntity mFinancingsEntity;
 	TaskGetInfomation mTaskGetInfo;
 
 	@Override
@@ -225,11 +221,10 @@ public class MainActivity extends Activity {
 		final EditText et = (EditText)findViewById(R.id.et_search_keyword);
 		et.addTextChangedListener(new TextWatcher() {
 			
-			@SuppressWarnings("unchecked")
 			@Override
 			public void onTextChanged(CharSequence arg0, int arg1, int arg2, int arg3) {
 				// TODO Auto-generated method stub
-				((InfomationAdapter<TInfomationEntity>)mLvData.getAdapter()).getFilter().filter(et.getText().toString());
+				((InfomationAdapter)mLvData.getAdapter()).getFilter().filter(et.getText().toString());
 			}
 			
 			@Override
@@ -373,7 +368,7 @@ public class MainActivity extends Activity {
 	*  @Author         : Xiaohui Chen
 	*/
 	private void loadMoreInfo() {
-		String type = tabTypes[mCurrentPos];
+//		String type = tabTypes[mCurrentPos];
 	}
 	
 	/** 
@@ -395,25 +390,12 @@ public class MainActivity extends Activity {
 	*  @Creation Date  : 2013-3-1 下午1:13:39 
 	*  @Author         : Xiaohui Chen
 	*/
-	public void onGetCompaniesComplete(String type, IBaseType entity, T4Exception ex) {
+	@SuppressWarnings("unchecked")
+	public void onGetCompaniesComplete(String type, TInfomationsEntity entity, T4Exception ex) {
 		if (ex == null && entity != null) {
 			mLlStateView.setVisibility(View.GONE);
 			mLlDataView.setVisibility(View.VISIBLE);
-			if (type.equalsIgnoreCase(HttpManager.TYPE_COMPANY)) {
-				mCompaniesEntity = (TCompaniesEntity)entity;
-				mLvData.setAdapter(new InfomationAdapter<TCompanyEntity>(this, mCompaniesEntity.getRecords()));
-			} else if (type.equalsIgnoreCase(HttpManager.TYPE_CASE)) { 
-				mCasesEntity = (TCasesEntity)entity;
-				mLvData.setAdapter(new InfomationAdapter<TCaseEntity>(this, mCasesEntity.getRecords()));			
-			} else if (type.equalsIgnoreCase(HttpManager.TYPE_FINANCING)) {
-				mFinancingsEntity = (TFinancingsEntity)entity;
-				mLvData.setAdapter(new InfomationAdapter<TFinancingEntity>(this, mFinancingsEntity.getRecords()));				
-			} else if (type.equalsIgnoreCase(HttpManager.TYPE_INVESTMENT)) {
-				mInvestmentsEntity = (TInvestmentsEntity)entity;
-				mLvData.setAdapter(new InfomationAdapter<TInvestmentEntity>(this, mInvestmentsEntity.getRecords()));				
-			} else {
-				Toast.makeText(this, "请求类型无法识别", Toast.LENGTH_SHORT).show();
-			}
+			mLvData.setAdapter(new InfomationAdapter(this, (T4List<TInfomationEntity>)entity.getRecords()));
 		} else {
 			String message = "Exception Code: " + ex.getExceptionCode()
 					+ "\r\n" + "Message: " + ex.getMessage();
@@ -441,7 +423,7 @@ public class MainActivity extends Activity {
 	*
 	*/
 	private static class TaskGetInfomation extends
-			AsyncTask<String, Void, IBaseType> {
+			AsyncTask<String, Void, TInfomationsEntity> {
 
 		T4Exception mException = null;
 		MainActivity mActivity = null;
@@ -452,10 +434,10 @@ public class MainActivity extends Activity {
 		}
 
 		@Override
-		public IBaseType doInBackground(String... params) {
+		public TInfomationsEntity doInBackground(String... params) {
 			mType = params[0];
 			
-			IBaseType entity = null;
+			TInfomationsEntity entity = null;
 
 			try {
 				entity = HttpManager.instance().getInfomation(mActivity, mType, RECORD_PERPAGE, PAGE_NUMBER);
@@ -467,21 +449,21 @@ public class MainActivity extends Activity {
 		}
 
 		@Override
-		public void onPostExecute(IBaseType entity) {
+		public void onPostExecute(TInfomationsEntity entity) {
 			if (mActivity != null && !isCancelled()) {
 				mActivity.onGetCompaniesComplete(mType, entity, mException);
 			}
 		}
 	}
 	
-	private static class InfomationAdapter<T extends TInfomationEntity> 
+	private static class InfomationAdapter 
 		extends BaseAdapter implements Filterable {
 		
 		private LayoutInflater mInflater;
-		T4List<T> mOriginalList;
+		T4List<TInfomationEntity> mOriginalList;
 		T4List<TInfomationEntity> mList;
 		
-		public InfomationAdapter(Context context, T4List<T> list) {
+		public InfomationAdapter(Context context, T4List<TInfomationEntity> list) {
 			super();
 			mInflater = LayoutInflater.from(context);
 			mOriginalList = list;
@@ -576,7 +558,7 @@ public class MainActivity extends Activity {
 						mList.addAll(mOriginalList);
 					} else {
 						for (int i=0; i<mOriginalList.size(); i++) {
-							T entity = mOriginalList.get(i);
+							TInfomationEntity entity = mOriginalList.get(i);
 							if(entity.getName().startsWith(constraint.toString())) {
 								mList.add(entity);
 							}
