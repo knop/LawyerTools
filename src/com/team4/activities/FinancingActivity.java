@@ -127,11 +127,12 @@ public class FinancingActivity extends Activity {
 		String data = entity.getComment();
 		if (data == null || data.length() <= 0)
 			data = this.getResources().getString(R.string.text_none);
-		else
-			data = data.replaceAll("%","%25");//当字符串中包含%时，会出现无法显示的问题，所以要替换成%25
+//		else
+//			data = data.replaceAll("%","%25");//当字符串中包含%时，会出现无法显示的问题，所以要替换成%25
 		WebView wvComment = (WebView) findViewById(R.id.wv_financing_comment);
 		wvComment.getSettings().setDefaultTextEncodingName(CommonDef.ENCODING);
 		wvComment.loadData(data, CommonDef.MINE_TYPE, null);
+		wvComment.loadDataWithBaseURL("", data, CommonDef.MINE_TYPE, CommonDef.ENCODING, "");
 	}
 	
 	private void showCommunicationPage() {

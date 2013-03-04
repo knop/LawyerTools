@@ -453,10 +453,13 @@ public class MainActivity extends Activity {
 			if (mTotalCount == 0) {
 				mAdapter.reset();
 				mAdapter.getList().addAll((T4List<TInfomationEntity>)entity.getRecords());
+				mAdapter.notifyDataSetChanged();
+				mLvData.setSelection(0);
 			} else {
 				mAdapter.getList().addAll(mEndIndex, (T4List<TInfomationEntity>)entity.getRecords());
 				mAdapter.notifyDataSetChanged();
 			}
+
 			mTotalCount = entity.getTotalCount();
 			mEndIndex = entity.getEndIndex();			
 		} else {
