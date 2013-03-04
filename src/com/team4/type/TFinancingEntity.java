@@ -28,6 +28,7 @@ public class TFinancingEntity extends TInfomationEntity {
 	private boolean mHasCommission;
 	private String mIsOut;
 	private String mIndustry;
+	private String mExpiryDate;
 	
 	private String mCommissionProportion;
 
@@ -222,5 +223,13 @@ public class TFinancingEntity extends TInfomationEntity {
 
 	public void setIsOut(String isOut) {
 		this.mIsOut = isOut;
+	}
+
+	public String getExpiryDate() {
+		return mExpiryDate;
+	}
+
+	public void setExpiryDate(String expiryDate) {
+		this.mExpiryDate = expiryDate;
 	}
 }

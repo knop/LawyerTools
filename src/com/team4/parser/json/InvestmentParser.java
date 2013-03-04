@@ -136,6 +136,10 @@ public class InvestmentParser implements IJsonParser<IBaseType> {
 			if (json.has("prior_cost")) {
 				obj.setPriorCost(json.getString("prior_cost"));
 			}
+			
+			if (json.has("expiry_date")) {
+				obj.setExpiryDate(json.getString("expiry_date"));
+			}
 			return obj;
 		} catch (JSONException e) {
 			throw new T4Exception(ErrorCode.PARSE_ERROR_FORMAT_INVALID, "JSON格式错误");

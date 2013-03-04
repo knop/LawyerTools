@@ -35,6 +35,7 @@ public class TInvestmentEntity extends TInfomationEntity {
 	private String mCapitalSource;
 	private String mPurpose;
 	private String mPriorCost;
+	private String mExpiryDate;
 	
 	private String mCommissionProportion;
 
@@ -285,5 +286,13 @@ public class TInvestmentEntity extends TInfomationEntity {
 
 	public void setPriorCost(String priorCost) {
 		this.mPriorCost = priorCost;
+	}
+
+	public String getExpiryDate() {
+		return mExpiryDate;
+	}
+
+	public void setExpiryDate(String expiryDate) {
+		this.mExpiryDate = expiryDate;
 	}
 }

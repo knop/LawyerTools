@@ -109,6 +109,10 @@ public class FinancingActivity extends Activity {
 		TextView tvPayment = (TextView) findViewById(R.id.tv_financing_payment);
 		tvPayment.setText(entity.getPayment());
 		
+		// 有效期
+		TextView tvExpiryDate = (TextView) findViewById(R.id.tv_expiry_date);
+		tvExpiryDate.setText(entity.getExpiryDate());
+		
 		// 项目所在地
 		TextView tvArea = (TextView) findViewById(R.id.tv_financing_area);
 		tvArea.setText(entity.getArea());

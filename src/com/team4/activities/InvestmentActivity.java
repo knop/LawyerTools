@@ -129,7 +129,11 @@ public class InvestmentActivity extends Activity {
 		// 流向区域
 		TextView tvAreas = (TextView) findViewById(R.id.tv_investment_areas);
 		tvAreas.setText(entity.getAreas());
-
+		
+		// 有效期
+		TextView tvExpiryDate = (TextView) findViewById(R.id.tv_expiry_date);
+		tvExpiryDate.setText(entity.getExpiryDate());
+		
 		// 是否有佣金
 		TextView tvHasCommission = (TextView) findViewById(R.id.tv_investment_has_commission);
 		tvHasCommission.setText(entity.getHasCommission()?R.string.yes:R.string.no);

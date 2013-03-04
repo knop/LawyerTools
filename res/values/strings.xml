@@ -60,6 +60,7 @@
     <string name="finance_horizon">融资期限</string>
 	<string name="finance_industry">融资行业</string>
     <string name="project_area">项目所在地</string>
+    <string name="expiry_date">有效期</string>
     
     <!-- 案件信息 -->
     <string name="cause">案由</string>

@@ -112,7 +112,11 @@ public class FinancingParser implements IJsonParser<IBaseType> {
 			if (json.has("horizon_floor")) {
 				obj.setHorizonFloor(json.getString("horizon_floor"));
 			}
-
+			
+			if (json.has("expiry_date")) {
+				obj.setExpiryDate(json.getString("expiry_date"));
+			}
+			
 			return obj;
 		} catch (JSONException e) {
 			throw new T4Exception(ErrorCode.PARSE_ERROR_FORMAT_INVALID, "JSON格式错误");
