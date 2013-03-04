@@ -496,7 +496,6 @@ public class MainActivity extends Activity {
 			}
 		}
 		mIsLoading = false;
-//		mFooterView.setVisibility(View.GONE);
 		mLvData.removeFooterView(mFooterView);
 	}
 	

@@ -12,6 +12,8 @@
             android:id="@+id/tv_communication_title"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:ellipsize="marquee"
             android:focusable="true"
             android:focusableInTouchMode="true"
