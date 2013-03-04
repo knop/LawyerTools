@@ -153,6 +153,12 @@ public class MainActivity extends Activity {
 		return true;
 	}
 
+	/** 
+	*  @Author Xiaohui Chen
+	*  @Creation 2013-3-4 上午10:32:32 
+	*  @Description 重置ListView数据源相关的字段，只有在切换页面的时候调用
+	*
+	*/
 	private void resetData() {
 		if(mInfos == null)
 			mInfos = new T4List<TInfomationEntity>();
@@ -161,6 +167,12 @@ public class MainActivity extends Activity {
 		mEndIndex = 0;
 	}
 	
+	/** 
+	*  @Author Xiaohui Chen
+	*  @Creation 2013-3-4 上午10:33:22 
+	*  @Description 初始化Tab页
+	*
+	*/
 	private void initTabView() {
 		for (int i = 0; i < tabIds.length; i++) {
 			TextView tv = (TextView) findViewById(tabIds[i]);
@@ -184,6 +196,12 @@ public class MainActivity extends Activity {
 		mOffset = (mTvWidth - FuncUtil.dp2px(this, FOCUS_LINE_WIDTH_DP)) / 2;
 	}
 
+	/** 
+	*  @Author Xiaohui Chen
+	*  @Creation 2013-3-4 上午10:34:45 
+	*  @Description 初始化内容显示区域的UI，主要是设置各个UI显示与否，以及绑定一些listener
+	*
+	*/
 	private void initContentView() {
 		mBtnRetry = (Button) findViewById(R.id.btn_retry);		
 		mBtnRetry.setOnClickListener(new View.OnClickListener(){
@@ -197,12 +215,12 @@ public class MainActivity extends Activity {
 		mLlDataView = findViewById(R.id.ll_data_view);
 		mLlStateView = findViewById(R.id.ll_state_view);
 		mLvData = (ListView) findViewById(R.id.lv_data);
+		mFooterView = getLayoutInflater().inflate(R.layout.activity_main_footer, null);
+		mLvData.addFooterView(mFooterView);
 		if (mAdapter == null) {
 			mAdapter = new InfomationAdapter(this);
 		}
 		mLvData.setAdapter(mAdapter);
-		mFooterView = getLayoutInflater().inflate(R.layout.activity_main_footer, null);
-		mLvData.addFooterView(mFooterView);
 		mLvData.setOnScrollListener(new OnScrollListener() {
 			
 			@Override
@@ -274,7 +292,7 @@ public class MainActivity extends Activity {
 	*/
 	private void resetContentView() {
 		mBtnRetry.setVisibility(View.GONE);		
-		mTvStateText.setText(R.string.state_text_request);
+		mTvStateText.setText(R.string.state_text_waiting);
 		mTvStateText.setVisibility(View.VISIBLE);		
 		mPbWaiting.setVisibility(View.VISIBLE);		
 		mLlDataView.setVisibility(View.GONE);		
@@ -338,10 +356,11 @@ public class MainActivity extends Activity {
 	}
 	
 	/** 
-	*  @Description    : 选中某一个tab的时候，将文字置成高亮，并且滑动Focus line到指定项下方
+	*  @Author Xiaohui Chen
+	*  @Creation 2013-3-4 上午10:36:03 
 	*  @param pos
-	*  @Creation Date  : 2013-3-1 下午1:11:07 
-	*  @Author         : Xiaohui Chen
+	*  @Description 选中某一个tab的时候，将文字置成高亮，并且滑动Focus line到指定项下方
+	*
 	*/
 	private void setFocusTab(int pos) {
 		if (pos > tabIds.length || pos < 0 || pos == mCurrentIndex)
@@ -414,13 +433,10 @@ public class MainActivity extends Activity {
 				&& mCurrentIndex >= 0 
 				&& mTotalCount != 0 
 				&& mTotalCount > mEndIndex) {
-			boolean isFiltered = ((InfomationAdapter)mLvData.getAdapter()).isFiltered();
+			boolean isFiltered = mAdapter.isFiltered();
 			if (!isFiltered) {
 				T4Log.d("loadMoreInfo");
-//				mFooterView = getLayoutInflater().inflate(R.layout.activity_main_footer, null);
-	//			mFooterView.setVisibility(View.GONE);
-//				mLvData.addFooterView(mFooterView);
-	//			mFooterView.setVisibility(View.VISIBLE);
+				mFooterView.setVisibility(View.VISIBLE);
 				getInfomation();
 			}
 		}
@@ -478,8 +494,7 @@ public class MainActivity extends Activity {
 			}
 		}
 		mIsLoading = false;
-//		mLvData.removeFooterView(mFooterView);
-//		mFooterView.setVisibility(View.GONE);
+		mFooterView.setVisibility(View.GONE);
 	}
 	
 	/**

@@ -56,7 +56,7 @@ public class CommunicationActivity extends Activity {
 		String type = intent.getStringExtra(EXTRA_KEY_TYPE);
 		if (id > -1 && type != null && type.length() > 0) {
 			mPbWaiting.setVisibility(View.VISIBLE);
-			mTvStateText.setText(R.string.state_text_request);
+			mTvStateText.setText(R.string.state_text_waiting);
 			TaskGetComunication task = new TaskGetComunication(CommunicationActivity.this, id);
 			task.execute(type);
 		} else {
