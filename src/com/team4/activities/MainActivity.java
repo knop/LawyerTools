@@ -436,7 +436,9 @@ public class MainActivity extends Activity {
 			boolean isFiltered = mAdapter.isFiltered();
 			if (!isFiltered) {
 				T4Log.d("loadMoreInfo");
-				mFooterView.setVisibility(View.VISIBLE);
+//				mFooterView.setVisibility(View.VISIBLE);
+//				mFooterView = getLayoutInflater().inflate(R.layout.activity_main_footer, null);
+				mLvData.addFooterView(mFooterView);
 				getInfomation();
 			}
 		}
@@ -494,7 +496,8 @@ public class MainActivity extends Activity {
 			}
 		}
 		mIsLoading = false;
-		mFooterView.setVisibility(View.GONE);
+//		mFooterView.setVisibility(View.GONE);
+		mLvData.removeFooterView(mFooterView);
 	}
 	
 	/**
