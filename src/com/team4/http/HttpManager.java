@@ -18,6 +18,7 @@ import com.team4.parser.json.FinancingParser;
 import com.team4.parser.json.InfomationsParser;
 import com.team4.parser.json.InvestmentParser;
 import com.team4.parser.json.JsonParser;
+import com.team4.parser.json.MatchParser;
 import com.team4.parser.json.T4ListParser;
 import com.team4.type.TComunicationEntity;
 import com.team4.type.TInfomationsEntity;
@@ -100,8 +101,18 @@ public class HttpManager {
 		List<BasicNameValuePair> params = getParamList(
 				new BasicNameValuePair("id", String.valueOf(id)));
 		HttpGet get = HttpUtility.createHttpGet(fillUrl(GET_MATCH, type), userAgent, params);
-		
-		T4ListParser lParser = new T4ListParser(new ComunicationParser());
+		IJsonParser<IBaseType> subParser = null;
+		//如果是资金，则要匹配项目。
+		//如果是项目，就需要匹配资金。
+		//所以解析类类型是相反的。
+		if (type.equalsIgnoreCase(HttpManager.TYPE_FINANCING)){
+			subParser = new InvestmentParser();
+		} else if (type.equalsIgnoreCase(HttpManager.TYPE_INVESTMENT)){
+			subParser = new FinancingParser();
+		} else {
+			throw new T4Exception(ErrorCode.APP_ERROR_PARAM_INVALID, type+"不可用于该请求");
+		}
+		T4ListParser lParser = new T4ListParser(new MatchParser(subParser));
 		JsonParser jsonParser = new JsonParser(lParser);
 		
 		return HttpUtility.executeHttpRequest(context, get, jsonParser);

@@ -11,13 +11,6 @@ import com.team4.lawyertools.R;
 
 public class AboutActivity extends Activity {
 
-	/** 
-	*  @Description    : 方法描述
-	*  @Method_Name    : onCreate
-	*  @param savedInstanceState
-	*  @Creation Date  : 2013-3-1 上午10:15:25 
-	*  @Author         : Xiaohui Chen
-	*/
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -25,6 +18,12 @@ public class AboutActivity extends Activity {
 		showDetail();
 	}
 	
+	/** 
+	*  @Author Xiaohui Chen
+	*  @Creation 2013-3-5 上午9:36:56 
+	*  @Description 显示“关于”详情信息
+	*
+	*/
 	private void showDetail() {
 		TextView tvVersion = (TextView)findViewById(R.id.tv_about_version);
 		String version = getVersion();
@@ -40,6 +39,13 @@ public class AboutActivity extends Activity {
 		tvCopyright.setText("版权所有 team4.us");		
 	}
 	
+	/** 
+	*  @Author Xiaohui Chen
+	*  @Creation 2013-3-5 上午9:36:42 
+	*  @return
+	*  @Description 获取版本信息
+	*
+	*/
 	private String getVersion() {
 		PackageManager pm = getPackageManager();
 		String version = getResources().getString(R.string.text_none);

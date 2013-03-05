@@ -306,7 +306,12 @@ public class MainActivity extends Activity {
 	*  @Author         : Xiaohui Chen
 	*/
 	private void showMatchPage(TInfomationEntity entity) {
-		
+		Intent intent = new Intent();
+		intent.setClass(this, MatchActivity.class);
+		intent.putExtra(MatchActivity.EXTRA_KEY_ID, entity.getId());
+		intent.putExtra(MatchActivity.EXTRA_KEY_TITLE, entity.getName());
+		intent.putExtra(MatchActivity.EXTRA_KEY_TYPE, tabTypes[mCurrentIndex]);
+		startActivity(intent);		
 	}
 	
 	/** 

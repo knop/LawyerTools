@@ -42,11 +42,27 @@ public class FinancingActivity extends Activity {
 			showCommunicationPage();
 			break;
 		case R.id.match:
+			showMatchPage();
 			break;
 		default:
 			break;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	/** 
+	*  @Description    : 显示匹配信息页面，只有Financing和Investment两种页面会调用到这个函数
+	*  @param entity
+	*  @Creation Date  : 2013-3-1 下午1:09:47 
+	*  @Author         : Xiaohui Chen
+	*/
+	private void showMatchPage() {
+		Intent intent = new Intent();
+		intent.setClass(this, MatchActivity.class);
+		intent.putExtra(MatchActivity.EXTRA_KEY_ID, mFinancingEntity.getId());
+		intent.putExtra(MatchActivity.EXTRA_KEY_TITLE, mFinancingEntity.getName());
+		intent.putExtra(MatchActivity.EXTRA_KEY_TYPE, HttpManager.TYPE_FINANCING);
+		startActivity(intent);		
 	}
 	
 	private void showDetail(final TFinancingEntity entity) {
