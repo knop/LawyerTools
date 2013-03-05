@@ -71,7 +71,7 @@ public class MatchActivity extends Activity {
 		mPbWaiting = (ProgressBar) findViewById(R.id.pb_match_waiting);
 		mLlDataView.setVisibility(View.GONE);
 		mLlStateView.setVisibility(View.VISIBLE);
-		mTvStateText.setVisibility(View.VISIBLE);
+		mTvStateText.setVisibility(View.VISIBLE); 
 
 		Intent intent = getIntent();
 		String title = intent.getStringExtra(EXTRA_KEY_TITLE);
@@ -90,6 +90,13 @@ public class MatchActivity extends Activity {
 		}
 	}
 	
+	/** 
+	*  @Author Xiaohui Chen
+	*  @Creation 2013-3-5 下午1:42:45 
+	*  @param entity
+	*  @Description 显示详细的匹配信息列表
+	*
+	*/
 	private void showDetail(TInfomationEntity entity) {
 		if (entity == null) {
 			Toast.makeText(this, "没有详细信息", Toast.LENGTH_SHORT).show();
@@ -111,6 +118,14 @@ public class MatchActivity extends Activity {
 		startActivity(intent);
 	}
 
+	/** 
+	*  @Author Xiaohui Chen
+	*  @Creation 2013-3-5 下午1:43:02 
+	*  @param data
+	*  @param ex
+	*  @Description 当异步获取匹配信息完成后调用此回调
+	*
+	*/
 	@SuppressWarnings("unchecked")
 	public void onGetMatchComplete(IBaseType data, T4Exception ex) {
 		if (ex == null && data != null) {
