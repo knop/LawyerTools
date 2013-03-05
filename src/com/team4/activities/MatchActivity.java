@@ -86,7 +86,7 @@ public class MatchActivity extends Activity {
 			task.execute(mType);
 		} else {
 			mPbWaiting.setVisibility(View.GONE);
-			mTvStateText.setText(R.string.state_text_none);
+			mTvStateText.setText(R.string.state_text_match_none);
 		}
 	}
 	
@@ -119,7 +119,7 @@ public class MatchActivity extends Activity {
 				mLlDataView.setVisibility(View.GONE);
 				mLlStateView.setVisibility(View.VISIBLE);
 				mPbWaiting.setVisibility(View.GONE);
-				mTvStateText.setText(R.string.state_text_none);
+				mTvStateText.setText(R.string.state_text_match_none);
 			} else {
 				mLlDataView.setVisibility(View.VISIBLE);
 				mLlStateView.setVisibility(View.GONE);
@@ -133,7 +133,7 @@ public class MatchActivity extends Activity {
 			mLlDataView.setVisibility(View.GONE);
 			mLlStateView.setVisibility(View.VISIBLE);
 			mPbWaiting.setVisibility(View.GONE);
-			mTvStateText.setText(R.string.state_text_none);
+			mTvStateText.setText(R.string.state_text_match_none);
 		}
 	}
 

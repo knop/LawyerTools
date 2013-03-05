@@ -61,7 +61,7 @@ public class CommunicationActivity extends Activity {
 			task.execute(type);
 		} else {
 			mPbWaiting.setVisibility(View.GONE);
-			mTvStateText.setText(R.string.state_text_none);
+			mTvStateText.setText(R.string.state_text_communication_none);
 		}
 	}
 
@@ -71,7 +71,7 @@ public class CommunicationActivity extends Activity {
 				mLlDataView.setVisibility(View.GONE);
 				mLlStateView.setVisibility(View.VISIBLE);
 				mPbWaiting.setVisibility(View.GONE);
-				mTvStateText.setText(R.string.state_text_none);				
+				mTvStateText.setText(R.string.state_text_communication_none);				
 			} else {
 				mLlDataView.setVisibility(View.VISIBLE);
 				mLlStateView.setVisibility(View.GONE);
@@ -85,7 +85,7 @@ public class CommunicationActivity extends Activity {
 			mLlDataView.setVisibility(View.GONE);
 			mLlStateView.setVisibility(View.VISIBLE);
 			mPbWaiting.setVisibility(View.GONE);
-			mTvStateText.setText(R.string.state_text_none);
+			mTvStateText.setText(R.string.state_text_communication_none);
 		}
 	}
 	
