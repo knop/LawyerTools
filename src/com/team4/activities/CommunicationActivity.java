@@ -150,7 +150,7 @@ public class CommunicationActivity extends Activity {
 			
 			ViewHolder holder = (ViewHolder)view.getTag();
 //			holder.tvContent.setText(entity.getContent());
-			String data = entity.getContent();
+			String data = entity.getTime() + "\n" + entity.getContent();
 //			data = data.replaceAll("%","%25");//当字符串中包含%时，会出现无法显示的问题，所以要替换成%25
 //			holder.wvContent.loadData(data, CommonDef.MINE_TYPE, null);
 			holder.wvContent.loadDataWithBaseURL("", data, CommonDef.MINE_TYPE, CommonDef.ENCODING, "");
