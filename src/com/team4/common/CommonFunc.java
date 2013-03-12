@@ -1,11 +1,11 @@
 package com.team4.common;
 
 /**
-*  @Project	 LawyerTools
+*  @Project	 MoneyManager
 *  @Author   Xiaohui Chen
 *  @Email    knop0211@gmail.com
-*  @Creation 2013-3-12 下午4:15:24 
-*  @Description 用于存储自定义的全局常量
+*  @Creation 2013-3-12 下午4:14:45 
+*  @Description 用于存储通用的静态函数
 *
 *  @History  
 *  Who            When          What 
@@ -13,9 +13,6 @@ package com.team4.common;
 *  Xiaohui Chen   2013-3-12      Create
 *
 */
-public class CommonDef {
-
-	public final static String MINE_TYPE = "text/html";
-	public final static String ENCODING = "utf-8";
+public class CommonFunc {
 	
 }
